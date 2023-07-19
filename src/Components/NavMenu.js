@@ -6,23 +6,32 @@ import { faList, faCheck, faUserGroup, faBars } from '@fortawesome/free-solid-sv
 
 function NavMenu() {
 	const navRef = useRef();
+	const isLoggedIn = userData(9, 1);
 	const showNavbar = () => {
 		navRef.current.classList.toggle(
 			"nav_container"
 		);
 	};
+function userData(z, y) {
+  if (z + y === 10) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 	return (
 		<header>
 			<nav ref={navRef}>
 				<div className="nav-body">
-					<p className="nav-heading">Hi, User!</p>
+					<p className="nav-heading">Hi, {isLoggedIn ? "Luke" : "User"}!</p>
 
 						<a className="nav-sub-heading" href="/#">
-								GROUPS
-							<span className="nav-sub-heading-arrow">&#62;</span>
+								{isLoggedIn ? "GROUPS " : "LOGIN "}
+							<span className="nav-sub-heading-arrow"> &#62;</span>
 							<br />
 							<p className="nav-sub-heading-sub-text">
-								Log in to share your lists
+								{isLoggedIn ? "Create Groups to share your lists" : "Log in to share your lists "}	
 							</p>
 						</a>
 
@@ -40,12 +49,15 @@ function NavMenu() {
 								Completed
 						</a>
 
-						<a className="nav-Groups" href="/#">
+						{/* Conditionally render the "Groups" menu item */}
+						{isLoggedIn && (
+							<a className="nav-Groups" href="/#">
 							<p className="nav-icons">
-							<FontAwesomeIcon icon={faUserGroup}/>
+								<FontAwesomeIcon icon={faUserGroup} />
 							</p>
-								Groups
+							Groups
 						</a>
+							)}
 				</div>	
 				<button
 					className="nav-btn"
