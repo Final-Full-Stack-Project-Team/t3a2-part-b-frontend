@@ -24,7 +24,7 @@ function userData(z, y) {
 		<header>
 			<nav ref={navRef}>
 				<div className="nav-body">
-					<p className="nav-heading">Hi, {isLoggedIn ? "Luke" : "User"}!</p>
+					<p className="nav-heading">{isLoggedIn ? "Hello, Luke" : "Hello"}!</p>
 
 						<a className="nav-sub-heading" href="/#">
 								{isLoggedIn ? "GROUPS " : "LOGIN "}
