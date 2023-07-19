@@ -16,10 +16,36 @@ function NavMenu() {
 			<nav ref={navRef}>
 				<div className="nav-body">
 					<p className="nav-heading">Hi, User!</p>
-					<a className="nav-sub-heading" href="/#">GROUPS<span className="nav-sub-heading-arrow"> &#62;</span><br></br><p className="nav-sub-heading-sub-text">Log in to share your lists</p></a>
-					<a className="nav-my-lists" href="/#"><p className="nav-icons"><FontAwesomeIcon icon={faList}/></p>My Lists</a>
-					<a className="nav-Completed" href="/#"><p className="nav-icons"><FontAwesomeIcon icon={faCheck}/></p>Completed</a>
-					<a className="nav-Groups" href="/#"><p className="nav-icons"><FontAwesomeIcon icon={faUserGroup}/></p>Groups</a>
+
+						<a className="nav-sub-heading" href="/#">
+								GROUPS
+							<span className="nav-sub-heading-arrow">&#62;</span>
+							<br />
+							<p className="nav-sub-heading-sub-text">
+								Log in to share your lists
+							</p>
+						</a>
+
+						<a className="nav-my-lists" href="/#">
+							<p className="nav-icons">
+							<FontAwesomeIcon icon={faList}/>
+							</p>
+								My Lists
+						</a>
+
+						<a className="nav-Completed" href="/#">
+							<p className="nav-icons">
+							<FontAwesomeIcon icon={faCheck}/>
+							</p>
+								Completed
+						</a>
+
+						<a className="nav-Groups" href="/#">
+							<p className="nav-icons">
+							<FontAwesomeIcon icon={faUserGroup}/>
+							</p>
+								Groups
+						</a>
 				</div>	
 				<button
 					className="nav-btn"
