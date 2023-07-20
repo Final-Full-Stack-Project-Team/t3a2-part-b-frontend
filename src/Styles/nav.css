@@ -66,7 +66,7 @@ header .nav-btn {
 }
 
 header .nav-btn {
-	margin-left: -0.8em;
+	margin-left: -0.85em;
 }
 
 .nav-body {
@@ -79,7 +79,8 @@ header .nav-btn {
 	padding: 0.7em;
 	background-color: var(--light-grey);
 	color: var(--font-color);
-	font-size: 1.6em;	
+	font-size: 1.6em;
+	margin-left: -0.15em;	
 }
 
 .nav-sub-heading {
@@ -112,10 +113,37 @@ header .nav-btn {
 	padding: 0.7em;
 }
 
-.nav-icons {
+.nav-icons-my-lists {
 	display: inline-block;
-	margin-right: 1.2em;
+	margin-right: 0.63em;
 }
+
+.nav-icons-completed {
+	display: inline-block;
+	margin-right: 0.8em;
+}
+
+.nav-icons-groups {
+	display: inline-block;
+	margin-right: 0.42em;
+}
+
+/* Alternative spacing in nav items. Uncomment to compare */
+
+/* .nav-icons-my-lists {
+	display: inline-block;
+	margin-right: 1.4em;
+}
+
+.nav-icons-completed {
+	display: inline-block;
+	margin-right: 1.56em;
+}
+
+.nav-icons-groups {
+	display: inline-block;
+	margin-right: 1.18em;
+} */
 
 @media only screen and (max-width: 600px) {
 header nav {

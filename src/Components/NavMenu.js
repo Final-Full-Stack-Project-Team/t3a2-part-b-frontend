@@ -36,14 +36,14 @@ function userData(z, y) {
 						</a>
 
 						<a className="nav-my-lists" href="/#">
-							<p className="nav-icons">
+							<p className="nav-icons-my-lists">
 							<FontAwesomeIcon icon={faList}/>
 							</p>
 								My Lists
 						</a>
 
 						<a className="nav-Completed" href="/#">
-							<p className="nav-icons">
+							<p className="nav-icons-completed">
 							<FontAwesomeIcon icon={faCheck}/>
 							</p>
 								Completed
@@ -52,7 +52,7 @@ function userData(z, y) {
 						{/* Conditionally render the "Groups" menu item */}
 						{isLoggedIn && (
 							<a className="nav-Groups" href="/#">
-							<p className="nav-icons">
+							<p className="nav-icons-groups">
 								<FontAwesomeIcon icon={faUserGroup} />
 							</p>
 							Groups
