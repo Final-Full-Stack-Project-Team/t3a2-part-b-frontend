@@ -178,7 +178,8 @@ header nav {
 
 
 /* Temporarily change the color to make development easier */
-/* body {
+
+body {
 	background-color: #f2f2f2;
 }
 
@@ -188,4 +189,4 @@ header {
 
 header .nav-btn {
 	color: #212121; 
-} */
+}

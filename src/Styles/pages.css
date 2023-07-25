@@ -18,3 +18,9 @@
         margin-left: 11em       
     }
 }
+
+/* Temporarily change the color to make development easier */
+
+.contents {
+	color: #111;
+}
