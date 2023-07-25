@@ -15,16 +15,20 @@
 	font-family: 'Kantumruy Pro', sans-serif; 
 }
 
-/* body {
-	background-color: var(--black);
-} */
+
+body {
+	/* background-color: var(--black);
+	background-color: #f2f2f2; /* Temporarily change the color to make development easier */
+}
+
 
 header {
 	display: flex;
 	align-items: center;
 	height: 80px;
 	padding: 0 2rem;
-	background-color: var(--dark-grey);
+	/* background-color: var(--dark-grey); */
+	background-color: #cbcbcb; /* Temporarily change the color to make development easier */
 }
 
 header nav {
@@ -62,7 +66,8 @@ header .nav-btn {
 	background: transparent;
 	border: none;
 	font-size: 1.5rem;
-	color: var(--font-color);
+	/* color: var(--font-color); */
+	color: #212121; /* Temporarily change the color to make development easier */
 }
 
 header .nav-btn {
