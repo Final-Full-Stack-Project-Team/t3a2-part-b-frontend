@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useCookies } from "react-cookie"
 import "../Styles/nav.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faList, faCheck, faUserGroup, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faList, faCheck, faUserGroup, faBars, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { useUserData } from "../contexts/UserContext";
 import { Link } from "react-router-dom";
 
@@ -42,7 +42,7 @@ const handleLogout = () => {
 					<p className="nav-heading">{isLoggedIn ? `Hello, ${userData.name}` : "Hello"}!</p>
 
 					{isLoggedIn ? (
-						<Link className="nav-sub-heading" to="/">
+						<Link className="nav-sub-heading" to="/groups">
 							GROUPS <span className="nav-sub-heading-arrow"> &#62;</span>
 							<br />
 							<p className="nav-sub-heading-sub-text">
@@ -79,11 +79,13 @@ const handleLogout = () => {
 								<FontAwesomeIcon icon={faUserGroup} />
 							</p>
 							Groups
+						
 						</a>
 							)}
 						{isLoggedIn && (
 							<a onClick={handleLogout} className="nav-Groups" href="/#">
-							<p className="nav-icons-groups">
+							<p className="nav-icons-logout">
+								<FontAwesomeIcon icon={faArrowRightFromBracket} />
 							</p>
 							Logout
 						</a>

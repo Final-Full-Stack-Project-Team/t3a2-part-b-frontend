@@ -130,6 +130,11 @@ header .nav-btn {
 	margin-right: 0.42em;
 }
 
+.nav-icons-logout {
+	display: inline-block;
+	margin-right: 0.64em;
+}
+
 /* Alternative spacing in nav items. Uncomment to compare */
 
 /* .nav-icons-my-lists {

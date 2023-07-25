@@ -9,7 +9,6 @@ export default function Groups() {
             <div className="contents">
             <p>Groups</p>
             </div>
-            
         </div>
     )
 }
