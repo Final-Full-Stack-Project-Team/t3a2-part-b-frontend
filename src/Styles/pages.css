@@ -1,0 +1,26 @@
+:root {
+	--green: #72DF65;
+	--font-color: #f2f2f2;
+	--black: #121212;
+	--dark-grey: #212121;
+	--light-grey: #333333;	
+}
+
+.contents {
+    margin: 1em;
+    color: var(--font-color);
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+@media only screen and (min-width: 1000px) {
+    .contents {
+        margin-left: 11em       
+    }
+}
+
+/* Temporarily change the color to make development easier */
+
+.contents {
+	color: #111;
+}

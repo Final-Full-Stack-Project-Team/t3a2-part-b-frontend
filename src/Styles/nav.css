@@ -16,8 +16,7 @@
 }
 
 body {
-	/* background-color: var(--black); */
-	background-color: #f2f2f2; /* Temporarily change the color to make development easier */
+	background-color: var(--black);
 }
 
 header {
@@ -25,8 +24,7 @@ header {
 	align-items: center;
 	height: 80px;
 	padding: 0 2rem;
-	/* background-color: var(--dark-grey); */
-	background-color: #cbcbcb; /* Temporarily change the color to make development easier */
+	background-color: var(--dark-grey);
 }
 
 header nav {
@@ -64,8 +62,7 @@ header .nav-btn {
 	background: transparent;
 	border: none;
 	font-size: 1.5rem;
-	/* color: var(--font-color); */
-	color: #212121; /* Temporarily change the color to make development easier */
+	color: var(--font-color);
 }
 
 header .nav-btn {
@@ -178,3 +175,18 @@ header nav {
 	left: -20em;
 	width: 20em;
 }}
+
+
+/* Temporarily change the color to make development easier */
+
+body {
+	background-color: #f2f2f2;
+}
+
+header {
+	background-color: #cbcbcb;
+}
+
+header .nav-btn {
+	color: #212121; 
+}
