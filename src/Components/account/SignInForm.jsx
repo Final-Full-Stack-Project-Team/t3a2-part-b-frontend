@@ -50,7 +50,7 @@ export default function SignInForm() {
                 navigate('/')
             }, 2000)
         } else {
-            console.log(loginResult.response)
+            setResponse(loginResult.error)
         }
         
     }

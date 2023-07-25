@@ -24,8 +24,11 @@ export async function createUser(data){
         token: json.token,
         response: {
             _id: json._id,
-            name: json.name
-        }
+            name: json.name,
+            lists: json.lists,
+            groups: json.groups
+        },
+        error: json?.error
     }
 }
 

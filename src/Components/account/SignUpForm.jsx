@@ -13,6 +13,7 @@ export default function SignUp() {
     // eslint-disable-next-line
     const [cookies, setCookie] = useCookies(['auth'])
     const navigate = useNavigate()
+    const [error, setError] = useState(false)
 
     const userDispatch = useUserDispatch()
 
@@ -38,6 +39,7 @@ export default function SignUp() {
         const createUserResult = await createUser(apiData)
         const token = createUserResult.token
         const localData = createUserResult.response
+        console.log(localData)
         if (token) {
             userDispatch({
                 type: "login",
@@ -53,7 +55,7 @@ export default function SignUp() {
             setCookie('authorization', token, {path: '/', secure: true, expires: expirationDate})
             navigate('/')
         } else {
-            console.log("Something wrong happened")
+            setError(createUserResult.error)
         }
     }
 
@@ -75,6 +77,7 @@ export default function SignUp() {
                 <Link to={`/`}>CANCEL</Link>
                 <button type="submit">SIGN UP</button>
             </form>
+            {error && <p>{error}</p>}
         </div>
     )
 }
