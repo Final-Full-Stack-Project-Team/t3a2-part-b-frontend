@@ -18,9 +18,9 @@ export function useUserDispatch() {
 
 export default function UserProvider(props) {
 
-    const [userData, userDispatch] = useReducer(userReducer, initialUserData)
+    const [persistantData, setPersistantData] = useLocalStorage('user' || initialUserData)
 
-    const [persistantData, setPersistantData] = useLocalStorage('user', initialUserData)
+    const [userData, userDispatch] = useReducer(userReducer, persistantData || initialUserData)
 
     useEffect(() => {
         userDispatch({type:"setup", data: persistantData})
