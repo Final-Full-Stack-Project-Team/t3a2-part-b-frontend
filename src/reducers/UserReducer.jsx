@@ -8,6 +8,13 @@ export const userReducer = (previousState, instructions) => {
             
             // Whatever is returned is the new state data
             return stateEditable
+        
+        case "login":
+            const newUser = instructions.data
+
+            stateEditable = newUser
+
+            return stateEditable
 
         default:
             console.log("Invalid instruction")

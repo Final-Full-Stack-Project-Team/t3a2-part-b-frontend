@@ -15,9 +15,9 @@
 	font-family: 'Kantumruy Pro', sans-serif; 
 }
 
-body {
+/* body {
 	background-color: var(--black);
-}
+} */
 
 header {
 	display: flex;
