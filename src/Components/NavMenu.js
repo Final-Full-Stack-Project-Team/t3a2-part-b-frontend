@@ -42,7 +42,7 @@ const handleLogout = () => {
 					<p className="nav-heading">{isLoggedIn ? `Hello, ${userData.name}` : "Hello"}!</p>
 
 					{isLoggedIn ? (
-						<Link className="nav-sub-heading" to="">
+						<Link className="nav-sub-heading" to="/">
 							GROUPS <span className="nav-sub-heading-arrow"> &#62;</span>
 							<br />
 							<p className="nav-sub-heading-sub-text">
@@ -65,7 +65,7 @@ const handleLogout = () => {
 								My Lists
 						</a>
 
-						<a className="nav-Completed" href="/#">
+						<a className="nav-Completed" href="/completed">
 							<p className="nav-icons-completed">
 							<FontAwesomeIcon icon={faCheck}/>
 							</p>
@@ -74,7 +74,7 @@ const handleLogout = () => {
 
 						{/* Conditionally render the "Groups" menu item */}
 						{isLoggedIn && (
-							<a className="nav-Groups" href="/#">
+							<a className="nav-Groups" href="/groups">
 							<p className="nav-icons-groups">
 								<FontAwesomeIcon icon={faUserGroup} />
 							</p>
