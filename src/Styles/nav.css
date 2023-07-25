@@ -36,7 +36,7 @@ header nav {
 	display: flex;
 	flex-direction: column;
 	background-color: #333333;
-	transition: 500ms;	
+	transition: 250ms;	
 }
 
 header .nav_container {
