@@ -6,10 +6,7 @@ import { faList, faCheck, faUserGroup, faBars, faArrowRightFromBracket } from '@
 import { useUserData } from "../contexts/UserContext";
 import { Link } from "react-router-dom";
 
-
-
-
-function NavMenu() {
+function NavMenu({ toggleNavMenu, isNavMenuOpen }) {
 	// eslint-disable-next-line
 	const [cookies, setCookie, removeCookie] = useCookies()
 	const navRef = useRef();
@@ -37,7 +34,7 @@ const handleLogout = () => {
 
 	return (
 		<header>
-			<nav ref={navRef}>
+			<nav ref={navRef} className={isNavMenuOpen ? "nav_container" : ""}>
 				<div className="nav-body">
 					<p className="nav-heading">{isLoggedIn ? `Hello, ${userData.name}` : "Hello"}!</p>
 
@@ -97,10 +94,11 @@ const handleLogout = () => {
 				</button>
 			</nav>
 			<button
-				className="nav-btn"
-				onClick={showNavbar}>
-				<FontAwesomeIcon icon={faBars} />
-			</button>
+                className="nav-btn"
+				// Use the toggleNavMenu function from props
+                onClick={toggleNavMenu}> 
+                <FontAwesomeIcon icon={faBars} />
+            </button>
 		</header>
 	);
 }

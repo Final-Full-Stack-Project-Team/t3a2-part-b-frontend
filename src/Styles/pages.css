@@ -6,21 +6,57 @@
 	--light-grey: #333333;	
 }
 
-.contents {
-    margin: 1em;
+.all-content {
+    margin-left: 3.6em; 
+    margin-top: 0.4em;
+}
+
+.page-title {
+    margin-left: -1.4em;
+    margin-bottom: 3.4em;
+    margin-top: -0.55em;
     color: var(--font-color);
     font-size: 1.5em;
     font-weight: 500;
+    display: inline-block;
 }
 
-@media only screen and (min-width: 1000px) {
-    .contents {
-        margin-left: 14em       
+.body {
+    color: var(--font-color); 
+}
+
+@media only screen and (min-width: 1200px) {
+    .nav-open {
+        margin-left: 320px;
+        transition: 250ms;
     }
+    
+    .nav-closed {  
+        transition: 250ms;
+    }
+
+    .page-title {
+        font-size: 2em;
+        margin-left: -1.04em;
+        margin-top: -0.2em;
+    }
+
+    .all-content {
+        margin-left: 3.6em; 
+        margin-top: 1em;
+        
+    }
+
+    .body {
+        font-size: 1.5em ;
+    }
+
 }
 
-/* Temporarily change the color to make development easier */
-
-.contents {
-	color: #111;
+.fake-header {
+    height: 0;
 }
+
+
+
+
