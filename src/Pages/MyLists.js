@@ -2,9 +2,9 @@ import NavMenu from "../Components/NavMenu";
 import "../Styles/pages.css";
 import { useCookies } from "react-cookie"
 import { useUserData } from "../contexts/UserContext"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { findUser } from "../services/UserServices.js"
-import React, { useState } from "react";
+
 
 export default function Homepage() {
     // eslint-disable-next-line
@@ -45,10 +45,13 @@ export default function Homepage() {
                 <NavMenu toggleNavMenu={toggleNavMenu} isNavMenuOpen={isNavMenuOpen} />
             </div>
             <div className="all-content">
-                <div className={isNavMenuOpen ? "nav-open" : "nav-closed" }>
+                <div className={isNavMenuOpen ? "nav-closed" : "nav-open" }>
                     <header className="fake-header">
                         <p className="page-title">My Lists</p>
                     </header>
+                    
+                    {/* IMPORTANT! All page content goes in the body tag */}
+
                     <body className="body">
                         <p>list 1 test</p>
                         <p>list 2 test</p>

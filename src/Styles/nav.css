@@ -175,14 +175,33 @@ header .nav-btn {
 	header nav {
 		left: -80%;
 		width: 80%;
-	}}
+	}
+}
 
 @media only screen and (min-width: 600px) {
 header nav {
 	left: -20em;
 	width: 20em;
-}}
+}
+}
 
+@media only screen and (min-width: 1200px) {
+	header nav {
+		position: fixed;
+		top: 0;
+		left: 00em;
+		width: 20em;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		background-color: #333333;
+		transition: 250ms;	
+	}
+	
+	header .nav_container {
+		transform: translateX(-100%);
+	}
+}
 
 /* Temporarily change the color to make development easier */
 
