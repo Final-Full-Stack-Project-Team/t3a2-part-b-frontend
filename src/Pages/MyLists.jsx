@@ -4,20 +4,16 @@ import { useCookies } from "react-cookie"
 import { useUserData } from "../contexts/UserContext"
 import { useEffect, useState } from "react"
 import { findUser } from "../services/UserServices.js"
+import { findAllLists } from "../services/ListServices";
+import { useStartTyping } from "react-use";
 
-
-export default function Homepage() {
+export default function ListsPage() {
     // eslint-disable-next-line
     const [cookies, setCookie, removeCookie] = useCookies()
+    const [lists, setLists] = useState([])
     const userData = useUserData()
 
-    // State to track if the navigation menu is open or closed
-    const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
-
-    // Function to toggle the navigation menu state
-    const toggleNavMenu = () => {
-        setIsNavMenuOpen(prevState => !prevState);
-    };
+    const cookie = `Bearer ${cookies.authorization}`
     
     const handleLogout = () => {
         removeCookie('authorization')
@@ -27,7 +23,6 @@ export default function Homepage() {
     useEffect(() => {
         let user = userData?._id
         if (user) {
-            console.log(userData)
             findUser(user)
             .then((response) => {
                 if (!response._id) {
@@ -38,29 +33,49 @@ export default function Homepage() {
     // eslint-disable-next-line
     }, [])
 
-    return ( 
+    useEffect(() => {
+        let user = userData?._id
+        if (user) {
+            findAllLists(cookie)
+            .then((response) => {
+                setLists(response)
+            })
+        }
+    }, [])
+
+     // State to track if the navigation menu is open or closed
+     const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
+
+     // Function to toggle the navigation menu state
+     const toggleNavMenu = () => {
+         setIsNavMenuOpen(prevState => !prevState);
+     };
+
+     return ( 
         <div>
             <div>
-                {/* Pass the toggleNavMenu function and isNavMenuOpen state as props to NavMenu */}
                 <NavMenu toggleNavMenu={toggleNavMenu} isNavMenuOpen={isNavMenuOpen} />
             </div>
+
             <div className="all-content">
                 <div className={isNavMenuOpen ? "nav-closed" : "nav-open" }>
                     <header className="fake-header">
                         <p className="page-title">My Lists</p>
-                    </header>
-                    
-                    {/* IMPORTANT! All page content goes in the body class */}
+                    </header> 
 
-                    <div className="body">
-                        <p>list 1 test</p>
-                        <p>list 2 test</p>
-                        <p>list 3 test</p>
-                        <p>list 4 test</p>
-                        <p>list 5 test</p>
-                        <p>list 6 test</p>
-                        <p>list 7 test</p>
-                    </div>
+                    {/* Conditionally render lists or "no lists" message */}
+                    {lists.length > 0 ? (
+                        lists.map((list) => (
+                            /* IMPORTANT! All page content goes in the body class (so the text is white) */
+                            <div className="body" key={list._id}>
+                                <p>{list.name}</p>
+                            </div>
+                        ))
+                    ) : (
+                        <div className="body">
+                            <p>You have no lists</p>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
