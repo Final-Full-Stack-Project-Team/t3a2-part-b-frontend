@@ -58,13 +58,13 @@ export default function SignInForm() {
     return (
         <div>
             <form onSubmit={handleFormSubmit}>
-                <label>Email:</label>
-                <input type="text" onChange={handleEmailChange}></input>
-                <label>Password:</label>
+                <label>Email:</label> <br />
+                <input type="text" onChange={handleEmailChange}></input> <br />
+                <label>Password:</label> <br />
                 <input type="password" onChange={handlePasswordChange}></input> <br />
                 <label>Don't have an account?</label> <br />
                 <Link to={`/sign-up`}>SIGN UP</Link> <br />
-                <Link to={`/`}>CANCEL</Link>
+                <Link to={`/`} style={{ display:"flex", justifyContent:"end", marginTop:"-20px" }}>CANCEL</Link><br />
                 <button type="submit">SIGN IN</button>
             </form>
             {response && <p>{response}</p>}

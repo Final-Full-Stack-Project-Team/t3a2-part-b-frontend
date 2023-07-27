@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import SignInPage from './pages/account/SignIn';
-import SignUpPage from './pages/account/SignUp';
+import SignInPage from './Pages/Account/SignIn';
+import SignUpPage from './Pages/Account/SignUp';
 import Completed from './Pages/Completed'
 import Groups from './Pages/Groups'
 import MyLists from './Pages/MyLists'

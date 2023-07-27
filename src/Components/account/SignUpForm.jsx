@@ -72,9 +72,9 @@ export default function SignUp() {
                 <input type="text" onChange={handleNameChange} /> <br />
 
                 <p>Already have an account?</p>
-                <Link to={'/sign-in'}>SIGN IN</Link> <br />
+                <Link to={'/sign-in'} >SIGN IN</Link> 
 
-                <Link to={`/`}>CANCEL</Link>
+                <Link to={`/`} style={{ display:"flex", justifyContent:"end", marginTop:"-20px" }}>CANCEL</Link><br />
                 <button type="submit">SIGN UP</button>
             </form>
             {error && <p>{error}</p>}
