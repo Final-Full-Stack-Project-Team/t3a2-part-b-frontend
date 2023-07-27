@@ -63,16 +63,21 @@ export default function ListsPage() {
                         <p className="page-title">My Lists</p>
                     </header> 
 
-                {lists.map((list) => {
-                return(
-                    /* IMPORTANT! All page content goes in the body class (so the text is white) */
-                    <div className="body">
-                        <p>{list.name}</p>
-                    </div>)})}  
+                    {/* Conditionally render lists or "no lists" message */}
+                    {lists.length > 0 ? (
+                        lists.map((list) => (
+                            /* IMPORTANT! All page content goes in the body class (so the text is white) */
+                            <div className="body" key={list._id}>
+                                <p>{list.name}</p>
+                            </div>
+                        ))
+                    ) : (
+                        <div className="body">
+                            <p>You have no lists</p>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
     )
 }
-
-
