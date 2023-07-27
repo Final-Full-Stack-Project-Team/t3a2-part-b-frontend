@@ -72,7 +72,7 @@ const handleLogout = () => {
 						{/* Conditionally render the "Groups" menu item */}
 						{isLoggedIn && (
 							<a className="nav-Groups" href="/groups">
-							<p className="nav-icons-groups">
+								<p className="nav-icons-groups">
 								<FontAwesomeIcon icon={faUserGroup} />
 							</p>
 							Groups
@@ -80,8 +80,8 @@ const handleLogout = () => {
 						</a>
 							)}
 						{isLoggedIn && (
-							<a onClick={handleLogout} className="nav-Groups" href="/#">
-							<p className="nav-icons-logout">
+						<a onClick={handleLogout} className="nav-logout" href="/#">
+							<p className="nav-icons-logout" title="Sign out">
 								<FontAwesomeIcon icon={faArrowRightFromBracket} />
 							</p>
 							Logout
