@@ -50,9 +50,9 @@ export default function Homepage() {
                         <p className="page-title">My Lists</p>
                     </header>
                     
-                    {/* IMPORTANT! All page content goes in the body tag */}
+                    {/* IMPORTANT! All page content goes in the body class */}
 
-                    <body className="body">
+                    <div className="body">
                         <p>list 1 test</p>
                         <p>list 2 test</p>
                         <p>list 3 test</p>
@@ -60,7 +60,7 @@ export default function Homepage() {
                         <p>list 5 test</p>
                         <p>list 6 test</p>
                         <p>list 7 test</p>
-                    </body>
+                    </div>
                 </div>
             </div>
         </div>

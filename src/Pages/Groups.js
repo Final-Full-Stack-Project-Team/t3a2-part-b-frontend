@@ -24,9 +24,9 @@ export default function Groups() {
                         <p className="page-title">My Groups</p>
                     </header>
 
-                    {/* IMPORTANT! All page content goes in the body tag */}
+                    {/* IMPORTANT! All page content goes in the body class */}
 
-                    <body className="body">
+                    <div className="body">
                         <p>Group 1 test</p>
                         <p>Group 2 test</p>
                         <p>Group 3 test</p>
@@ -34,7 +34,7 @@ export default function Groups() {
                         <p>Group 5 test</p>
                         <p>Group 6 test</p>
                         <p>Group 7 test</p>
-                    </body>
+                    </div>
                 </div>
             </div>
         </div>
