@@ -43,22 +43,36 @@ export default function ListsPage() {
         }
     }, [])
 
-    return ( 
+     // State to track if the navigation menu is open or closed
+     const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
+
+     // Function to toggle the navigation menu state
+     const toggleNavMenu = () => {
+         setIsNavMenuOpen(prevState => !prevState);
+     };
+
+     return ( 
         <div>
             <div>
-                <NavMenu/>
+                <NavMenu toggleNavMenu={toggleNavMenu} isNavMenuOpen={isNavMenuOpen} />
             </div>
-            <div className="contents">
-            <p>My Lists</p>
-            </div>
-            {lists.map((list) => {
-                return(
-                <div>
-                    <p>{list.name}</p>
-                </div>
-                )
-            })}
 
+            <div className="all-content">
+                <div className={isNavMenuOpen ? "nav-closed" : "nav-open" }>
+                    <header className="fake-header">
+                        <p className="page-title">My Lists</p>
+                    </header> 
+
+                {lists.map((list) => {
+                return(
+                    /* IMPORTANT! All page content goes in the body class (so the text is white) */
+                    <div className="body">
+                        <p>{list.name}</p>
+                    </div>)})}  
+                </div>
+            </div>
         </div>
     )
 }
+
+
