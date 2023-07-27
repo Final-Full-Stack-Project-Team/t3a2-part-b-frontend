@@ -1,4 +1,5 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
+import { useLocalStorage } from "react-use"
 
 const initialGroupsData = [
     {
@@ -14,9 +15,18 @@ const groupsReducer = (previousState, instructions) => {
     let stateEditable = [...previousState];
 
     switch (instructions.type){
+        case "setup":
+            console.log("Apply persistent data to state now.");
+            stateEditable = instructions.data;
+            return stateEditable;
         case "create":
             console.log("Groups: Create groups and add to state");
-            break;
+
+            let newGroup = instructions.newGroup;
+            stateEditable.push(newGroup)
+
+            return stateEditable
+
         case "update name":
             console.log("Groups: Update the Group's name");
             break;
@@ -45,6 +55,20 @@ export function useGroupDispatch() {
 
 export default function GroupsProvider(props) {
     const [groupsData, groupsDispatch] = useReducer(groupsReducer, initialGroupsData)
+
+    const [persistantData, setPersistantData] = useLocalStorage ("groups", initialGroupsData)
+
+    useEffect(() => {
+        groupsDispatch({type:"setup", data: persistantData});
+    }, []);
+
+    useEffect(() => {
+        console.log("local storage: " + persistantData);
+    }, [persistantData]);
+
+    useEffect(() => {
+        setPersistantData(groupsData);
+    }, [groupsData]);
 
     return(
         <GroupDataContext.Provider value={groupsData}>
