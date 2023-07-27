@@ -25,9 +25,9 @@ export default function Completed() {
                         <p className="page-title">Completed</p>
                     </header>
 
-                    {/* IMPORTANT! All page content goes in the body tag */}
+                    {/* IMPORTANT! All page content goes in the body class */}
 
-                    <body className="body">
+                    <div className="body">
                         <p>Completed list 1 test</p>
                         <p>Completed list 2 test</p>
                         <p>Completed list 3 test</p>
@@ -35,7 +35,7 @@ export default function Completed() {
                         <p>Completed list 5 test</p>
                         <p>Completed list 6 test</p>
                         <p>Completed list 7 test</p>
-                    </body>
+                    </div>
                 </div>
             </div>
         </div>
