@@ -17,7 +17,8 @@ const groupsReducer = (previousState, instructions) => {
     switch (instructions.type){
         case "setup":
             console.log("Apply persistent data to state now.");
-            stateEditable = instructions.data;
+            let localStorageData = instructions.data;
+            stateEditable = localStorageData;
             return stateEditable;
         case "create":
             console.log("Groups: Create groups and add to state");
@@ -60,7 +61,7 @@ export default function GroupsProvider(props) {
 
     useEffect(() => {
         groupsDispatch({type:"setup", data: persistantData});
-        // Below comment is to ignore linter warning
+        // Below comment is to ignore linter warning which prevents deployment on Netlify
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -70,7 +71,7 @@ export default function GroupsProvider(props) {
 
     useEffect(() => {
         setPersistantData(groupsData);
-        // Below comment is to ignore linter warning
+        // Below comment is to ignore linter warning which prevents deployment on Netlify
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [groupsData]);
 
