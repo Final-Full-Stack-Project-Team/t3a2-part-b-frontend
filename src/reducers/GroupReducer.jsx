@@ -60,6 +60,8 @@ export default function GroupsProvider(props) {
 
     useEffect(() => {
         groupsDispatch({type:"setup", data: persistantData});
+        // Below comment is to ignore linter warning
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
@@ -68,6 +70,8 @@ export default function GroupsProvider(props) {
 
     useEffect(() => {
         setPersistantData(groupsData);
+        // Below comment is to ignore linter warning
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [groupsData]);
 
     return(
