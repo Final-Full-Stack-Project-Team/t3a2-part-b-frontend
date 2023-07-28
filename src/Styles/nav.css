@@ -115,6 +115,28 @@ header .nav-btn {
 	padding: 0.7em;
 }
 
+.nav-logout {
+	/* original */
+	padding: 0.7em;
+
+	/* Idea 1 */
+	/* position: absolute;
+	top: 0;
+	display: flex;
+	margin-top: 1.3em;
+	margin-left: 13.5em;
+	background: none;
+	font-size: 1.3em;
+	color:#B5B5B5; */
+	
+	/* Idea 2 */
+	/* position: absolute;
+	bottom: 0;
+	display: flex;
+	margin-bottom: 0.8em;
+	background: none; */
+}
+
 .nav-icons-my-lists {
 	display: inline-block;
 	margin-right: 0.63em;
