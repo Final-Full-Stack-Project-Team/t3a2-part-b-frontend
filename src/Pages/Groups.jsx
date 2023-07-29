@@ -49,23 +49,32 @@ export default function Groups(props) {
 
                     {/* IMPORTANT! All page content goes in the body class */}
                     <div className="body">
-                        
-                        {groups.map((group) => {
-                            return(
-                                <div className="groups-body" key={group._id}>
-                                    <p className="groups-icon">
-                                    <FontAwesomeIcon icon={faUserGroup} /> </p>
-                                    <Link className="groups-content">
-                                    {group.group_name}
-                                   </Link>
-                                    
-                                    {/* <p>Group admin: {group.admin}</p>
-                                    <p>Shared with: {group.shared_with}</p>
-                                    <p>Date Created: {new Date(group.dateCreated).toLocaleDateString()}</p> */}
-                                    <p></p>
-                                </div>
-                            );
-                        })}
+                        {groups.length > 0 ? (
+                            groups.map((group) => {
+                                return(
+                                    <div className="groups-body" key={group._id}>
+                                        <p className="groups-icon">
+                                            <FontAwesomeIcon icon={faUserGroup} /> 
+                                        </p>
+                                        <Link className="groups-content">
+                                            {group.group_name}
+                                        </Link>
+                                        {/* <p>Group admin: {group.admin}</p>
+                                        <p>Shared with: {group.shared_with}</p>
+                                        <p>Date Created: {new Date(group.dateCreated).toLocaleDateString()}</p> */}
+                                    </div>
+                                );
+                            })
+                        ) : (
+                            <div className="groups-body">
+                                <p className="groups-icon">
+                                    <FontAwesomeIcon icon={faUserGroup} />
+                                </p>
+                                <p className="groups-content">
+                                    There are no groups
+                                </p>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
