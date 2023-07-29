@@ -9,8 +9,8 @@
 .groups-body {
     border-top: 1px solid var(--light-grey);
     margin-right: 2em;
-    padding-top: 2em;
-    padding-bottom: 2em;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
 }
 
 .groups-body:last-child {

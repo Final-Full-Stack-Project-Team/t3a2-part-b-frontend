@@ -13,7 +13,7 @@
 
 .page-title {
     margin-left: -1.4em;
-    margin-bottom: 3.4em;
+    margin-bottom: 4em;
     margin-top: -0.55em;
     color: var(--font-color);
     font-size: 1.5em;
@@ -23,7 +23,7 @@
 
 .groups-count {
     margin-left: -5em;
-    margin-bottom: 3em;
+    margin-bottom: 4em;
     color: var(--font-color);
     font-size: 1em;
     font-weight: 500;
@@ -31,6 +31,8 @@
 
 .body {
     color: var(--font-color); 
+    margin-left: -4em;
+    margin-right: -4em;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -46,6 +48,15 @@
     .page-title {
         font-size: 2em;
         margin-left: -1.04em;
+        margin-bottom: 3.5em;
+    }
+
+    .groups-count {
+        margin-left: -6.6em;
+        margin-bottom: 5em;
+        color: #B5B5B5;
+        font-size: 1em;
+        font-weight: 500;
     }
 
     .all-content {
@@ -56,15 +67,11 @@
 
     .body {
         font-size: 1.5em ;
+        margin-right: 1em;
+        margin-left: 0em; 
     }
 
-    .groups-count {
-        margin-left: -6.6em;
-        margin-bottom: 4.5em;
-        color: #B5B5B5;
-        font-size: 1em;
-        font-weight: 500;
-    }
+    
 
 }
 
