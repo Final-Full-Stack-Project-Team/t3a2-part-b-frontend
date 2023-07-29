@@ -27,6 +27,7 @@
     color: var(--font-color);
     font-size: 1em;
     font-weight: 500;
+    color: #B5B5B5;
 }
 
 .body {
@@ -54,7 +55,6 @@
     .groups-count {
         margin-left: -6.6em;
         margin-bottom: 5em;
-        color: #B5B5B5;
         font-size: 1em;
         font-weight: 500;
     }
