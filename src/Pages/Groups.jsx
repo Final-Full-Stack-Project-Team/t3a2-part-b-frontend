@@ -66,10 +66,7 @@ export default function Groups(props) {
                                 );
                             })
                         ) : (
-                            <div className="groups-body">
-                                <p className="groups-icon">
-                                    <FontAwesomeIcon icon={faUserGroup} />
-                                </p>
+                            <div>
                                 <p className="groups-content">
                                     There are no groups
                                 </p>
