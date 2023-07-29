@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
 import { findAllGroups } from "../services/GroupServices";
 import { useCookies } from "react-cookie";
-import { useGroupData } from "../reducers/GroupReducer";
+// import { useGroupData } from "../reducers/GroupReducer";
 import NavMenu from "../Components/NavMenu";
+import "../Styles/groups.css";
+import "../Styles/pages.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserGroup} from '@fortawesome/free-solid-svg-icons'
+import { Link } from "react-router-dom";
 
 export default function Groups(props) {
     const [cookies] = useCookies();
@@ -38,19 +43,26 @@ export default function Groups(props) {
             <div className="all-content">
                 <div className={isNavMenuOpen ? "nav-closed" : "nav-open" }>
                     <header className="fake-header">
-                        <p className="page-title">My Groups</p>
+                        <p className="page-title">Groups</p>
+                        <p className="groups-count">{groups.length} Group{groups.length !== 1 ? 's' : '' }</p>
                     </header>
 
                     {/* IMPORTANT! All page content goes in the body class */}
                     <div className="body">
-                        <p>You have {groups.length} Group{groups.length !== 1 ? 's' : '' }</p>
+                        
                         {groups.map((group) => {
                             return(
-                                <div key={group._id}>
-                                    <p>Group name: {group.group_name}</p>
-                                    <p>Group admin: {group.admin}</p>
+                                <div className="groups-body" key={group._id}>
+                                    <p className="groups-icon">
+                                    <FontAwesomeIcon icon={faUserGroup} /> </p>
+                                    <Link className="groups-content">
+                                    {group.group_name}
+                                   </Link>
+                                    
+                                    {/* <p>Group admin: {group.admin}</p>
                                     <p>Shared with: {group.shared_with}</p>
-                                    <p>Date Created: {new Date(group.dateCreated).toLocaleDateString()}</p>
+                                    <p>Date Created: {new Date(group.dateCreated).toLocaleDateString()}</p> */}
+                                    <p></p>
                                 </div>
                             );
                         })}

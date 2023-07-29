@@ -21,6 +21,14 @@
     display: inline-block;
 }
 
+.groups-count {
+    margin-left: -5em;
+    margin-bottom: 3em;
+    color: var(--font-color);
+    font-size: 1em;
+    font-weight: 500;
+}
+
 .body {
     color: var(--font-color); 
 }
@@ -38,7 +46,6 @@
     .page-title {
         font-size: 2em;
         margin-left: -1.04em;
-        margin-top: -0.2em;
     }
 
     .all-content {
@@ -49,6 +56,14 @@
 
     .body {
         font-size: 1.5em ;
+    }
+
+    .groups-count {
+        margin-left: -6.6em;
+        margin-bottom: 4.5em;
+        color: #B5B5B5;
+        font-size: 1em;
+        font-weight: 500;
     }
 
 }
