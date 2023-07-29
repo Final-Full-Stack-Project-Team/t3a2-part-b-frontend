@@ -1,30 +1,24 @@
-import NavMenu from "../Components/NavMenu";
-import "../Styles/pages.css";
-import { useState, useEffect } from "react"
-import { useGroupData } from "../reducers/GroupReducer";
+import { useEffect, useState } from "react";
 import { findAllGroups } from "../services/GroupServices";
-import { useCookies } from "react-cookie"
+import { useCookies } from "react-cookie";
+import { useGroupData } from "../reducers/GroupReducer";
+import NavMenu from "../Components/NavMenu";
 
 export default function Groups(props) {
-    // eslint-disable-next-line
-    const [cookies, setCookie, removeCookie] = useCookies()
-    const [setGroups] = useState([])
-    const groupData = useGroupData()
+    const [cookies] = useCookies();
+    const [groups, setGroups] = useState([]);
+    const cookie = `Bearer ${cookies.authorization}`;
 
-    const cookie = `Bearer ${cookies.authorization}`
-
-    const globalGroupsdata = useGroupData();
-   
+    // Fetch data from the API when the component mounts
     useEffect(() => {
-        let user = groupData?._id
-        if (user) {
-            findAllGroups(cookie)
+        findAllGroups(cookie)
             .then((response) => {
-                setGroups(response)
+                setGroups(response); // Update state with the fetched data
             })
-        }
-    // eslint-disable-next-line    
-    }, [])
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            });
+    }, [cookie]);
 
     // State to track if the navigation menu is open or closed
     const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
@@ -34,6 +28,7 @@ export default function Groups(props) {
         setIsNavMenuOpen(prevState => !prevState);
     };
 
+    // Render the groups data
     return ( 
         <div>
             <div>
@@ -46,17 +41,16 @@ export default function Groups(props) {
                         <p className="page-title">My Groups</p>
                     </header>
 
-
                     {/* IMPORTANT! All page content goes in the body class */}
                     <div className="body">
-                        <p>You have {globalGroupsdata.length} Group{globalGroupsdata.length !==1 ? 's' : '' }</p>
-                        {globalGroupsdata.map((group) => {
+                        <p>You have {groups.length} Group{groups.length !== 1 ? 's' : '' }</p>
+                        {groups.map((group) => {
                             return(
                                 <div key={group._id}>
-                                <p>Group name: {group.group_name}</p>
-                                <p>Group admin: {group.admin}</p>
-                                <p>Shared with: {group.shared_with}</p>
-                                <p>Date Created: {new Date(group.dateCreated).toLocaleDateString()}</p>
+                                    <p>Group name: {group.group_name}</p>
+                                    <p>Group admin: {group.admin}</p>
+                                    <p>Shared with: {group.shared_with}</p>
+                                    <p>Date Created: {new Date(group.dateCreated).toLocaleDateString()}</p>
                                 </div>
                             );
                         })}
@@ -64,5 +58,5 @@ export default function Groups(props) {
                 </div>
             </div>
         </div>
-    )
+    );
 }
