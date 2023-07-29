@@ -4,7 +4,7 @@ import "../Styles/no-groups.css";
 
 export default function NoGroups() {
     return (
-        <div className="body"> 
+        <div className="no-groups-body"> 
             <p className="no-groups">
                 You have no Groups.
             </p> 

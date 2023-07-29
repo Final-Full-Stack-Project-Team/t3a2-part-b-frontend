@@ -8,10 +8,9 @@
 
 .groups-body {
     border-top: 1px solid var(--light-grey);
-    margin-right: 2em;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    width: 100%;
+    margin-right: 0em;
+    padding-top: 2em;
+    padding-bottom: 2em;
 }
 
 .groups-body:last-child {
@@ -27,7 +26,7 @@
 }
 
 .groups-content {
-    margin-left: 1em;
+    margin-left: 1.2em;
     display: inline-block;
     color: #f2f2f2;
 }
@@ -51,7 +50,7 @@
 
 .groups-icon {
     display: inline-block;
-    margin-left: 1em;
+    margin-left: 1.5em;
     color: #424242;
 }
 
@@ -62,5 +61,12 @@
     .groups-body {
         padding-top: 1em;
         padding-bottom: 1em;
+        margin-left: -1em;
+        margin-right: 0.42em;
+    }
+    .groups-icon {
+       
+        margin-left: 1em;
+        
     }
 }

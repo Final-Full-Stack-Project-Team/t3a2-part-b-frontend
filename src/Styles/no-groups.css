@@ -1,34 +1,30 @@
-:root {
-	--green: #72DF65;
-	--font-color: #f2f2f2;
-	--black: #121212;
-	--dark-grey: #212121;
-	--light-grey: #333333;	
-}
-
-.body {
-    font-size: 1.2em ;
-    /* margin-right: 1em;
-    margin-left: 0em; 
-    margin-top: 1em; */
-    margin: 1em 1em 0em 0em ;
+.no-groups-body {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
+    margin-top: 3em;
+    
 }
 
 .no-groups {
-   color: var(--green) ;
-   margin-bottom: 1.2em;
+    font-size: 1.2em;
+    color: var(--green) ;
+    margin-bottom: 1.2em;
+}
+
+.create {
+    font-size: 1.2em;
 }
 
 .add-new {
+    font-size: 1.2em;
     margin-bottom: 4em;
     color: #B5B5B5;
 }
 
 .icon {
+    font-size: 1.2em;
     color: #424242;
     font-size: 8em;
 }
