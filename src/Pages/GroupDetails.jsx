@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { findGroup } from '../services/GroupServices';
 import { useCookies } from 'react-cookie';
+import NavMenu from "../Components/NavMenu";
+import "../Styles/group-details.css";
 
 export default function GroupDetails() {
   const { groupId } = useParams();
@@ -22,25 +24,50 @@ export default function GroupDetails() {
 
   console.log('Group details state:', groupDetails);
 
-  return (
-    <div style={{ color: '#f2f2f2', margin: '20px' }}>
-      {groupDetails ? (
-        <>
-          <h1>Group details</h1>
-          <p>Group Name: {groupDetails.group_name}</p>
-          {groupDetails.admin && <p>Admin: {groupDetails.admin.name}</p>}
-          {groupDetails.shared_with && groupDetails.shared_with.length > 0 && (
+   // State to track if the navigation menu is open or closed
+   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
+
+   // Function to toggle the navigation menu state
+   const toggleNavMenu = () => {
+       setIsNavMenuOpen(prevState => !prevState);
+   };
+
+   return (
+    <div>
+      <div>
+        {/* Pass the toggleNavMenu function and isNavMenuOpen state as props to NavMenu */}
+        <NavMenu toggleNavMenu={toggleNavMenu} isNavMenuOpen={isNavMenuOpen} />
+      </div>
+      <div className={isNavMenuOpen ? 'nav-closed' : 'nav-open'}>
+        <header className="fake-header">
+          <p className="page-title">Group details</p>
+          {groupDetails?.admin && <p className="admin">Admin: {groupDetails.admin.name}</p>}
+        </header>
+  
+        {/* IMPORTANT! All page content goes in the body class */}
+        <div className="group-details-body">
+          {groupDetails ? (
             <div>
-              <p>Shared with: {groupDetails.shared_with.map((user) => user.name).join(', ')}</p>
+              <div className="edit-group-name">{groupDetails.group_name}</div>
+
+              {groupDetails?.dateCreated && (
+                <div className="group-date">Created on {new Date(groupDetails.dateCreated).toLocaleDateString()}</div>
+              )}
+  
+              {groupDetails?.shared_with && groupDetails.shared_with.length > 0 && (
+                  <div >
+                    {groupDetails.shared_with.map((user) => (
+                      <div className="shared_with" key={user.id}>{user.name}</div>
+                    ))}
+                  </div>
+                )}
+              
             </div>
+          ) : (
+            <p>Loading group details...</p>
           )}
-          {groupDetails.dateCreated && (
-            <p>Date Created: {new Date(groupDetails.dateCreated).toLocaleDateString()}</p>
-          )}
-        </>
-      ) : (
-        <p>Loading group details...</p>
-      )}
+        </div>
+      </div>
     </div>
   );
-}
+}  
