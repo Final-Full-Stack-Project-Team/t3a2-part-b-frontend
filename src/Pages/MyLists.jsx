@@ -77,7 +77,7 @@ export default function ListsPage() {
                                 <p className="lists-icon">
                                     <FontAwesomeIcon icon={faUserGroup} /> 
                                 </p>
-                                <Link className="lists-label">
+                                <Link to={`/list/${list._id}`} className="lists-label">
                                     {list.name}
                                 </Link>
                             </div>
