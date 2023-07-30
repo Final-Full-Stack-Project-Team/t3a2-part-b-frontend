@@ -8,7 +8,7 @@ import "../Styles/pages.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserGroup} from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
-import NoGroups from "./NoGroups";
+import NoGroups from "../Components/NoGroups";
 
 export default function Groups(props) {
     const [cookies] = useCookies();
@@ -66,9 +66,7 @@ export default function Groups(props) {
                     })
                         ) : (
                             <div>
-                                <p>
-                                    <NoGroups/>
-                                </p>
+                                <NoGroups/>
                             </div>
                         )}
                     </div>

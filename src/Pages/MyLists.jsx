@@ -9,6 +9,7 @@ import { findAllLists } from "../services/ListServices";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserGroup} from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
+import NoLists from "../Components/NoLists";
 // import { useStartTyping } from "react-use";
 
 export default function ListsPage() {
@@ -83,9 +84,7 @@ export default function ListsPage() {
                         );
                     })    
                         ) : (
-                            <div>
-                                <p>You have no lists</p>
-                            </div>
+                            <NoLists/>
                         )}
                     </div>     
                 </div>
