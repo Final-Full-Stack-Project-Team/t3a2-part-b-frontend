@@ -5,16 +5,19 @@ import reportWebVitals from './reportWebVitals';
 import UserProvider from './contexts/UserContext';
 import ItemProvider from './contexts/ItemContext';
 import { BrowserRouter } from 'react-router-dom';
+import GroupsProvider from './reducers/GroupReducer';
 
 const root = createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <UserProvider>
-        <ItemProvider>
-          <App />
-        </ItemProvider>
-      </UserProvider>
+      <GroupsProvider>
+        <UserProvider>
+          <ItemProvider>
+           <App />
+          </ItemProvider>
+        </UserProvider>
+      </GroupsProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

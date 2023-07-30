@@ -1,0 +1,37 @@
+.no-lists-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 3em;
+ 
+    
+}
+
+.no-lists-label {
+    font-size: 1.2em;
+    color: var(--green) ;
+    margin-bottom: 1.2em;
+}
+
+.create-list-label {
+    font-size: 1.2em;
+}
+
+.list-instructions-label {
+    font-size: 1.2em;
+    margin-bottom: 4em;
+    color: #B5B5B5;
+}
+
+.list-icon {
+    font-size: 1.2em;
+    color: #424242;
+    font-size: 8em;
+}
+
+@media only screen and (min-width: 1200px) {
+    .no-lists-body {
+        margin-right: 1.7em;
+    }
+}

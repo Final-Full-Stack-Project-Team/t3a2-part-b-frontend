@@ -1,0 +1,37 @@
+.no-groups-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 3em;
+ 
+    
+}
+
+.no-groups-label {
+    font-size: 1.2em;
+    color: var(--green) ;
+    margin-bottom: 1.2em;
+}
+
+.create-group-label {
+    font-size: 1.2em;
+}
+
+.group-instructions-label {
+    font-size: 1.2em;
+    margin-bottom: 4em;
+    color: #B5B5B5;
+}
+
+.group-icon {
+    font-size: 1.2em;
+    color: #424242;
+    font-size: 8em;
+}
+
+@media only screen and (min-width: 1200px) {
+    .no-groups-body {
+        margin-right: 1.7em;
+    }
+}
