@@ -41,31 +41,29 @@ export default function Groups(props) {
                 {/* Pass the toggleNavMenu function and isNavMenuOpen state as props to NavMenu */}
                 <NavMenu toggleNavMenu={toggleNavMenu} isNavMenuOpen={isNavMenuOpen} />
             </div>
-            <div className="all-content">
-                <div className={isNavMenuOpen ? "nav-closed" : "nav-open" }>
-                    <header className="fake-header">
-                        <p className="page-title">Groups</p>
-                        <p className="groups-count">{groups.length} Group{groups.length !== 1 ? 's' : '' }</p>
-                    </header>
+            <div className={isNavMenuOpen ? "nav-closed" : "nav-open" }>
+                <header className="fake-header">
+                    <p className="page-title">Groups</p>
+                    <p className="groups-count">{groups.length} Group{groups.length !== 1 ? 's' : '' }</p>
+                </header>
 
-                    {/* IMPORTANT! All page content goes in the body class */}
-                    <div className="body">
-                        {groups.length > 0 ? (
-                            groups.map((group) => {
-                                return(
-                                    <div className="groups-body" key={group._id}>
-                                        <p className="groups-icon">
-                                            <FontAwesomeIcon icon={faUserGroup} /> 
-                                        </p>
-                                        <Link className="groups-content">
-                                            {group.group_name}
-                                        </Link>
-                                        {/* <p>Group admin: {group.admin}</p>
-                                        <p>Shared with: {group.shared_with}</p>
-                                        <p>Date Created: {new Date(group.dateCreated).toLocaleDateString()}</p> */}
-                                    </div>
-                                );
-                            })
+                {/* IMPORTANT! All page content goes in the body class */}
+                <div className="body">
+                    {groups.length > 0 ? (groups.map((group) => {
+                        return(
+                            <div className="groups-container" key={group._id}>
+                                <p className="groups-icon">
+                                    <FontAwesomeIcon icon={faUserGroup} /> 
+                                </p>
+                                <Link className="groups-label">
+                                    {group.group_name}
+                                </Link>
+                                {/* <p>Group admin: {group.admin}</p>
+                                <p>Shared with: {group.shared_with}</p>
+                                <p>Date Created: {new Date(group.dateCreated).toLocaleDateString()}</p> */}
+                            </div>
+                        );
+                    })
                         ) : (
                             <div>
                                 <p>
@@ -76,6 +74,5 @@ export default function Groups(props) {
                     </div>
                 </div>
             </div>
-        </div>
-    );
-}
+        );
+    }

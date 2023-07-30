@@ -1,5 +1,5 @@
-.groups-count {
-    margin-left: -5em;
+.lists-count {
+    margin-left: -5.85em;
     margin-bottom: 4em;
     margin-top: 1.4em;
     font-size: 1em;
@@ -7,56 +7,57 @@
     color: #B5B5B5;
 }
 
-.groups-container {
+.lists-container {
     border-top: 1px solid var(--light-grey);
     margin-right: 0em;
     padding-top: 2em;
     padding-bottom: 2em;
 }
 
-.groups-container:last-child {
+.lists-container:last-child {
     border-bottom: 1px solid var(--light-grey)
 }
 
-.groups-container:first-child {
+.lists-container:first-child {
     margin-top: -0.4em;
 }
 
-.groups-container:hover {
+.lists-container:hover {
     background-color: var(--dark-grey)
 }
 
-.groups-label {
+.lists-label {
     margin-left: 1.2em;
     display: inline-block;
     color: #f2f2f2;
 }
 
-.groups-label:link {
+.lists-label:link {
     text-decoration: none;
 }
 
-.groups-label:visited  {
+.lists-label:visited  {
     text-decoration: none;
 }
 
-.groups-icon {
+.lists-icon {
     display: inline-block;
     margin-left: 1.5em;
     color: #424242;
 }
 
 @media only screen and (min-width: 1200px) {
-    .groups-container {
+    .lists-container {
         padding-top: 1em;
         padding-bottom: 1em;
         margin-left: 1em;
         margin-right: 0.42em;
     }
-    .groups-icon {
-        margin-left: 1em; 
+    .lists-icon {
+        margin-left: 1em;  
     }
-    .groups-count {
-        margin-left: -5.1em;
+
+    .lists-count {
+        margin-left: -5.9em;
     }
 }
