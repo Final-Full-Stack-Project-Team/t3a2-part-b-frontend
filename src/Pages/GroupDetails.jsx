@@ -57,7 +57,7 @@ export default function GroupDetails() {
               {groupDetails?.shared_with && groupDetails.shared_with.length > 0 && (
                   <div >
                     {groupDetails.shared_with.map((user) => (
-                      <div className="shared_with" key={user.id}>{user.name}</div>
+                      <div className="shared_with" key={user.id}>{user.email}</div>
                     ))}
                   </div>
                 )}
