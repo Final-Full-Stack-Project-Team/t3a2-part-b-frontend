@@ -5,6 +5,7 @@ import SignUpPage from './Pages/Account/SignUp';
 import Completed from './Pages/Completed'
 import Groups from './Pages/Groups'
 import MyLists from './Pages/MyLists'
+import GroupDetails from './Pages/GroupDetails';
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 				<Route path='/sign-up' element={<SignUpPage />} />
 				<Route path ='completed' element={<Completed/>} />
 				<Route path ='groups' element={<Groups/>} />
+				<Route path="/groups/:groupId" element={<GroupDetails />} />
 			</Routes>
 		</React.Fragment>
 	);
