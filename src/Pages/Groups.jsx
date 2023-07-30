@@ -58,7 +58,8 @@ export default function Groups(props) {
                                 <Link className="groups-label">
                                     {group.group_name}
                                 </Link>
-                                {/* <p>Group admin: {group.admin}</p>
+                                {/* <p className="group-admin-label">Admin: {group.admin.name}</p> */}
+                                {/* 
                                 <p>Shared with: {group.shared_with}</p>
                                 <p>Date Created: {new Date(group.dateCreated).toLocaleDateString()}</p> */}
                             </div>

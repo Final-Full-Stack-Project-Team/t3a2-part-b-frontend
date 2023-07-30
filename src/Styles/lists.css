@@ -14,6 +14,10 @@
     padding-bottom: 2em;
 }
 
+.lists-container:first-child {
+    border-top: 1px solid var(--green)
+}
+
 .lists-container:last-child {
     border-bottom: 1px solid var(--light-grey)
 }
