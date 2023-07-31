@@ -16,6 +16,8 @@ export default function ListPage() {
     const [items, setItems] = useState([])
     const [list, setList] = useState()
 
+    const [checkedItems, setCheckedItems] = useState({})
+
     useEffect(() => {
         let user = userData?._id
         if (user) {
@@ -35,14 +37,20 @@ export default function ListPage() {
         }
     }, [list])
 
-
+    function checkItem(item) {
+        setCheckedItems(prevCheckedItems => ({
+          ...prevCheckedItems,
+          [item._id]: !prevCheckedItems[item._id] // Toggle the checked state
+        }));
+      }
 
     return (
         <div>
             {items && items.map((item) => {
                 return (
-                    <div>
-                        <p style={{color:"white"}}>{item.name}</p>
+                    <div key={item._id}>
+                        <input type="checkbox" onChange={() => (checkItem(item))} />
+                        <p style={{ color:"white", textDecoration: checkedItems[item._id] ? "line-through": "none" }}>{item.name}</p>
                     </div>
                 )
             })}
