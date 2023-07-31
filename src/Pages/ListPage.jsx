@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react"
 import { useNavigate, useParams } from "react-router"
-import { editList, findList } from "../services/ListServices"
+import { deleteList, editList, findList } from "../services/ListServices"
 import { useUserData } from "../contexts/UserContext"
 import { useCookies } from "react-cookie"
 import { findAllItemsFromList } from "../services/ItemServices"
 import ListOptions from "../Components/ListOptions"
 import { Link } from "react-router-dom"
+import DeleteList from "../Components/DeleteList"
 
 export default function ListPage() {
 
@@ -19,6 +20,7 @@ export default function ListPage() {
     const [list, setList] = useState()
 
     const [showOptions, setShowOptions] = useState(false)
+    const [showDelete, setShowDelete] = useState(false)
     const [renameList, setRenameList] = useState(false)
     const inputRef = useRef(null)
 
@@ -56,7 +58,12 @@ export default function ListPage() {
     function handleOptions() {
         setShowOptions(!showOptions)
     }
- 
+
+    function handleShowDelete() {
+        setShowDelete(!showDelete)
+        setShowOptions(false)
+    }
+    
     function checkItem(item) {
         setCheckedItems(prevCheckedItems => ({
           ...prevCheckedItems,
@@ -86,6 +93,12 @@ export default function ListPage() {
         navigate('/')
     }
 
+    async function handleDeleteList() {
+        await deleteList(_id._id, cookie)
+        handleShowDelete()
+        navigate('/')
+    }
+
     return (
         <div>
             <div className="list-header">
@@ -101,7 +114,8 @@ export default function ListPage() {
                 <button>Add people</button>
                 <button onClick={handleOptions}>Options</button>
             </div>
-            {showOptions && <ListOptions handleRename={handleRenameList} handleCompleted={handleSetCompleteList} />}
+            {showDelete && <DeleteList handleCancel={handleShowDelete} handleDelete={handleDeleteList} />}
+            {showOptions && <ListOptions handleRename={handleRenameList} handleCompleted={handleSetCompleteList} handleDelete={handleShowDelete} />}
             {items && items.map((item) => {
                 return (
                     <div className="list-items" key={item._id}>

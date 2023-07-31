@@ -34,3 +34,14 @@ export async function editList(_id, data, cookie){
     })
     return response.json()
 }
+
+export async function deleteList(_id, cookie){
+    const response = await fetch(`${api}/lists/delete/${_id}`, {
+        method: "DELETE",
+        headers:{
+            'Content-type':"application/json",
+            Authorization: cookie
+        },
+    })
+    return response.json()
+}
