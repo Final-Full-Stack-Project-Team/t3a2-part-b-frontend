@@ -21,3 +21,15 @@ export async function findAllLists(cookie){
     })
     return response.json()
 }
+
+export async function editList(_id, data, cookie){
+    const response = await fetch(`${api}/lists/modify/${_id}`, {
+        method: "PUT",
+        headers:{
+            'Content-type':"application/json",
+            Authorization: cookie
+        },
+        body: JSON.stringify(data)
+    })
+    return response.json()
+}

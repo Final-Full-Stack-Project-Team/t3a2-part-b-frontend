@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useParams } from "react-router"
-import { findList } from "../services/ListServices"
+import { editList, findList } from "../services/ListServices"
 import { useUserData } from "../contexts/UserContext"
 import { useCookies } from "react-cookie"
 import { findAllItemsFromList } from "../services/ItemServices"
-
+import ListOptions from "../Components/ListOptions"
+import { Link } from "react-router-dom"
 
 export default function ListPage() {
 
@@ -15,6 +16,12 @@ export default function ListPage() {
 
     const [items, setItems] = useState([])
     const [list, setList] = useState()
+
+    const [showOptions, setShowOptions] = useState(false)
+    const [renameList, setRenameList] = useState(false)
+    const inputRef = useRef(null)
+
+    const [listName, setListName] = useState('')
 
     const [checkedItems, setCheckedItems] = useState({})
 
@@ -34,21 +41,61 @@ export default function ListPage() {
             .then((response) => {
                 setItems(response)
             })
+            setListName(list.name)
         }
     }, [list])
 
+    useEffect(() => {
+        if (renameList) {
+            inputRef.current.focus()
+        }
+    }, [renameList])
+
+    function handleOptions() {
+        setShowOptions(!showOptions)
+    }
+ 
     function checkItem(item) {
         setCheckedItems(prevCheckedItems => ({
           ...prevCheckedItems,
-          [item._id]: !prevCheckedItems[item._id] // Toggle the checked state
+          [item._id]: !prevCheckedItems[item._id]
         }));
       }
+    
+    function handleRenameList() {
+        setRenameList(!renameList)
+    }
+
+    function handleRename(event) {
+        setListName(event.target.value)
+    }
+
+    async function handleRenameSubmit() {
+        const data = {name: listName}
+        await editList(_id._id, data, cookie)
+        setRenameList(false)
+        setShowOptions(false)
+    }
 
     return (
         <div>
+            <div className="list-header">
+                <Link to={"/"}>Back</Link>
+                {renameList ? 
+                    <div className="list-header">
+                    <input type="text" onChange={handleRename} ref={inputRef} value={listName} />
+                    <button onClick={handleRenameSubmit}>Tick</button>
+                    </div>
+
+                : 
+                <h2>{list && listName}</h2>}
+                <button>Add people</button>
+                <button onClick={handleOptions}>Options</button>
+            </div>
+            {showOptions && <ListOptions handleRename={handleRenameList} />}
             {items && items.map((item) => {
                 return (
-                    <div key={item._id}>
+                    <div className="list-items" key={item._id}>
                         <input type="checkbox" onChange={() => (checkItem(item))} />
                         <p style={{ color:"white", textDecoration: checkedItems[item._id] ? "line-through": "none" }}>{item.name}</p>
                     </div>

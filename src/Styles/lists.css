@@ -50,6 +50,43 @@
     color: #424242;
 }
 
+.overlay {
+    position: fixed;
+    top: 25px;
+    right: 0;
+    width: 30vw;
+    height: 30vw;
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay-content {
+    color: white;
+    padding: 5px;
+    font-size: 13px;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+}
+
+.list-header h2 {
+    color: white;
+    font-size: 15px;
+}
+
+.list-items {
+    display: flex;
+}
+
+.list-items input {
+    margin-right: 5vw;
+}
+
 @media only screen and (min-width: 1200px) {
     .lists-container {
         padding-top: 1em;
