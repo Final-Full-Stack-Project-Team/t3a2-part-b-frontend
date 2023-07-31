@@ -23,7 +23,7 @@
 }
 
 .edit-group-name:focus {
-    outline: 2px solid var(--light-grey);
+    outline: none;
 }
 
 .edit-group-name::placeholder{
