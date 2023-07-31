@@ -91,17 +91,16 @@
     float: right;
     margin: 1em 0em 2em 2em; 
     padding: 0.8em 2.2em 0.8em 2.2em;
-    border-radius: 4em;
+    border-radius: 2em;
     border: none;
-    background: none;
-    font-weight: 500;
+    background-color: var(--green);
+    font-weight: 600;
     font-size: 1em;
     cursor: pointer;
-    color: var(--green);
+    color: #212121;
 }
 
 .cancel {
-    
     margin: 1em 0em 2em -0.3em; 
     padding: 0.8em 2.2em 0.8em 2.2em;
     border-radius: 4em;
@@ -111,6 +110,14 @@
     font-size: 1em;
     cursor: pointer;
     color: #949494;
+}
+
+.cancel:hover {
+    color: #f2f2f2;
+}
+
+.update-button:hover {
+    background-color: #a2f199;
 }
 
 @media only screen and (min-width: 1200px) {

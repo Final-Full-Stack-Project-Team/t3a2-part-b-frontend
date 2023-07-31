@@ -6,6 +6,7 @@ import NavMenu from "../Components/NavMenu";
 import "../Styles/group-details.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import { Link } from "react-router-dom";
 
 export default function GroupDetails() {
   const { groupId } = useParams();
@@ -77,7 +78,10 @@ export default function GroupDetails() {
               </div>
 
               <div>
+                <Link to="/Groups">
                 <button className='cancel'>CANCEL</button>
+                </Link>
+                
               </div>
             </div>
           ) : (
