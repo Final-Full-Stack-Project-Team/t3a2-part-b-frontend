@@ -5,7 +5,7 @@ import { useCookies } from "react-cookie"
 import { useUserData } from "../contexts/UserContext"
 import { useEffect, useState } from "react"
 import { findUser } from "../services/UserServices.js"
-import { deleteList, findAllLists } from "../services/ListServices";
+import { deleteList, editList, findAllLists } from "../services/ListServices";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserGroup} from '@fortawesome/free-solid-svg-icons'
 import { Link, useNavigate } from "react-router-dom";
@@ -73,6 +73,12 @@ export default function ListsPage() {
         window.location.reload()
     }
 
+    async function handleSetActiveList(_id) {
+        const data = {isCompleted: false}
+        await editList(_id, data, cookie)
+        window.location.reload()
+    }
+
     return ( 
         <div>
             <div>
@@ -96,6 +102,7 @@ export default function ListsPage() {
                                 <Link className="lists-label">
                                     {list.name}
                                 </Link>
+                                <button onClick={() => handleSetActiveList(list._id)} style={{marginLeft: "50px"}}>RESTORE ICON</button>
                                 <button onClick={handleShowDelete} style={{marginLeft: "50px"}}>DELETE ICON</button>
                                 {displayDelete && <DeleteList handleCancel={handleShowDelete} handleDelete={() => handleDeleteList(list._id)} />}
                             </div>
