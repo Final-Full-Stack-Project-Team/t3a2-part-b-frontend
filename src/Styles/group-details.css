@@ -1,7 +1,9 @@
+
+
 .group-details-body {
     border: 5px solid;
     margin: auto;
-    width: 80%;
+    width: 90%;
     padding: 10px;
     color: #f2f2f2;
     border: none;   
@@ -9,12 +11,47 @@
 
 .edit-group-name {
     background-color: #212121;
-    padding: 1em;
+    padding: 1em 1em 1em 1.7em;
     border-radius: 6px;
     font-size: 1.2em;
     font-weight: 600;   
     margin-top: 1em;
-    color: #949494
+    color: #f2f2f2;
+    border:none;
+    caret-color: var(--green);
+    width: 100%
+}
+
+.edit-group-name:focus {
+    outline: 2px solid var(--light-grey);
+}
+
+.edit-group-name::placeholder{
+    color: #949494;
+}
+
+.add-icon {
+    position: absolute;
+    color: #949494;
+    padding: 2em 1em 1em 0em;
+}
+
+.add-people {
+    background: none;
+    padding: 1em 1em 1em 0em;
+    border-radius: 6px;
+    font-size: 1.2em;
+    margin-top: 0.5em;
+    margin-left: 1.7em;
+    color: #f2f2f2;
+    border:none;
+    caret-color: var(--green);
+    width: 95%;
+    outline: none;
+}
+
+.add-people::placeholder{
+    color: #949494;
 }
 
 .shared_with {
@@ -37,7 +74,7 @@
 }
 
 .group-date {
-    margin: 0.5em 0em 3em 0.5em;
+    margin: 0.5em 0em 0em 0.5em;
     color: #7c7c7c;
 }
 

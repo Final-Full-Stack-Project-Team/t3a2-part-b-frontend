@@ -4,6 +4,8 @@ import { findGroup } from '../services/GroupServices';
 import { useCookies } from 'react-cookie';
 import NavMenu from "../Components/NavMenu";
 import "../Styles/group-details.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
 
 export default function GroupDetails() {
   const { groupId } = useParams();
@@ -48,12 +50,21 @@ export default function GroupDetails() {
         <div className="group-details-body">
           {groupDetails ? (
             <div>
-              <div className="edit-group-name">{groupDetails.group_name}</div>
 
               {groupDetails?.dateCreated && (
                 <div className="group-date">Created on {new Date(groupDetails.dateCreated).toLocaleDateString()}</div>
               )}
-  
+
+              <div >
+                <input className="edit-group-name" placeholder={groupDetails.group_name}></input>
+              </div>
+
+              <div>
+                <div className="add-icon"><FontAwesomeIcon icon={faUserPlus}/></div>
+              
+                <input className="add-people" placeholder= "Add people"></input>
+              </div>
+
               {groupDetails?.shared_with && groupDetails.shared_with.length > 0 && (
                   <div >
                     {groupDetails.shared_with.map((user) => (
@@ -66,6 +77,7 @@ export default function GroupDetails() {
           ) : (
             <p>Loading group details...</p>
           )}
+
         </div>
       </div>
     </div>
