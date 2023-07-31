@@ -72,7 +72,13 @@ export default function GroupDetails() {
                     ))}
                   </div>
                 )}
-              
+              <div>
+                <button className='update-button'>UPDATE</button>
+              </div>
+
+              <div>
+                <button className='cancel'>CANCEL</button>
+              </div>
             </div>
           ) : (
             <p>Loading group details...</p>
