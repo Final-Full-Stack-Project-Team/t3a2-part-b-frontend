@@ -5,11 +5,12 @@ import { useCookies } from "react-cookie"
 import { useUserData } from "../contexts/UserContext"
 import { useEffect, useState } from "react"
 import { findUser } from "../services/UserServices.js"
-import { findAllLists } from "../services/ListServices";
+import { deleteList, findAllLists } from "../services/ListServices";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserGroup} from '@fortawesome/free-solid-svg-icons'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NoLists from "../Components/NoLists";
+import DeleteList from "../Components/DeleteList";
 // import { useStartTyping } from "react-use";
 
 export default function ListsPage() {
@@ -18,6 +19,9 @@ export default function ListsPage() {
     const [lists, setLists] = useState([])
     const userData = useUserData()
     const cookie = `Bearer ${cookies.authorization}`
+    const navigate = useNavigate()
+
+    const [displayDelete, SetDisplayDelete] = useState()
     
     const handleLogout = () => {
         removeCookie('authorization')
@@ -39,6 +43,7 @@ export default function ListsPage() {
 
     // Fetch data from the API when the component mounts
     useEffect(() => {
+        console.log("this")
         let user = userData?._id
         if (user) {
             findAllLists(cookie)
@@ -58,7 +63,15 @@ export default function ListsPage() {
          setIsNavMenuOpen(prevState => !prevState);
      };
     
-    
+    function handleShowDelete() {
+        SetDisplayDelete(!displayDelete)
+    }
+
+    async function handleDeleteList(_id) {
+        await deleteList(_id, cookie)
+        handleShowDelete()
+        window.location.reload()
+    }
 
     return ( 
         <div>
@@ -83,6 +96,8 @@ export default function ListsPage() {
                                 <Link className="lists-label">
                                     {list.name}
                                 </Link>
+                                <button onClick={handleShowDelete} style={{marginLeft: "50px"}}>DELETE ICON</button>
+                                {displayDelete && <DeleteList handleCancel={handleShowDelete} handleDelete={() => handleDeleteList(list._id)} />}
                             </div>
                         );
                     })    
