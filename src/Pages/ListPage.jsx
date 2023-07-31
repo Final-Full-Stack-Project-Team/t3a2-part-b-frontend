@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { useParams } from "react-router"
+import { useNavigate, useParams } from "react-router"
 import { editList, findList } from "../services/ListServices"
 import { useUserData } from "../contexts/UserContext"
 import { useCookies } from "react-cookie"
@@ -13,6 +13,7 @@ export default function ListPage() {
     const cookie = `Bearer ${cookies.authorization}`
     const _id = useParams()
     const userData = useUserData()
+    const navigate = useNavigate()
 
     const [items, setItems] = useState([])
     const [list, setList] = useState()
@@ -31,6 +32,7 @@ export default function ListPage() {
             findList(_id._id, cookie)
             .then((response) => {
                 setList(response)
+                console.log(response)
             })
         }
     }, [])
@@ -77,6 +79,13 @@ export default function ListPage() {
         setShowOptions(false)
     }
 
+    async function handleSetCompleteList() {
+        const data = {isCompleted: true}
+        await editList(_id._id, data, cookie)
+        setShowOptions(false)
+        navigate('/')
+    }
+
     return (
         <div>
             <div className="list-header">
@@ -92,7 +101,7 @@ export default function ListPage() {
                 <button>Add people</button>
                 <button onClick={handleOptions}>Options</button>
             </div>
-            {showOptions && <ListOptions handleRename={handleRenameList} />}
+            {showOptions && <ListOptions handleRename={handleRenameList} handleCompleted={handleSetCompleteList} />}
             {items && items.map((item) => {
                 return (
                     <div className="list-items" key={item._id}>

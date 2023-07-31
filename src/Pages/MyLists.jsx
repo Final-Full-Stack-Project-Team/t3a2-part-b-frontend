@@ -43,7 +43,8 @@ export default function ListsPage() {
         if (user) {
             findAllLists(cookie)
             .then((response) => {
-                setLists(response)
+                const activeLists = response.filter((list) => list.isCompleted === false)
+                setLists(activeLists)
             })
         }
     // eslint-disable-next-line
