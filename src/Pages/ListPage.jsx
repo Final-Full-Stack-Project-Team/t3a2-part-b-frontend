@@ -10,7 +10,7 @@ import DeleteList from "../Components/DeleteList"
 import FindItem from "../Components/FindItem"
 import NavMenu from "../Components/NavMenu";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisVertical, faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsisVertical, faUserPlus, faCheck } from '@fortawesome/free-solid-svg-icons'
 import "../Styles/list-page.css";
 
 export default function ListPage() {
@@ -143,7 +143,7 @@ export default function ListPage() {
                   ref={inputRef}
                   placeholder={listName}
                 ></input>
-                <button onClick={handleRenameSubmit}>Tick</button>
+                <button className="ok-rename" onClick={handleRenameSubmit}><FontAwesomeIcon icon={faCheck} /></button>
               </div>
             ) : (
               <p>{list && listName}</p>

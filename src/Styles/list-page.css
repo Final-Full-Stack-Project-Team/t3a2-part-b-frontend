@@ -36,7 +36,6 @@
   .list-buttons button { 
     margin: 0.1rem; 
     background: none;
-    
     border-radius: 10em;
     border: none;
     color: #f2f2f2;
@@ -56,7 +55,7 @@
     box-sizing: border-box;
   }
   
-
+  
   .list-page-heading {
     display: flex;
     align-items: center;
@@ -71,15 +70,29 @@
     position: relative;
   }
 
+  .ok-rename {
+    margin-left: 3em;
+    margin-top: 0em;
+    background: none;
+    border: none;
+    font-size: 1em;
+    color: #72DF65;
+    cursor: pointer;
+  }
+
+  
+
+
 .edit-list-name {
     background-color: #212121;
     font-size: 1em; 
-    margin-top: 1.11em;
+    margin-top: 0em;
+    margin-right: -8em;
     font-weight: 500;
     color: #f2f2f2;
     border:none;
     caret-color: var(--green);
-    width: 100%;
+    ;
     outline: none;
 }
 
