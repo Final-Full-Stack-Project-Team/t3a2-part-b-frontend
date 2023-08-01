@@ -9,6 +9,8 @@ import { Link } from "react-router-dom"
 import DeleteList from "../Components/DeleteList"
 import FindItem from "../Components/FindItem"
 import NavMenu from "../Components/NavMenu";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEllipsisVertical, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import "../Styles/list-page.css";
 
 export default function ListPage() {
@@ -148,9 +150,9 @@ export default function ListPage() {
             )}
             {/* Add buttons to the list-buttons div */}
             <div className="list-buttons">
-              <button className="add-person">Add people</button>
+              <button className="add-person"><FontAwesomeIcon className="add-person-icon" icon={faUserPlus} size="1x"/></button>
               <button className="list-options" onClick={handleOptions}>
-                Options
+              <FontAwesomeIcon icon={faEllipsisVertical} size="2x" />
               </button>
             </div>
           </div>
