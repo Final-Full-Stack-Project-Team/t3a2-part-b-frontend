@@ -4,8 +4,8 @@ import { deleteList, editList, findList } from "../services/ListServices"
 import { useUserData } from "../contexts/UserContext"
 import { useCookies } from "react-cookie"
 import { findAllItemsFromList } from "../services/ItemServices"
-import ListOptions from "../Components/ListOptions"
 import { Link } from "react-router-dom"
+import ListOptions from "../Components/ListOptions"
 import DeleteList from "../Components/DeleteList"
 import FindItem from "../Components/FindItem"
 import NavMenu from "../Components/NavMenu";
@@ -30,8 +30,10 @@ export default function ListPage() {
     const inputRef = useRef(null)
 
     const [listName, setListName] = useState('')
-
     const [checkedItems, setCheckedItems] = useState({})
+
+    // testing press enter
+    const [updatedListName, setUpdatedListName] = useState(""); 
 
     useEffect(() => {
         let user = userData?._id
@@ -52,6 +54,8 @@ export default function ListPage() {
                 console.log(response)
             })
             setListName(list.name)
+            // testing press enter
+            setUpdatedListName(list.name);
         }
     // eslint-disable-next-line
     }, [list])
@@ -83,15 +87,19 @@ export default function ListPage() {
     }
 
     function handleRename(event) {
-        setListName(event.target.value)
+        setUpdatedListName(event.target.value)
     }
 
     async function handleRenameSubmit() {
-        const data = {name: listName}
+      // testing press enter
+      if (updatedListName !== listName) {
+        const data = {name: updatedListName }
         await editList(_id._id, data, cookie)
         setRenameList(false)
         setShowOptions(false)
-    }
+        // testing press enter
+        setListName(updatedListName);
+    }}
 
     async function handleSetCompleteList() {
         const data = {isCompleted: true}
@@ -127,6 +135,12 @@ export default function ListPage() {
    const toggleNavMenu = () => {
        setIsNavMenuOpen(prevState => !prevState);
    };
+  //  New line here
+   const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleRenameSubmit();
+    }
+  };
 
    return (
     <div>
@@ -139,11 +153,13 @@ export default function ListPage() {
                 <input
                   className="edit-list-name"
                   type="text"
+                  value={updatedListName} // Use the updatedListName state
                   onChange={handleRename}
+                  onKeyDown={handleKeyPress} // Add the keydown event listener
                   ref={inputRef}
-                  placeholder={listName}
+                  placeholder= "New List name.."
                 ></input>
-                <button className="ok-rename" onClick={handleRenameSubmit}><FontAwesomeIcon icon={faCheck} /></button>
+                
               </div>
             ) : (
               <p>{list && listName}</p>
