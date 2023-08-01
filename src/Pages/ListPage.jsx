@@ -7,6 +7,7 @@ import { findAllItemsFromList } from "../services/ItemServices"
 import ListOptions from "../Components/ListOptions"
 import { Link } from "react-router-dom"
 import DeleteList from "../Components/DeleteList"
+import FindItem from "../Components/FindItem"
 
 export default function ListPage() {
 
@@ -34,7 +35,6 @@ export default function ListPage() {
             findList(_id._id, cookie)
             .then((response) => {
                 setList(response)
-                console.log(response)
             })
         }
     }, [])
@@ -44,6 +44,7 @@ export default function ListPage() {
             findAllItemsFromList(_id._id, cookie)
             .then((response) => {
                 setItems(response)
+                console.log(response)
             })
             setListName(list.name)
         }
@@ -99,6 +100,20 @@ export default function ListPage() {
         navigate('/')
     }
 
+    async function addItemToList(item) {
+        const data = {
+            items: [item]
+        }
+        const response = await editList(_id._id, data, cookie)
+        const checkIfDoubleUp = items.some((item) => item.toString(data))
+        if (checkIfDoubleUp) {
+            console.log("this happened")
+        }
+        const newItemArray = response.items
+        console.log(newItemArray)
+        setItems(newItemArray)
+    }
+
     return (
         <div>
             <div className="list-header">
@@ -114,6 +129,7 @@ export default function ListPage() {
                 <button>Add people</button>
                 <button onClick={handleOptions}>Options</button>
             </div>
+            <FindItem addItem={addItemToList} />
             {showDelete && <DeleteList handleCancel={handleShowDelete} handleDelete={handleDeleteList} />}
             {showOptions && <ListOptions handleRename={handleRenameList} handleCompleted={handleSetCompleteList} handleDelete={handleShowDelete} />}
             {items && items.map((item) => {
