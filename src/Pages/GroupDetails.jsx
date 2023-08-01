@@ -47,7 +47,7 @@ export default function GroupDetails() {
           {groupDetails?.admin && <p className="page-sub-heading">Admin: {groupDetails.admin.name}</p>}
         </header>
   
-        {/* IMPORTANT! All page content goes in the body class */}
+        
         <div className="group-details-body">
           {groupDetails ? (
             <div>

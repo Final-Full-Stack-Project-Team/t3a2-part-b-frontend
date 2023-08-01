@@ -9,6 +9,7 @@ import { Link } from "react-router-dom"
 import DeleteList from "../Components/DeleteList"
 import FindItem from "../Components/FindItem"
 import NavMenu from "../Components/NavMenu";
+import "../Styles/list-page.css";
 
 export default function ListPage() {
     // eslint-disable-next-line
@@ -130,60 +131,67 @@ export default function ListPage() {
       <NavMenu toggleNavMenu={toggleNavMenu} isNavMenuOpen={isNavMenuOpen} />
       <div className={isNavMenuOpen ? "nav-closed" : "nav-open"}>
         <header className="fake-header">
-          <p className="page-heading">{list && list.name}</p>
+            <div className="list-page-heading">
+            {renameList ? (
+              <div>
+                <input
+                  className="edit-list-name"
+                  type="text"
+                  onChange={handleRename}
+                  ref={inputRef}
+                  placeholder={listName}
+                ></input>
+                <button onClick={handleRenameSubmit}>Tick</button>
+              </div>
+            ) : (
+              <p>{list && listName}</p>
+            )}
+            {/* Add buttons to the list-buttons div */}
+            <div className="list-buttons">
+              <button className="add-person">Add people</button>
+              <button className="list-options" onClick={handleOptions}>
+                Options
+              </button>
+            </div>
+          </div>
           <p className="page-sub-heading">{items.length} item{items.length !== 1 ? 's' : ''} </p>
         </header>
 
-        <div className="list-header">
-          <Link to={"/"}>Back</Link>
-          {renameList ? (
-            <div className="list-header">
-              <input
-                type="text"
-                onChange={handleRename}
-                ref={inputRef}
-                value={listName}
-              />
-              <button onClick={handleRenameSubmit}>Tick</button>
-            </div>
-          ) : (
-            <h2>{list && listName}</h2>
+        <div className="list-details-body">
+          
+          <FindItem addItem={addItemToList} />
+          {showDelete && (
+            <DeleteList
+              handleCancel={handleShowDelete}
+              handleDelete={handleDeleteList}
+            />
           )}
-          <button>Add people</button>
-          <button onClick={handleOptions}>Options</button>
+          {showOptions && (
+            <ListOptions
+              handleRename={handleRenameList}
+              handleCompleted={handleSetCompleteList}
+              handleDelete={handleShowDelete}
+            />
+          )}
+          {items &&
+            items.map((item) => {
+              return (
+                <div className="list-items" key={item._id}>
+                  <input type="checkbox" onChange={() => checkItem(item)} />
+                  <p
+                    style={{
+                      color: "white",
+                      textDecoration: checkedItems[item._id]
+                        ? "line-through"
+                        : "none",
+                    }}
+                  >
+                    {item.name}
+                  </p>
+                </div>
+              );
+            })}
         </div>
-        <FindItem addItem={addItemToList} />
-        {showDelete && (
-          <DeleteList
-            handleCancel={handleShowDelete}
-            handleDelete={handleDeleteList}
-          />
-        )}
-        {showOptions && (
-          <ListOptions
-            handleRename={handleRenameList}
-            handleCompleted={handleSetCompleteList}
-            handleDelete={handleShowDelete}
-          />
-        )}
-        {items &&
-          items.map((item) => {
-            return (
-              <div className="list-items" key={item._id}>
-                <input type="checkbox" onChange={() => checkItem(item)} />
-                <p
-                  style={{
-                    color: "white",
-                    textDecoration: checkedItems[item._id]
-                      ? "line-through"
-                      : "none",
-                  }}
-                >
-                  {item.name}
-                </p>
-              </div>
-            );
-          })}
       </div>
     </div>
   );

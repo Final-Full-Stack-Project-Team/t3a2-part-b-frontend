@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Kantumruy Pro', sans-serif; 
+}
+
+
+.list-details-body {
+    border: 5px solid;
+    margin: auto;
+    width: 90%;
+    padding: 10px;
+    color: #f2f2f2;
+    border: none;
+}
+
+.back-button {
+    float: right;
+    margin: -4em 0em 2em 2em; 
+    padding: 0.8em 2.2em 0.8em 2.2em;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1em;
+    cursor: pointer;
+    color: #f2f2f2;
+}
+
+/* Add styles for buttons */
+.list-buttons {
+    display: flex;
+  }
+  
+  .list-buttons button {
+    margin-left: 1rem; 
+    float: right
+  }
+
+  .list-page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Align items and options to the right */
+    margin-left: 1.2em;
+
+    margin-bottom: 4em;
+    margin-top: -0.15em;
+    color: var(--font-color);
+    font-size: 1.5em;
+    font-weight: 500;
+    width: 200em;
+    position: relative;
+  }
+
+.edit-list-name {
+    background-color: #212121;
+    font-size: 1em; 
+    margin-top: 1.11em;
+    font-weight: 500;
+    color: #f2f2f2;
+    border:none;
+    caret-color: var(--green);
+    width: 100%;
+    outline: none;
+}
+
+.edit-list-name::placeholder{
+    color: #949494;
+}
+
+.overlay {
+    position: fixed;
+    margin-top: -4.3em;
+    margin-right: 2em;
+    right: 0;
+    width: 12em;
+    height: 6em;
+    background-color: #333333;
+    display: flex;
+    justify-content: center;
+    border-radius: 0.2em;
+    
+}
+
+.overlay-content {
+    color: var(--font-color);
+    font-size: 13px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.overlay-text {
+    padding: 0.2em;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+}
+
+.list-header h2 {
+    color: white;
+    font-size: 15px;
+}
+
+.list-items {
+    display: flex;
+}
+
+.list-items input {
+    margin-right: 5vw;
+}
+
+.delete-overlay {
+    position: fixed;
+    top: 35vh;
+    right: 15vw;
+    width: 75vw;
+    height: 30vw;
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-content {
+    color: white;
+    padding: 5px;
+    text-align: center;
+}
+
+.delete-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5px;
+}
+
+@media only screen and (min-width: 1200px) {
+
+    .list-details-body {
+        border: 5px solid;
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+        color: #f2f2f2;
+        border: none;   
+    }
+}
