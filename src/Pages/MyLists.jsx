@@ -43,7 +43,8 @@ export default function ListsPage() {
         if (user) {
             findAllLists(cookie)
             .then((response) => {
-                setLists(response)
+                const activeLists = response.filter((list) => list.isCompleted === false)
+                setLists(activeLists)
             })
         }
     // eslint-disable-next-line
@@ -77,7 +78,7 @@ export default function ListsPage() {
                                 <p className="lists-icon">
                                     <FontAwesomeIcon icon={faUserGroup} /> 
                                 </p>
-                                <Link className="lists-label">
+                                <Link to={`/list/${list._id}`} className="lists-label">
                                     {list.name}
                                 </Link>
                             </div>
