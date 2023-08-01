@@ -92,8 +92,12 @@
     color: #f2f2f2;
     border:none;
     caret-color: var(--green);
-    ;
-    outline: none;
+    
+    outline-style: solid;
+    outline-color: #b5b5b5;
+    outline-width: 0.12em;
+    border-radius: 0.01em;
+    outline-offset: 0.2em;
 }
 
 .edit-list-name::placeholder{
