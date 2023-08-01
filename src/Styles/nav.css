@@ -20,6 +20,12 @@ body {
 	background-color: var(--black);
 }
 
+.page-contents{
+    color: var(--font-color); 
+    margin-left: 0em;
+    margin-top: 0.4em; 
+}
+
 
 header {
 	display: flex;
@@ -29,8 +35,13 @@ header {
 	background-color: var(--dark-grey);
 }
 
+.fake-header {
+    height: 0;
+}
+
 header nav {
 	position: fixed;
+	z-index: 1;
 	top: 0;
 	left: -20em;
 	width: 20em;
@@ -59,6 +70,7 @@ nav a {
 
 header .nav-btn {
 	position: absolute;
+	z-index: 2;
 	padding: 5px;
 	cursor: pointer;
 	background: transparent;
@@ -69,6 +81,27 @@ header .nav-btn {
 
 header .nav-btn {
 	margin-left: -0.85em;
+}
+
+.page-heading {
+    margin-left: 1.2em;
+    margin-bottom: 4em;
+    margin-top: -0.15em;
+    color: var(--font-color);
+    font-size: 1.5em;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.page-sub-heading {
+    position: absolute;
+	z-index: 0;
+    margin-left: 1.86em;
+    margin-bottom: 4em;
+    margin-top: 1.4em;
+    font-size: 1em;
+    font-weight: 500;
+    color: #7c7c7c;
 }
 
 .nav-body {
@@ -173,6 +206,8 @@ header .nav-btn {
 	margin-right: 0.64em;
 }
 
+
+
 /* Alternative spacing in nav items. Uncomment to compare */
 
 /* .nav-icons-my-lists {
@@ -224,6 +259,13 @@ header nav {
 }
 
 @media only screen and (min-width: 1200px) {
+
+	.page-contents {
+        font-size: 1.2em ;
+        margin-right: 0em;
+        margin-left: -1em; 
+    }
+
 	header nav {
 		position: fixed;
 		top: 0;
@@ -239,7 +281,30 @@ header nav {
 	header .nav_container {
 		transform: translateX(-100%);
 	}
+	.sub-heading{
+		margin-left: 2.2em
+	}
+	.nav-open {
+        margin-left: 320px;
+        transition: 250ms;
+    }
+    
+    .nav-closed {  
+        transition: 250ms;
+    }
+
+    .page-title {
+        font-size: 1.5em;
+        margin-left: 1.4em;
+        margin-bottom: 4em;
+    }
+
+    
 }
+
+
+
+
 
 /* Temporarily change the color to make development easier */
 

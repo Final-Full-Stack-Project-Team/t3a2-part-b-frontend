@@ -8,15 +8,16 @@ import ListOptions from "../Components/ListOptions"
 import { Link } from "react-router-dom"
 import DeleteList from "../Components/DeleteList"
 import FindItem from "../Components/FindItem"
+import NavMenu from "../Components/NavMenu";
 
 export default function ListPage() {
-
+    // eslint-disable-next-line
     const [cookies, setCookie, removeCookie] = useCookies()
     const cookie = `Bearer ${cookies.authorization}`
     const _id = useParams()
     const userData = useUserData()
     const navigate = useNavigate()
-
+    
     const [items, setItems] = useState([])
     const [list, setList] = useState()
 
@@ -37,6 +38,7 @@ export default function ListPage() {
                 setList(response)
             })
         }
+    // eslint-disable-next-line
     }, [])
 
     useEffect(() => {
@@ -48,6 +50,7 @@ export default function ListPage() {
             })
             setListName(list.name)
         }
+    // eslint-disable-next-line
     }, [list])
 
     useEffect(() => {
@@ -114,32 +117,74 @@ export default function ListPage() {
         setItems(newItemArray)
     }
 
-    return (
-        <div>
-            <div className="list-header">
-                <Link to={"/"}>Back</Link>
-                {renameList ? 
-                    <div className="list-header">
-                    <input type="text" onChange={handleRename} ref={inputRef} value={listName} />
-                    <button onClick={handleRenameSubmit}>Tick</button>
-                    </div>
+     // State to track if the navigation menu is open or closed
+   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
 
-                : 
-                <h2>{list && listName}</h2>}
-                <button>Add people</button>
-                <button onClick={handleOptions}>Options</button>
+   // Function to toggle the navigation menu state
+   const toggleNavMenu = () => {
+       setIsNavMenuOpen(prevState => !prevState);
+   };
+
+   return (
+    <div>
+      <NavMenu toggleNavMenu={toggleNavMenu} isNavMenuOpen={isNavMenuOpen} />
+      <div className={isNavMenuOpen ? "nav-closed" : "nav-open"}>
+        <header className="fake-header">
+          <p className="page-heading">{list && list.name}</p>
+          <p className="page-sub-heading">{items.length} item{items.length !== 1 ? 's' : ''} </p>
+        </header>
+
+        <div className="list-header">
+          <Link to={"/"}>Back</Link>
+          {renameList ? (
+            <div className="list-header">
+              <input
+                type="text"
+                onChange={handleRename}
+                ref={inputRef}
+                value={listName}
+              />
+              <button onClick={handleRenameSubmit}>Tick</button>
             </div>
-            <FindItem addItem={addItemToList} />
-            {showDelete && <DeleteList handleCancel={handleShowDelete} handleDelete={handleDeleteList} />}
-            {showOptions && <ListOptions handleRename={handleRenameList} handleCompleted={handleSetCompleteList} handleDelete={handleShowDelete} />}
-            {items && items.map((item) => {
-                return (
-                    <div className="list-items" key={item._id}>
-                        <input type="checkbox" onChange={() => (checkItem(item))} />
-                        <p style={{ color:"white", textDecoration: checkedItems[item._id] ? "line-through": "none" }}>{item.name}</p>
-                    </div>
-                )
-            })}
+          ) : (
+            <h2>{list && listName}</h2>
+          )}
+          <button>Add people</button>
+          <button onClick={handleOptions}>Options</button>
         </div>
-    )
+        <FindItem addItem={addItemToList} />
+        {showDelete && (
+          <DeleteList
+            handleCancel={handleShowDelete}
+            handleDelete={handleDeleteList}
+          />
+        )}
+        {showOptions && (
+          <ListOptions
+            handleRename={handleRenameList}
+            handleCompleted={handleSetCompleteList}
+            handleDelete={handleShowDelete}
+          />
+        )}
+        {items &&
+          items.map((item) => {
+            return (
+              <div className="list-items" key={item._id}>
+                <input type="checkbox" onChange={() => checkItem(item)} />
+                <p
+                  style={{
+                    color: "white",
+                    textDecoration: checkedItems[item._id]
+                      ? "line-through"
+                      : "none",
+                  }}
+                >
+                  {item.name}
+                </p>
+              </div>
+            );
+          })}
+      </div>
+    </div>
+  );
 }

@@ -1,5 +1,4 @@
 import NavMenu from "../Components/NavMenu";
-import "../Styles/pages.css";
 import "../Styles/lists.css"
 import { useCookies } from "react-cookie"
 import { useUserData } from "../contexts/UserContext"
@@ -19,6 +18,7 @@ export default function ListsPage() {
     const [lists, setLists] = useState([])
     const userData = useUserData()
     const cookie = `Bearer ${cookies.authorization}`
+    // eslint-disable-next-line
     const navigate = useNavigate()
 
     const [displayDelete, SetDisplayDelete] = useState()
@@ -87,12 +87,12 @@ export default function ListsPage() {
             </div>
             <div className={isNavMenuOpen ? "nav-closed" : "nav-open" }>
                 <header className="fake-header">
-                    <p className="page-title">Completed Lists</p>
-                    <p className="lists-count">{lists.length} List{lists.length !== 1 ? 's' : '' }</p>
+                    <p className="page-heading">Completed Lists</p>
+                    <p className="page-sub-heading">{lists.length} List{lists.length !== 1 ? 's' : '' }</p>
                 </header> 
 
                 {/* IMPORTANT! All page content goes in the body class */}
-                <div className="body">
+                <div className="page-contents">
                     {lists.length > 0 ? (lists.map((list) => {
                         return (
                             <div className="lists-container" key={list._id}>
