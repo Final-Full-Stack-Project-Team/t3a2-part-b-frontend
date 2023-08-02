@@ -8,7 +8,7 @@ import { deleteList, editList, findAllLists } from "../services/ListServices";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserGroup} from '@fortawesome/free-solid-svg-icons'
 import { Link, useNavigate } from "react-router-dom";
-import NoLists from "../Components/NoLists";
+import NoCompleted from "../Components/NoCompleted";
 import DeleteList from "../Components/DeleteList";
 // import { useStartTyping } from "react-use";
 
@@ -109,7 +109,7 @@ export default function ListsPage() {
                         );
                     })    
                         ) : (
-                            <NoLists/>
+                            <NoCompleted/>
                         )}
                     </div>     
                 </div>

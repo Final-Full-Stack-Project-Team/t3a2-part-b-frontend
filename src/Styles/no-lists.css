@@ -30,6 +30,13 @@
     font-size: 8em;
 }
 
+.completed-icon {
+    margin-top: 0.5em;
+    font-size: 1.2em;
+    color: #424242;
+    font-size: 8em;
+}
+
 @media only screen and (min-width: 1200px) {
     .no-lists-body {
         margin-right: 1.7em;
