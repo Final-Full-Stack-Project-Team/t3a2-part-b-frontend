@@ -11,6 +11,7 @@ export default function FindItem(props) {
     const [items, setItems] = useState([])
     const [itemInput, setItemInput] = useState('')
     const [cookies, setCookie, removeCookie] = useCookies()
+    const [showItems, setShowItems] = useState(false)
     const cookie = `Bearer ${cookies.authorization}`
 
     useEffect(() => {
@@ -34,11 +35,14 @@ export default function FindItem(props) {
         const newItemArray = [...items, response]
         setItems(newItemArray)
         props.addItem(response)
+        setItemInput('')
+        setShowItems(false)
         console.log(response)
     }
 
     const handleAddItemToList = (item) => {
         props.addItem(item)
+        setShowItems(false)
     }
 
     function handleKeyPress(event) {
@@ -53,7 +57,7 @@ export default function FindItem(props) {
                 <button className="item-icon" onClick={handleAddItemToDB}><FontAwesomeIcon icon={faPlus}/></button>
                 <input className="add-item" onChange={handleInputChange} onKeyDown={handleKeyPress} placeholder="Add Item" value={itemInput} type="text"  />
             </div>
-            {filteredItems.length > 0 && (
+            {showItems && filteredItems.length > 0 && (
             <div className="item-display-overlay">
                 {filteredItems.map((item) => {
                     return(
