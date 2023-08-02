@@ -26,7 +26,8 @@ export async function createUser(data){
             _id: json._id,
             name: json.name,
             lists: json.lists,
-            groups: json.groups
+            groups: json.groups,
+            email: json.email
         },
         error: json?.error
     }

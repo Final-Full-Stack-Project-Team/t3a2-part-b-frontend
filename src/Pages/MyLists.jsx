@@ -25,7 +25,7 @@ export default function ListsPage() {
     }
     
     useEffect(() => {
-        let user = userData?._id
+        let user = userData?.email
         if (user) {
             findUser(user)
             .then((response) => {
