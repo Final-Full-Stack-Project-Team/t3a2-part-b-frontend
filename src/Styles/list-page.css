@@ -10,8 +10,7 @@
 .list-details-body {
     border: 5px solid;
     margin: auto;
-    width: 90%;
-    padding: 10px;
+    width: 100%;
     color: #f2f2f2;
     border: none;
 }
@@ -84,20 +83,19 @@
 
 
 .edit-list-name {
-    background-color: #212121;
+    background-color: #121212;
     font-size: 1em; 
     margin-top: 0em;
-    margin-right: -8em;
+    margin-left: -0.2em;
     font-weight: 500;
     color: #f2f2f2;
     border:none;
     caret-color: var(--green);
-    
-    outline-style: solid;
-    outline-color: #b5b5b5;
-    outline-width: 0.12em;
-    border-radius: 0.01em;
+    outline: none;
+    border-radius: 0.15em;
     outline-offset: 0.2em;
+    padding: 0.2em;
+    width: 8em;
 }
 
 .edit-list-name::placeholder{
@@ -106,7 +104,7 @@
 
 .overlay {
     position: fixed;
-    margin-top: -3.25em;
+    margin-top: -2.5em;
     margin-right: 1.1em;
     right: 0;
     width: 12em;
@@ -122,7 +120,7 @@
 .overlay-content {
     color: var(--font-color);
     font-size: 13px;
-    margin-top: 10px;
+    margin-top: 0.6em;
     cursor: pointer;
     font-size: 1em;
 }
@@ -136,23 +134,31 @@
     border-radius: 0.2em;
 }
 
-.list-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2vh;
+.checkbox {
+    display: inline-block;
 }
 
-.list-header h2 {
-    color: white;
-    font-size: 15px;
+.list-items { 
+    flex-direction: column;
+    border-top: 1px solid var(--light-grey);
+    padding: 1em 1em 1em 2em;    
 }
 
-.list-items {
-    display: flex;
+.list-items:hover {
+    background-color: #212121; ;
 }
 
-.list-items input {
-    margin-right: 5vw;
+.list-items.first-item {
+    border-top: 1px solid #72DF65;
+  }
+
+.list-items:last-child {
+    border-bottom: 1px solid var(--light-grey) !important
+}
+
+.list-items-label {
+    display: inline-block;
+    margin-left: 1em;
 }
 
 .delete-overlay {

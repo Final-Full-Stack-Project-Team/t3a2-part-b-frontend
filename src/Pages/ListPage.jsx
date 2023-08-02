@@ -192,13 +192,15 @@ export default function ListPage() {
             />
           )}
           {items &&
-            items.map((item) => {
+            items.map((item, index) => {
               return (
-                <div className="list-items" key={item._id}>
+                <div
+                  className={`list-items ${index === 0 ? "first-item" : ""}`}
+                  key={item._id}>
                   <input type="checkbox" onChange={() => checkItem(item)} />
                   <p
+                    className="list-items-label"
                     style={{
-                      color: "white",
                       textDecoration: checkedItems[item._id]
                         ? "line-through"
                         : "none",
