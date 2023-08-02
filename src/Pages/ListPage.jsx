@@ -197,7 +197,7 @@ export default function ListPage() {
                 <div
                   className={`list-items ${index === 0 ? "first-item" : ""}`}
                   key={item._id}>
-                  <input type="checkbox" onChange={() => checkItem(item)} />
+                  <input className="checkbox" type="checkbox" onChange={() => checkItem(item)} />
                   <p
                     className="list-items-label"
                     style={{

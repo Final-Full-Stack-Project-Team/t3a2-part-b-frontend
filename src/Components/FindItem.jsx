@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react"
 import { useCookies } from "react-cookie"
 import { AddItem, GetAllItems } from "../services/ItemServices"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import "../Styles/list-page.css";
 
 
 export default function FindItem(props) {
@@ -41,8 +44,8 @@ export default function FindItem(props) {
     return(
         <div>
             <div className="item-input">
-                <button onClick={handleAddItemToDB}>PLUS ICON</button>
-                <input onChange={handleInputChange} value={itemInput} type="text" />
+                <button className="item-icon" onClick={handleAddItemToDB}><FontAwesomeIcon icon={faPlus}/></button>
+                <input className="add-item" onChange={handleInputChange} placeholder="Add Item" value={itemInput} type="text" />
             </div>
             <div className="item-display-overlay">
                 {filteredItems.map((item) => {
