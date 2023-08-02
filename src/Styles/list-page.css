@@ -222,19 +222,38 @@ input[type="checkbox"] {
 
 
 .delete-overlay {
+    color: #f2f2f2;
+    background-color: #333333;
     position: fixed;
-    top: 35vh;
-    right: 15vw;
-    width: 75vw;
-    height: 30vw;
-    background-color: grey;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20em;
+    height: 8em;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 0.5em;
+    padding: 1em;
+}
+
+.delete-overlay-large {
+    position: fixed;
+    margin-top: -5em;
+    margin-right: 1.1em;
+    right: 0;
+    width: 20em;
+    height: 8em;
+    background-color: #333333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5em;
+    padding: 1em;
 }
 
 .delete-content {
-    color: white;
+    color: #f2f2f2;
     padding: 5px;
     text-align: center;
 }
@@ -243,6 +262,22 @@ input[type="checkbox"] {
     display: flex;
     justify-content: space-around;
     margin-top: 5px;
+}
+
+.tick-icon-delete {
+    background: none;
+    border: none;
+    color: #E03B3B;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.x-icon-delete {
+    background: none;
+    border: none;
+    color: #72DF65;
+    cursor: pointer;
+    font-size: 1.2em;
 }
 
 .item-display-overlay {
@@ -263,18 +298,17 @@ input[type="checkbox"] {
     border-radius: 0.2em; 
   
 }
-
+@media only screen and (max-width: 350px) {
+    .delete-overlay {
+        width: 95%;
+        height: 10em;
+        padding: 0.2em;   
+    }
+}
 
 @media only screen and (min-width: 1200px) {
 
-    .list-details-body {
-        border: 5px solid;
-        margin: auto;
-        width: 50%;
-        padding: 10px;
-        color: #f2f2f2;
-        border: none;   
-    }
+    
 
     .list-buttons {
         margin-right: 0rem
@@ -286,6 +320,23 @@ input[type="checkbox"] {
 
       .overlay {
         margin-right: 2.5em;
-        margin-top: -5.8em;
-        
-}}
+        margin-top: -5.2em;
+      }
+    
+      .tick-icon-delete {
+        background: none;
+        border: none;
+        color: #E03B3B;
+        cursor: pointer;
+        font-size: 1em;
+    }
+    
+    .x-icon-delete {
+        background: none;
+        border: none;
+        color: #72DF65;
+        cursor: pointer;
+        font-size: 1em;
+    }
+      
+}
