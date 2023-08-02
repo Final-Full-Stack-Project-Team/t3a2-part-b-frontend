@@ -4,7 +4,6 @@ import { deleteList, editList, findList } from "../services/ListServices"
 import { useUserData } from "../contexts/UserContext"
 import { useCookies } from "react-cookie"
 import { findAllItemsFromList } from "../services/ItemServices"
-import { Link } from "react-router-dom"
 import ListOptions from "../Components/ListOptions"
 import DeleteList from "../Components/DeleteList"
 import FindItem from "../Components/FindItem"
@@ -88,6 +87,18 @@ export default function ListPage() {
 
     function handleRename(event) {
         setUpdatedListName(event.target.value)
+    }
+
+    function handleCheckToggle(itemId) {
+      setCheckedItems((prevCheckedItems) => {
+        const updatedCheckedItems = { ...prevCheckedItems };
+        if (updatedCheckedItems[itemId]) {
+          delete updatedCheckedItems[itemId]; // If the item is checked, uncheck it
+        } else {
+          updatedCheckedItems[itemId] = true; // If the item is unchecked, check it
+        }
+        return updatedCheckedItems;
+      });
     }
 
     async function handleRenameSubmit() {
@@ -197,7 +208,13 @@ export default function ListPage() {
                 <div
                   className={`list-items ${index === 0 ? "first-item" : ""}`}
                   key={item._id}>
-                  <input className="checkbox" type="checkbox" onChange={() => checkItem(item)} />
+                  <input className="checkbox" type="checkbox" onChange={() => checkItem(item)} checked={checkedItems[item._id]}></input>
+                  {/* Call handleCheckToggle with the item's _id when the icon is clicked */}
+                  <FontAwesomeIcon
+                    className="tick"
+                    icon={checkedItems[item._id] ? faCheck : null}
+                    onClick={() => handleCheckToggle(item._id)} 
+                  />
                   <p
                     className="list-items-label"
                     style={{

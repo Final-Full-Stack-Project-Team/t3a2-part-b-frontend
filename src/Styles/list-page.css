@@ -142,13 +142,42 @@
     border-radius: 6px;
     font-size: 1em;
     margin-top: 1em;
-    margin-left: 2.7em;
+    margin-left: 2.8em;
     color: #f2f2f2;
     border:none;
     caret-color: var(--green);
     width: 90%;
     outline: none;
     
+}
+
+.checkbox {
+    margin-top: 0.035em;
+}
+
+.tick {
+    cursor: pointer;
+  }
+
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    height: 1.2em;
+    width: 1.2em;
+    background-color: #121212;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid #f2f2f2;
+}
+
+
+
+.tick { 
+    color: #72DF65;
+    margin-left: -1.05em;
+    margin-top: 0.15em;
+    font-size: 0.8em;
+    padding-right: 0.175em;
 }
 
 
@@ -165,14 +194,15 @@
     border: none;
     font-size: 1.1em;
     margin-top: -0.2em;
-    margin-left: 0.8em;
+    margin-left: 0.85em;
 }
 
 
 .list-items { 
-    flex-direction: column;
+    display: flex;
     border-top: 1px solid var(--light-grey);
-    padding: 1em 1em 1em 1em;    
+    padding: 1em 1em 1em 1em;
+    
 }
 
 .list-items:hover {
@@ -188,8 +218,9 @@
 }
 
 .list-items-label {
-    display: inline-block;
-    margin-left: 1em;
+    display: inline-block; 
+    margin-left: 0.98em;
+    
 }
 
 .delete-overlay {
