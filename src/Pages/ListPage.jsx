@@ -31,6 +31,8 @@ export default function ListPage() {
     const [listName, setListName] = useState('')
     const [checkedItems, setCheckedItems] = useState({})
 
+    
+
     // testing press enter
     const [updatedListName, setUpdatedListName] = useState(""); 
 
@@ -188,7 +190,7 @@ export default function ListPage() {
 
         <div className="list-details-body">
           
-          <FindItem addItem={addItemToList} />
+          <FindItem  addItem={addItemToList} />
           {showDelete && (
             <DeleteList
               handleCancel={handleShowDelete}
@@ -196,7 +198,7 @@ export default function ListPage() {
             />
           )}
           {showOptions && (
-            <ListOptions
+            <ListOptions 
               handleRename={handleRenameList}
               handleCompleted={handleSetCompleteList}
               handleDelete={handleShowDelete}

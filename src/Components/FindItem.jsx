@@ -45,17 +45,19 @@ export default function FindItem(props) {
         <div>
             <div className="item-input">
                 <button className="item-icon" onClick={handleAddItemToDB}><FontAwesomeIcon icon={faPlus}/></button>
-                <input className="add-item" onChange={handleInputChange} placeholder="Add Item" value={itemInput} type="text" />
+                <input className="add-item" onChange={handleInputChange} placeholder="Add Item" value={itemInput} type="text"  />
             </div>
+            {filteredItems.length > 0 && (
             <div className="item-display-overlay">
                 {filteredItems.map((item) => {
                     return(
-                    <div key={item._id}>
-                        <p onClick={() => handleAddItemToList(item)} style={{ color: "white" }}>{item.name}</p>
+                    <div className="item-display-single-item" key={item._id}>
+                        <p onClick={() => handleAddItemToList(item)} >{item.name}</p>
                     </div>
                     )
                 })}
             </div>
+            )}
         </div>
         
     )
