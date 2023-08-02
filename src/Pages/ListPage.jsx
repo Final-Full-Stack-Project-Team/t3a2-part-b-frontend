@@ -8,6 +8,7 @@ import ListOptions from "../Components/ListOptions"
 import DeleteList from "../Components/DeleteList"
 import FindItem from "../Components/FindItem"
 import NavMenu from "../Components/NavMenu";
+import NoItems from "../Components/NoItems";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisVertical, faUserPlus, faCheck } from '@fortawesome/free-solid-svg-icons'
 import "../Styles/list-page.css";
@@ -187,7 +188,7 @@ export default function ListPage() {
           </div>
           <p className="page-sub-heading">{items.length} item{items.length !== 1 ? 's' : ''} </p>
         </header>
-
+        {list && listName ? (
         <div className="list-details-body">
           
           <FindItem  addItem={addItemToList} />
@@ -204,7 +205,7 @@ export default function ListPage() {
               handleDelete={handleShowDelete}
             />
           )}
-          {items &&
+          {items && items.length > 0 ? (
             items.map((item, index) => {
               return (
                 <div
@@ -229,9 +230,12 @@ export default function ListPage() {
                   </p>
                 </div>
               );
-            })}
+            })
+          ) : (
+            <NoItems/>
+          )}
         </div>
-      </div>
+      ) : null}
     </div>
-  );
-}
+  </div>
+);}
