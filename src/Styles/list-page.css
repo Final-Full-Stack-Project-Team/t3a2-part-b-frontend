@@ -144,7 +144,7 @@ input[type="checkbox"] {
     cursor: pointer;
     color: #72DF65;
     margin-left: -1.05em;
-    margin-top: 0.15em;
+    margin-top: 0.24em;
     font-size: 0.8em;
     padding-right: 0.175em;
 }
@@ -222,6 +222,7 @@ input[type="checkbox"] {
     justify-content: center;
     border-radius: 0.5em;
     padding: 1em;
+    z-index: 10;
 }
 
 .delete-overlay-large {
