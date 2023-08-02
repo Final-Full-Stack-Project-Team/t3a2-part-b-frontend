@@ -106,7 +106,7 @@
 
 .overlay {
     position: fixed;
-    margin-top: -5.8em;
+    margin-top: -5.5em;
     margin-right: 1.1em;
     right: 0;
     width: 12em;
@@ -155,9 +155,6 @@
     margin-top: 0.035em;
 }
 
-.tick {
-    cursor: pointer;
-  }
 
 input[type="checkbox"] {
     appearance: none;
@@ -173,6 +170,7 @@ input[type="checkbox"] {
 
 
 .tick { 
+    cursor: pointer;
     color: #72DF65;
     margin-left: -1.05em;
     margin-top: 0.15em;
@@ -268,5 +266,6 @@ input[type="checkbox"] {
 
       .overlay {
         margin-right: 2.5em;
+        margin-top: -5.8em;
         
 }}
