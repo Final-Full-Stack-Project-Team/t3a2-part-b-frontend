@@ -41,11 +41,17 @@ export default function FindItem(props) {
         props.addItem(item)
     }
 
+    function handleKeyPress(event) {
+        if (event.key === "Enter") {
+          handleAddItemToDB();
+        }
+      }
+
     return(
         <div>
             <div className="item-input">
                 <button className="item-icon" onClick={handleAddItemToDB}><FontAwesomeIcon icon={faPlus}/></button>
-                <input className="add-item" onChange={handleInputChange} placeholder="Add Item" value={itemInput} type="text"  />
+                <input className="add-item" onChange={handleInputChange} onKeyDown={handleKeyPress} placeholder="Add Item" value={itemInput} type="text"  />
             </div>
             {filteredItems.length > 0 && (
             <div className="item-display-overlay">
