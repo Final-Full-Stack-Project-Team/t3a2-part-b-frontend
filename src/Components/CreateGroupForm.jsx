@@ -4,6 +4,7 @@ import { useUserData } from "../contexts/UserContext"
 import { createGroup } from "../services/GroupServices"
 import { useCookies } from "react-cookie"
 import { useNavigate } from "react-router"
+import AddGroupMember from "./AddGroupMember"
 
 
 export default function CreateGroupForm() {
@@ -33,7 +34,7 @@ export default function CreateGroupForm() {
         setGroupMember(event.target.value)
     }
 
-    async function submitGroupMemberAdd() {
+    async function submitGroupMemberAdd(groupMember) {
         const response = await findUser(groupMember)
         if (groupMemberList.map((member) => member.email).includes(groupMember)) {
             setGroupMemberError('User has already been added')
@@ -52,7 +53,6 @@ export default function CreateGroupForm() {
             }, 3000)
         } else {
             setGroupMemberList([...groupMemberList, response])
-            console.log(groupMemberList)
         }
     }
 
@@ -61,10 +61,12 @@ export default function CreateGroupForm() {
             group_name: groupName,
             shared_with: groupMemberList.map((member) => member._id)
         }
-        console.log(data)
         const response = await createGroup(data, cookie)
         if (response.error) {
-            console.log(response.error)
+            setGroupMemberError(response.error)
+            setTimeout(() => {
+                setGroupMemberError('')
+            }, 3000)
         } else {
             navigate('/groups')
         }
@@ -74,8 +76,7 @@ export default function CreateGroupForm() {
         <div>
             <div className="form">
                 <input type="text" value={groupName} onChange={handleGroupNameChange} placeholder="Group name" />
-                <input type="text" value={groupMember} onChange={handleGroupMemberAddChange} placeholder="Member email" />
-                <button onClick={submitGroupMemberAdd}>PLUS ICON</button>
+                <AddGroupMember submitGroupMemberAdd={submitGroupMemberAdd} />
             </div>
             <div style={{ color: "white" }} className="member-list">
                 {groupAdmin && 
