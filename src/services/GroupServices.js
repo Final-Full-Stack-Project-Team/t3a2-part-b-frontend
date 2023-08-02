@@ -33,3 +33,15 @@ export async function createGroup(data, cookie){
 })
 return response.json()
 }
+
+export async function updateGroup(data, cookie, _id){
+  const response = await fetch(`${api}/groups/${_id}`, {
+    method: "PUT",
+    headers:{
+        'Content-type':"application/json",
+        Authorization: `Bearer ${cookie}`,
+    },
+    body: JSON.stringify(data)
+})
+return response.json()
+}

@@ -12,7 +12,6 @@ export default function CreateGroupForm() {
 
     const [groupName, setGroupName] = useState('')
     const [groupAdmin, setGroupAdmin] = useState({})
-    const [groupMember, setGroupMember] = useState('')
     const [groupMemberList, setGroupMemberList] = useState([])
     const [groupMemberError, setGroupMemberError] = useState('')
 
@@ -28,10 +27,6 @@ export default function CreateGroupForm() {
 
     function handleGroupNameChange(event) {
         setGroupName(event.target.value)
-    }
-
-    function handleGroupMemberAddChange(event) {
-        setGroupMember(event.target.value)
     }
 
     async function submitGroupMemberAdd(groupMember) {
