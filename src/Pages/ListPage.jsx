@@ -10,7 +10,7 @@ import FindItem from "../Components/FindItem"
 import NavMenu from "../Components/NavMenu";
 import NoItems from "../Components/NoItems";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisVertical, faUserPlus, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsisVertical, faUserPlus, faCheck, faPenToSquare, faX } from '@fortawesome/free-solid-svg-icons'
 import "../Styles/list-page.css";
 
 export default function ListPage() {
@@ -212,6 +212,10 @@ export default function ListPage() {
                   className={`list-items ${index === 0 ? "first-item" : ""}`}
                   key={item._id}>
                   <input className="checkbox" type="checkbox" onChange={() => checkItem(item)} checked={checkedItems[item._id]}></input>
+                  <div className="list-icons">
+                    <FontAwesomeIcon className="edit-icon" icon={faPenToSquare} />
+                    <FontAwesomeIcon className="remove-icon"icon={faX} />
+                  </div>
                   {/* Call handleCheckToggle with the item's _id when the icon is clicked */}
                   <FontAwesomeIcon
                     className="tick"

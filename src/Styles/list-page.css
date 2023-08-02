@@ -17,18 +17,6 @@
     margin-top: 0em;
 }
 
-.back-button {
-    float: right;
-    margin: -4em 0em 2em 2em; 
-    padding: 0.8em 2.2em 0.8em 2.2em;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1em;
-    cursor: pointer;
-    color: #f2f2f2;
-}
-
-
 .list-buttons {
     /* display: flex; */
     margin-top: 1rem; 
@@ -71,19 +59,6 @@
     position: relative;
   }
 
-  .ok-rename {
-    margin-left: 3em;
-    margin-top: 0em;
-    background: none;
-    border: none;
-    font-size: 1em;
-    color: #72DF65;
-    cursor: pointer;
-  }
-
-  
-
-
 .edit-list-name {
     background-color: #121212;
     font-size: 1em; 
@@ -116,8 +91,6 @@
     justify-content: center;
     border-radius: 0.2em; 
 }
-
-
 
 .overlay-content {
     color: var(--font-color);
@@ -152,7 +125,7 @@
 }
 
 .checkbox {
-    margin-top: 0.035em;
+    margin-top: 0.11em;
 }
 
 
@@ -167,8 +140,6 @@ input[type="checkbox"] {
     border: 2px solid #f2f2f2;
 }
 
-
-
 .tick { 
     cursor: pointer;
     color: #72DF65;
@@ -178,6 +149,26 @@ input[type="checkbox"] {
     padding-right: 0.175em;
 }
 
+.list-icons {
+    display: none;
+    cursor: pointer;
+    color: #f2f2f2;
+    position: absolute;
+    right: 1em; 
+    margin-right: 2em;
+}
+
+.list-items:hover .list-icons {
+    display: block;
+  }
+
+.remove-icon {
+    margin-left: 2em;
+}
+
+.edit-icon {
+    
+}
 
 .add-item:focus {
     outline: none;
