@@ -116,14 +116,14 @@ export default function ListsPage() {
                                     >
                                         <FontAwesomeIcon icon={faTrash} />
                                     </button>
-                                    {displayDeleteForList === list._id && (
+                                    
+                                </div> 
+                                {displayDeleteForList === list._id && (
                                         <DeleteList
                                             handleCancel={() => handleShowDelete(null)}
                                             handleDelete={() => handleDeleteList(list._id)}
                                         />
                                     )}
-                                </div> 
-                                
                             </div>
                         );
                     })    
