@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 export default function SignInPage() {
     return (
-        <div style={{ display: "flex", justifyContent: "center", marginTop: "50px", flexDirection: "column", alignItems: "center", color:"#f2f2f2" }}>
-            <h1>Sign in</h1> <br />
+        <div className="sign-in-all-contents">
+            <p className="sign-in-title">SIGN IN</p> <br />
             <SignInForm />
-            <Link to={''}>I forgot my password</Link>
+            <Link className="forgot-pw" to={''}>I forgot my password</Link>
         </div>
     )
 }
