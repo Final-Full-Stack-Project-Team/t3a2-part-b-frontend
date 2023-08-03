@@ -99,7 +99,7 @@ export default function ListsPage() {
                                 <p className="lists-icon">
                                     <FontAwesomeIcon icon={faUserGroup} /> 
                                 </p>
-                                <Link className="completed-lists-label">
+                                <Link className="lists-label">
                                     {list.name}
                                 </Link>
                                 <div className="completed-icons">
