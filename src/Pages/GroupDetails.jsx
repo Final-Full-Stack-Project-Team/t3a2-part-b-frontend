@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { findGroup, updateGroup } from '../services/GroupServices';
 import { useCookies } from 'react-cookie';
 import NavMenu from "../Components/NavMenu";
@@ -9,12 +9,17 @@ import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
 import AddGroupMember from '../Components/AddGroupMember';
 import { findUser } from '../services/UserServices';
+import { useUserData } from '../contexts/UserContext';
 
 export default function GroupDetails() {
   const { groupId } = useParams();
   const [groupDetails, setGroupDetails] = useState(null);
   const [groupMemberError, setGroupMemberError] = useState()
   const [cookies] = useCookies();
+
+  const userData = useUserData()
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     // Fetch the group details when the component mounts
@@ -90,6 +95,26 @@ export default function GroupDetails() {
       setGroupDetails(updatedGroupDetails)
     }
 
+    async function handleLeaveGroup() {
+      let newSharedWith = groupDetails.shared_with.filter((user) => user !== userData._id).map((user) => user._id)
+      let data = {
+        shared_with: [newSharedWith]
+      }
+      console.log(data)
+      if (userData._id === groupDetails.admin._id) {
+        const newAdmin = groupDetails.shared_with[0]
+        newSharedWith = newSharedWith.filter((user) => user !== newAdmin._id)
+        console.log(newSharedWith)
+        data = {
+          shared_with: newSharedWith,
+          admin: newAdmin._id
+        }
+        console.log(data)
+      }
+      const response = updateGroup(data, cookies.authorization, groupDetails._id)
+      navigate('/groups')
+    }
+
    return (
     <div>
       <div>
@@ -100,6 +125,7 @@ export default function GroupDetails() {
         <header className="fake-header">
           <p className="page-title">Group details</p>
           {groupDetails?.admin && <p className="admin">Admin: {groupDetails.admin.name}</p>}
+          <button onClick={handleLeaveGroup}>LEAVE GROUP</button>
         </header>
   
         {/* IMPORTANT! All page content goes in the body class */}
