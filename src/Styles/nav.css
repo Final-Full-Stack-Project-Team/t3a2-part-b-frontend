@@ -24,6 +24,7 @@ body {
     color: var(--font-color); 
     margin-left: 0em;
     margin-top: 0.4em; 
+	white-space: nowrap;
 }
 
 

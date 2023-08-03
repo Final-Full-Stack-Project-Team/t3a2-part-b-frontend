@@ -176,7 +176,7 @@ export default function ListPage() {
                 
               </div>
             ) : (
-              <p>{list && listName}</p>
+              <p className="list-page-title">{list && listName}</p>
             )}
             {/* Add buttons to the list-buttons div */}
             <div className="list-buttons">
