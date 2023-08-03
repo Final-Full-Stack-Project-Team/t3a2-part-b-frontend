@@ -13,7 +13,6 @@
 
 .remove-group-icons {
     display: none;
-    cursor: pointer;
     color: #f2f2f2;
     position: inherit;
     float: right;
@@ -22,6 +21,7 @@
 }
 
 .remove-group-icon {
+    cursor: pointer;
     background:none;
     border: none;
     color: var(--font-color);
