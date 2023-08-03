@@ -5,7 +5,7 @@ import { useCookies } from 'react-cookie';
 import NavMenu from "../Components/NavMenu";
 import "../Styles/group-details.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisVertical, faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsisVertical, faUserPlus, faX } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
 import AddGroupMember from '../Components/AddGroupMember';
 import { findUser } from '../services/UserServices';
@@ -185,13 +185,16 @@ export default function GroupDetails() {
                     {groupDetails.shared_with.map((user) => (
                       <div className="shared_with" key={user._id}>
                         {user.email}
-                        <button onClick={() => {handleRemoveUser(user._id)}}>REMOVE ICON</button>
+                        <div className='remove-group-icons'>
+                        <button className='remove-group-icon' onClick={() => {handleRemoveUser(user._id)}}><FontAwesomeIcon icon={faX}/></button>
+                        </div>
+                        
                         </div>
                     ))}
                   </div>
                 )}
               <div>
-                <button onClick={handleupdateGroup} className='update-button'>UPDATE</button>
+                <Link to="/groups" onClick={handleupdateGroup} className='update-button'>UPDATE</Link>
               </div>
 
               <div>
