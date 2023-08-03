@@ -1,5 +1,4 @@
 import NavMenu from "../Components/NavMenu";
-import "../Styles/pages.css";
 import "../Styles/lists.css"
 import { useCookies } from "react-cookie"
 import { useUserData } from "../contexts/UserContext"
@@ -7,9 +6,9 @@ import { useEffect, useState } from "react"
 import { findUser } from "../services/UserServices.js"
 import { deleteList, editList, findAllLists } from "../services/ListServices";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserGroup} from '@fortawesome/free-solid-svg-icons'
-import { Link, useNavigate } from "react-router-dom";
-import NoLists from "../Components/NoLists";
+import { faUserGroup, faTrash, faArrowRotateLeft } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from "react-router-dom";
+import NoCompleted from "../Components/NoCompleted";
 import DeleteList from "../Components/DeleteList";
 // import { useStartTyping } from "react-use";
 
@@ -19,9 +18,10 @@ export default function ListsPage() {
     const [lists, setLists] = useState([])
     const userData = useUserData()
     const cookie = `Bearer ${cookies.authorization}`
+    // eslint-disable-next-line
     const navigate = useNavigate()
 
-    const [displayDelete, SetDisplayDelete] = useState()
+    const [displayDeleteForList, setDisplayDeleteForList] = useState(null);
     
     const handleLogout = () => {
         removeCookie('authorization')
@@ -29,7 +29,7 @@ export default function ListsPage() {
     }
     
     useEffect(() => {
-        let user = userData?._id
+        let user = userData?.email
         if (user) {
             findUser(user)
             .then((response) => {
@@ -63,8 +63,8 @@ export default function ListsPage() {
          setIsNavMenuOpen(prevState => !prevState);
      };
     
-    function handleShowDelete() {
-        SetDisplayDelete(!displayDelete)
+     function handleShowDelete(listId) {
+        setDisplayDeleteForList(listId);
     }
 
     async function handleDeleteList(_id) {
@@ -87,29 +87,48 @@ export default function ListsPage() {
             </div>
             <div className={isNavMenuOpen ? "nav-closed" : "nav-open" }>
                 <header className="fake-header">
-                    <p className="page-title">Completed Lists</p>
-                    <p className="lists-count">{lists.length} List{lists.length !== 1 ? 's' : '' }</p>
+                    <p className="page-heading">Completed Lists</p>
+                    <p className="page-sub-heading">{lists.length} List{lists.length !== 1 ? 's' : '' }</p>
                 </header> 
 
-                {/* IMPORTANT! All page content goes in the body class */}
-                <div className="body">
+                <div className="page-contents">
                     {lists.length > 0 ? (lists.map((list) => {
                         return (
-                            <div className="lists-container" key={list._id}>
+                            <div className="completed-lists-container" key={list._id}>
                                 <p className="lists-icon">
                                     <FontAwesomeIcon icon={faUserGroup} /> 
                                 </p>
-                                <Link className="lists-label">
+                                <p className="lists-label">
                                     {list.name}
-                                </Link>
-                                <button onClick={() => handleSetActiveList(list._id)} style={{marginLeft: "50px"}}>RESTORE ICON</button>
-                                <button onClick={handleShowDelete} style={{marginLeft: "50px"}}>DELETE ICON</button>
-                                {displayDelete && <DeleteList handleCancel={handleShowDelete} handleDelete={() => handleDeleteList(list._id)} />}
+                                </p>
+                                <div className="completed-icons">
+                                    <button
+                                        className="completed-restore-icon"
+                                        onClick={() => handleSetActiveList(list._id)}
+                                        style={{ marginLeft: "50px" }}
+                                    >
+                                        <FontAwesomeIcon icon={faArrowRotateLeft} />
+                                    </button>
+                                    <button
+                                        className="completed-trash-icon"
+                                        onClick={() => handleShowDelete(list._id)}
+                                        style={{ marginLeft: "50px" }}
+                                    >
+                                        <FontAwesomeIcon icon={faTrash} />
+                                    </button>
+                                    
+                                </div> 
+                                {displayDeleteForList === list._id && (
+                                        <DeleteList
+                                            handleCancel={() => handleShowDelete(null)}
+                                            handleDelete={() => handleDeleteList(list._id)}
+                                        />
+                                    )}
                             </div>
                         );
                     })    
                         ) : (
-                            <NoLists/>
+                            <NoCompleted/>
                         )}
                     </div>     
                 </div>

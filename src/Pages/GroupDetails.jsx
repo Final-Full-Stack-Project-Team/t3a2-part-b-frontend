@@ -43,11 +43,11 @@ export default function GroupDetails() {
       </div>
       <div className={isNavMenuOpen ? 'nav-closed' : 'nav-open'}>
         <header className="fake-header">
-          <p className="page-title">Group details</p>
-          {groupDetails?.admin && <p className="admin">Admin: {groupDetails.admin.name}</p>}
+          <p className="page-heading">Edit Group</p>
+          {groupDetails?.admin && <p className="page-sub-heading">Admin: {groupDetails.admin.name}</p>}
         </header>
   
-        {/* IMPORTANT! All page content goes in the body class */}
+        
         <div className="group-details-body">
           {groupDetails ? (
             <div>

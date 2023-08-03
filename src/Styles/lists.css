@@ -1,11 +1,3 @@
-.lists-count {
-    margin-left: -5.85em;
-    margin-bottom: 4em;
-    margin-top: 1.4em;
-    font-size: 1em;
-    font-weight: 500;
-    color: #B5B5B5;
-}
 
 .lists-container {
     border-top: 1px solid var(--light-grey);
@@ -50,65 +42,69 @@
     color: #424242;
 }
 
-.overlay {
-    position: fixed;
-    top: 25px;
-    right: 0;
-    width: 30vw;
-    height: 30vw;
-    background-color: grey;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.completed-lists-container {
+    border-top: 1px solid var(--light-grey);
+    margin-right: 0em;
+    padding-top: 2em;
+    padding-bottom: 2em;
 }
 
-.overlay-content {
-    color: white;
-    padding: 5px;
-    font-size: 13px;
+.completed-lists-container:first-child {
+    border-top: 1px solid var(--green)
 }
 
-.list-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2vh;
+.completed-lists-container:last-child {
+    border-bottom: 1px solid var(--light-grey)
 }
 
-.list-header h2 {
-    color: white;
-    font-size: 15px;
+.completed-lists-container:first-child {
+    margin-top: -0.4em;
 }
 
-.list-items {
-    display: flex;
+.completed-lists-container:hover {
+    background-color: var(--dark-grey)
 }
 
-.list-items input {
-    margin-right: 5vw;
+.completed-lists-container:hover .completed-icons {
+    display: block;
 }
 
-.delete-overlay {
-    position: fixed;
-    top: 35vh;
-    right: 15vw;
-    width: 75vw;
-    height: 30vw;
-    background-color: grey;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.completed-icons {
+    display: none;
+    cursor: pointer;
+    color: var(--font-color);
+    position: absolute;
+    right: 1em; 
+    margin-right: 1em;
+    margin-top: -1em;
+    background: none;
+    cursor: pointer;
 }
 
-.delete-content {
-    color: white;
-    padding: 5px;
-    text-align: center;
+.completed-trash-icon {
+    color: var(--font-color);
+    background: none;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
 }
 
-.delete-buttons {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 5px;
+.completed-restore-icon {
+    background: none;
+    border: none;
+    color: var(--font-color);
+    font-size: 1em;
+    cursor: pointer;
+    margin-right: -1.5em;
+}
+
+.completed-lists-label {
+    margin-left: 1.2em;
+    display: inline-block;
+    color: #f2f2f2;
+    text-decoration: none;
+    cursor: auto;
+
 }
 
 @media only screen and (min-width: 1200px) {
@@ -116,7 +112,7 @@
         padding-top: 1em;
         padding-bottom: 1em;
         margin-left: 1em;
-        margin-right: 0.42em;
+        /* margin-right: 0.42em; */
     }
     .lists-icon {
         margin-left: 1em;  
@@ -125,4 +121,25 @@
     .lists-count {
         margin-left: -5.9em;
     }
+
+    .completed-lists-container {
+        padding-top: 1em;
+        padding-bottom: 1em;
+        margin-left: 1em;
+        /* margin-right: 0.42em; */
+    }
+
+    .completed-list-icons { 
+        margin-right: 2em;
+    }
+    
+    .completed-trash-icon {
+        margin-left: 0.4em;
+        
+    }
+    .completed-restore-icon {
+        margin-right: -0.5em;
+        
+    }
+      
 }
