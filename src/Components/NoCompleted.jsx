@@ -9,7 +9,7 @@ export default function NoCompleted() {
                 You have no Completed Lists.
             </p> 
             <p className="create-list-label">
-                View your active lists in the My Lists tab
+                View your active lists in "My Lists"
             </p> 
            
             <p className="completed-icon">

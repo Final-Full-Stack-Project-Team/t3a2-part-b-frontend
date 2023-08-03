@@ -122,7 +122,6 @@
 .add-item {
     background: none;
     padding: 1em 1em 1em 0em;
-    border-radius: 6px;
     font-size: 1em;
     margin-top: 1em;
     margin-left: 2.8em;
@@ -130,8 +129,7 @@
     border:none;
     caret-color: var(--green);
     width: 90%;
-    outline: none;
-    
+    outline: none;    
 }
 
 .checkbox {
