@@ -66,6 +66,7 @@ export default function Groups(props) {
                   <NoGroups />
                 </div>
               )}
+              <Link to={'/groups/add'}>ADD GROUP BUTTON</Link>
             </div>
           </div>
         </div>

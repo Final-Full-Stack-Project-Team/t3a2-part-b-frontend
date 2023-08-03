@@ -38,6 +38,7 @@ export default function SignInForm() {
                 type: "login",
                 data: localData
             })
+            console.log(loginResult)
             const expirationDate = new Date();
             expirationDate.setDate(expirationDate.getDate() + 7)
 

@@ -7,6 +7,7 @@ import Groups from './Pages/Groups'
 import MyLists from './Pages/MyLists'
 import ListPage from './Pages/ListPage';
 import GroupDetails from './Pages/GroupDetails';
+import CreateGroupPage from './Pages/CreateGroupPage';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
 				<Route path ='completed' element={<Completed/>} />
 				<Route path ='groups' element={<Groups/>} />
 				<Route path="/groups/:groupId" element={<GroupDetails />} />
+				<Route path='/groups/add' element={<CreateGroupPage />} />
 			</Routes>
 		</React.Fragment>
 	);
