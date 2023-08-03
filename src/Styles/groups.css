@@ -19,7 +19,7 @@
     border-top: 1px solid var(--green)
 }
 
-.groups-container:last-child {
+.groups-container:last-of-type {
     border-bottom: 1px solid var(--light-grey)
 }
 
@@ -59,6 +59,20 @@
     margin-left: 3.5em;
     color: #7c7c7c;
 }
+
+.add-btn {
+    position: relative;
+    width: 1.5em;
+    margin-top: 1em;
+    margin-right: 2em;
+    margin-bottom: 2em;
+    float: right;
+    font-size: 2em;   
+}
+    
+
+    
+
 
 @media only screen and (min-width: 1200px) {
     .groups-container {
