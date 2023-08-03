@@ -92,6 +92,9 @@ header .nav-btn {
     font-size: 1.5em;
     font-weight: 500;
     display: inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .page-sub-heading {
@@ -103,6 +106,10 @@ header .nav-btn {
     font-size: 1em;
     font-weight: 500;
     color: #7c7c7c;
+	white-space: nowrap;
+	overflow: hidden;
+    text-overflow: ellipsis;
+	
 }
 
 .nav-body {

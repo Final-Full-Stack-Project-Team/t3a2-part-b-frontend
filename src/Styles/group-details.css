@@ -49,6 +49,8 @@
     caret-color: var(--green);
     width: 95%;
     outline: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .add-people::placeholder{
@@ -56,10 +58,11 @@
 }
 
 .shared_with {
-    
     flex-direction: column;
     border-top: 1px solid var(--light-grey);
     padding: 1em 1em 1em 2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .shared_with:hover {
@@ -77,9 +80,10 @@
 .group-date {
     margin: 0.5em 0em 0em 0.5em;
     color: #7c7c7c;
+    white-space: nowrap;
+	overflow: hidden;
+    text-overflow: ellipsis;
 }
-
-
 
 .update-button {
     float: right;
