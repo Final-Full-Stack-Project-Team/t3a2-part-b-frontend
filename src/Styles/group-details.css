@@ -167,6 +167,7 @@
     font-size: 1em;
     cursor: pointer;
     color: #212121;
+    text-decoration: none;
 }
 
 .cancel {
