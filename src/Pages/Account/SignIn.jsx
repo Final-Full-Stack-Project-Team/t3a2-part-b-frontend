@@ -7,7 +7,7 @@ export default function SignInPage() {
         <div className="sign-in-all-contents">
             <p className="sign-in-title">SIGN IN</p> <br />
             <SignInForm />
-            <Link className="forgot-pw" to={''}>I forgot my password</Link>
+            
         </div>
     )
 }

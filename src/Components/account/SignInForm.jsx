@@ -61,17 +61,19 @@ export default function SignInForm() {
     return (
         <div className="sign-in-body">
             <form onSubmit={handleFormSubmit}>
-                <label className="credentials-label">Email:</label> <br />
+                
+                <label className="credentials-label">Email</label> <br />
                 <input className="credentials-field" type="text" onChange={handleEmailChange}></input> <br />
 
-                <label className="credentials-label" >Password:</label> <br />
+                <label className="credentials-label" >Password</label> <br />
                 <input className="credentials-field" type="password" onChange={handlePasswordChange}></input> <br />
-                {response && <p className="incorrect-pw" >{response}</p>}
-                <p className="dont-have-an-account" >Don't have an account?</p> 
-            
-                <Link className="sign-up-link" to={`/sign-up`}>SIGN UP</Link> <br />
+                {response && <p className="incorrect-pw" >{response} <br /> <Link className="forgot-pw" to={''}>I forgot my password</Link></p>}
+                
                 <Link className="cancel-link" to={`/`} >CANCEL</Link><br />
                 <button className="signin-btn" type="submit">SIGN IN</button>
+
+                <p className="dont-have-an-account" ><span className="new-to-text">New to MinimaList?</span><Link className="sign-up-link" to={`/sign-up`}>Join now</Link></p> 
+            
             </form>
             
         </div>
