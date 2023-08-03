@@ -5,7 +5,6 @@
     flex-direction: column;
     margin-top: 3em;
     height: 100%;
-    
 }
 
 .no-groups-label {
@@ -29,6 +28,8 @@
     color: #424242;
     font-size: 8em;
 }
+
+
 
 @media only screen and (min-width: 1200px) {
     .no-groups-body {

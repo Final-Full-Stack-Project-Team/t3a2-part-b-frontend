@@ -12,6 +12,7 @@
     margin-right: 0em;
     padding-top: 2em;
     padding-bottom: 2em;
+    display: flex;
 }
 
 .groups-container:first-child {
@@ -36,6 +37,8 @@
     margin-left: 1.2em;
     display: inline-block;
     color: #f2f2f2;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .groups-label:link {

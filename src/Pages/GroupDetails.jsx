@@ -133,9 +133,11 @@ export default function GroupDetails() {
           {groupDetails?.admin && <p className="admin">Admin: {groupDetails.admin.name}</p>}
           <button onClick={handleLeaveGroup}>LEAVE GROUP</button>
           <button onClick={handleDeleteGroup}>DELETE GROUP</button>
+          <p className="page-heading">Edit Group</p>
+          {groupDetails?.admin && <p className="page-sub-heading">Admin: {groupDetails.admin.name}</p>}
         </header>
   
-        {/* IMPORTANT! All page content goes in the body class */}
+        
         <div className="group-details-body">
           {groupDetails ? (
             <div>

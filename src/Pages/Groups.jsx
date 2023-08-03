@@ -4,7 +4,6 @@ import { useCookies } from "react-cookie";
 // import { useGroupData } from "../reducers/GroupReducer";
 import NavMenu from "../Components/NavMenu";
 import "../Styles/groups.css";
-import "../Styles/pages.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserGroup} from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
@@ -43,14 +42,14 @@ export default function Groups(props) {
           </div>
           <div className={isNavMenuOpen ? 'nav-closed' : 'nav-open'}>
             <header className="fake-header">
-              <p className="page-title">Groups</p>
-              <p className="groups-count">
+              <p className="page-heading">Groups</p>
+              <p className="page-sub-heading">
                 {groups.length} Group{groups.length !== 1 ? 's' : ''}
               </p>
             </header>
     
             {/* IMPORTANT! All page content goes in the body class */}
-            <div className="body">
+            <div className="page-contents">
               {groups.length > 0 ? (
                 groups.map((group) => (
                   <div className="groups-container" key={group._id}>
