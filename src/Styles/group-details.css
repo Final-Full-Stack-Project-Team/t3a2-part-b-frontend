@@ -25,7 +25,6 @@
     background:none;
     border: none;
     color: var(--font-color);
-    cursor: pointer;
 }
 
 .shared_with:hover .remove-group-icons {

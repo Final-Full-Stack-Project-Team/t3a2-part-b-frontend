@@ -12,6 +12,7 @@ import { findUser } from '../services/UserServices';
 import { useUserData } from '../contexts/UserContext';
 import GroupOptions from "../Components/GroupOptions"
 
+
 export default function GroupDetails() {
   const { groupId } = useParams();
   const [groupDetails, setGroupDetails] = useState(null);

@@ -7,6 +7,20 @@
     color: #7c7c7c;
 }
 
+.add-user-icon {
+    position: relative;
+    float: right;
+    right: 0;
+    background: none;
+    border: none;
+    border-radius: 5em;
+    cursor: pointer;
+    margin-top: -3.2em;
+    margin-right: 1.7em;
+    font-size: 0.1;
+}
+
+
 .groups-container {
     border-top: 1px solid var(--light-grey);
     margin-right: 0em;
