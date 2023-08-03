@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { findGroup, updateGroup } from '../services/GroupServices';
+import { deleteGroup, findGroup, updateGroup } from '../services/GroupServices';
 import { useCookies } from 'react-cookie';
 import NavMenu from "../Components/NavMenu";
 import "../Styles/group-details.css";
@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import AddGroupMember from '../Components/AddGroupMember';
 import { findUser } from '../services/UserServices';
 import { useUserData } from '../contexts/UserContext';
+import { async } from 'q';
 
 export default function GroupDetails() {
   const { groupId } = useParams();
@@ -111,7 +112,12 @@ export default function GroupDetails() {
         }
         console.log(data)
       }
-      const response = updateGroup(data, cookies.authorization, groupDetails._id)
+      const response = await updateGroup(data, cookies.authorization, groupDetails._id)
+      navigate('/groups')
+    }
+
+    async function handleDeleteGroup() {
+      deleteGroup(cookies.authorization, groupDetails._id)
       navigate('/groups')
     }
 
@@ -126,6 +132,7 @@ export default function GroupDetails() {
           <p className="page-title">Group details</p>
           {groupDetails?.admin && <p className="admin">Admin: {groupDetails.admin.name}</p>}
           <button onClick={handleLeaveGroup}>LEAVE GROUP</button>
+          <button onClick={handleDeleteGroup}>DELETE GROUP</button>
         </header>
   
         {/* IMPORTANT! All page content goes in the body class */}

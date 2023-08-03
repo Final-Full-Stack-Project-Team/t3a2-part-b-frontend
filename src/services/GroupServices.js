@@ -45,3 +45,15 @@ export async function updateGroup(data, cookie, _id){
 })
 return response.json()
 }
+
+export async function deleteGroup(cookie, _id){
+  const response = await fetch(`${api}/groups/${_id}`, {
+    method: "DELETE",
+    headers:{
+        'Content-type':"application/json",
+        Authorization: `Bearer ${cookie}`,
+    }
+})
+return response.json()
+}
+
