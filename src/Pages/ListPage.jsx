@@ -38,7 +38,7 @@ export default function ListPage() {
     const [updatedListName, setUpdatedListName] = useState(""); 
 
     useEffect(() => {
-        let user = userData?._id
+        let user = userData?.email
         if (user) {
             findList(_id._id, cookie)
             .then((response) => {
@@ -135,7 +135,7 @@ export default function ListPage() {
         const response = await editList(_id._id, data, cookie)
         const checkIfDoubleUp = items.some((item) => item.toString(data))
         if (checkIfDoubleUp) {
-            console.log("this happened")
+            return
         }
         const newItemArray = response.items
         console.log(newItemArray)
