@@ -81,6 +81,15 @@ export default function GroupDetails() {
       console.log(response)
     }
 
+    async function handleRemoveUser(user_id) {
+      const newGroupMemberArray = groupDetails.shared_with.filter((user) => user._id !== user_id )
+      const updatedGroupDetails = {
+        ...groupDetails,
+        shared_with: newGroupMemberArray
+      }
+      setGroupDetails(updatedGroupDetails)
+    }
+
    return (
     <div>
       <div>
@@ -120,7 +129,10 @@ export default function GroupDetails() {
               {groupDetails?.shared_with && groupDetails.shared_with.length > 0 && (
                   <div >
                     {groupDetails.shared_with.map((user) => (
-                      <div className="shared_with" key={user.id}>{user.email}</div>
+                      <div className="shared_with" key={user._id}>
+                        {user.email}
+                        <button onClick={() => {handleRemoveUser(user._id)}}>REMOVE ICON</button>
+                        </div>
                     ))}
                   </div>
                 )}
