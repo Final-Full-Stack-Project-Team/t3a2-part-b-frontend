@@ -20,7 +20,7 @@
 .list-buttons {
     /* display: flex; */
     margin-top: 1rem; 
-    margin-right: -1rem
+    margin-right: 1rem
   }
   .list-buttons button { 
     margin: 0.1rem; 

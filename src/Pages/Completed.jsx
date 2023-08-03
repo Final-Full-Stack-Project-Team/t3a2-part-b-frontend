@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 import { findUser } from "../services/UserServices.js"
 import { deleteList, editList, findAllLists } from "../services/ListServices";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserGroup} from '@fortawesome/free-solid-svg-icons'
+import { faUserGroup, faTrash, faArrowRotateLeft } from '@fortawesome/free-solid-svg-icons'
 import { Link, useNavigate } from "react-router-dom";
 import NoCompleted from "../Components/NoCompleted";
 import DeleteList from "../Components/DeleteList";
@@ -95,16 +95,18 @@ export default function ListsPage() {
                 <div className="page-contents">
                     {lists.length > 0 ? (lists.map((list) => {
                         return (
-                            <div className="lists-container" key={list._id}>
+                            <div className="completed-lists-container" key={list._id}>
                                 <p className="lists-icon">
                                     <FontAwesomeIcon icon={faUserGroup} /> 
                                 </p>
-                                <Link className="lists-label">
+                                <Link className="completed-lists-label">
                                     {list.name}
                                 </Link>
-                                <button onClick={() => handleSetActiveList(list._id)} style={{marginLeft: "50px"}}>RESTORE ICON</button>
-                                <button onClick={handleShowDelete} style={{marginLeft: "50px"}}>DELETE ICON</button>
-                                {displayDelete && <DeleteList handleCancel={handleShowDelete} handleDelete={() => handleDeleteList(list._id)} />}
+                                <div className="completed-icons">
+                                    <button className="completed-restore-icon"onClick={() => handleSetActiveList(list._id)} style={{marginLeft: "50px"}}><FontAwesomeIcon icon={faArrowRotateLeft} /></button>
+                                    <button className="completed-trash-icon" onClick={handleShowDelete} style={{marginLeft: "50px"}}><FontAwesomeIcon icon={faTrash} /></button>
+                                    {displayDelete && <DeleteList handleCancel={handleShowDelete} handleDelete={() => handleDeleteList(list._id)} />}
+                                </div>  
                             </div>
                         );
                     })    
