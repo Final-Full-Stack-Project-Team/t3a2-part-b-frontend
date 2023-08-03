@@ -65,12 +65,12 @@
     background-color: var(--dark-grey)
 }
 
-.completed-lists-container:hover .completed-icons {
+/* .completed-lists-container:hover .completed-icons {
     display: block;
-}
+} */
 
 .completed-icons {
-    display: none;
+    /* display: none; */
     cursor: pointer;
     color: var(--font-color);
     position: absolute;
