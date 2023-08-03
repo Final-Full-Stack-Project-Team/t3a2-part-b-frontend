@@ -22,6 +22,18 @@ export async function findAllLists(cookie){
     return response.json()
 }
 
+export async function createList(cookie, data){
+    const response = await fetch(`${api}/lists/create`, {
+        method: "POST",
+        headers:{
+            'Content-type':"application/json",
+            Authorization: cookie
+        },
+        body: JSON.stringify(data)
+    })
+    return response.json()
+}
+
 export async function editList(_id, data, cookie){
     const response = await fetch(`${api}/lists/modify/${_id}`, {
         method: "PUT",

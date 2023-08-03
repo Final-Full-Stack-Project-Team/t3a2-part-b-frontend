@@ -67,6 +67,7 @@ export default function ListsPage() {
                 <header className="fake-header">
                     <p className="page-heading">My Lists</p>
                     <p className="page-sub-heading">{lists.length} List{lists.length !== 1 ? 's' : '' }</p>
+                    <Link to={'/list/create'}>CREATE LIST</Link>
                 </header> 
 
                 {/* IMPORTANT! All page content goes in the body class */}

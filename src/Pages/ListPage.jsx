@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { useNavigate, useParams } from "react-router"
+import { useLocation, useNavigate, useParams } from "react-router"
 import { deleteList, editList, findList } from "../services/ListServices"
 import { useUserData } from "../contexts/UserContext"
 import { useCookies } from "react-cookie"
@@ -12,6 +12,7 @@ import NoItems from "../Components/NoItems";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisVertical, faUserPlus, faCheck, faPenToSquare, faX } from '@fortawesome/free-solid-svg-icons'
 import "../Styles/list-page.css";
+import { Link } from "react-router-dom"
 
 export default function ListPage() {
     // eslint-disable-next-line
@@ -20,6 +21,7 @@ export default function ListPage() {
     const _id = useParams()
     const userData = useUserData()
     const navigate = useNavigate()
+    const location = useLocation()
     
     const [items, setItems] = useState([])
     const [list, setList] = useState()
@@ -180,7 +182,7 @@ export default function ListPage() {
             )}
             {/* Add buttons to the list-buttons div */}
             <div className="list-buttons">
-              <button className="add-person"><FontAwesomeIcon className="add-person-icon" icon={faUserPlus} size="1x"/></button>
+              <button className="add-person"><Link to={`${location.pathname}/share`}><FontAwesomeIcon className="add-person-icon" icon={faUserPlus} size="1x"/></Link></button>
               <button className="list-options" onClick={handleOptions}>
               <FontAwesomeIcon icon={faEllipsisVertical} size="2x" />
               </button>
