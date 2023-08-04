@@ -5,9 +5,10 @@ import { useCookies } from "react-cookie";
 import NavMenu from "../Components/NavMenu";
 import "../Styles/groups.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserGroup} from '@fortawesome/free-solid-svg-icons'
+import { faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
 import NoGroups from "../Components/NoGroups";
+import PlusIcon from "../images/PlusIcon.svg";
 
 export default function Groups(props) {
     const [cookies] = useCookies();
@@ -46,6 +47,7 @@ export default function Groups(props) {
               <p className="page-sub-heading">
                 {groups.length} Group{groups.length !== 1 ? 's' : ''}
               </p>
+              <Link className="add-group-btn" to={'/groups/add'}><img className="add-btn" src={PlusIcon} alt="PlusIcon"/></Link>
             </header>
     
             {/* IMPORTANT! All page content goes in the body class */}
@@ -66,6 +68,8 @@ export default function Groups(props) {
                   <NoGroups />
                 </div>
               )}
+              
+              
             </div>
           </div>
         </div>

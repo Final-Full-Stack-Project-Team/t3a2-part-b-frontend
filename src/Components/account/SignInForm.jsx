@@ -4,6 +4,7 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../services/UserServices";
 import { Link } from "react-router-dom";
+import "../../Styles/sign-in-up.css";
 
 
 export default function SignInForm() {
@@ -38,6 +39,7 @@ export default function SignInForm() {
                 type: "login",
                 data: localData
             })
+            console.log(loginResult)
             const expirationDate = new Date();
             expirationDate.setDate(expirationDate.getDate() + 7)
 
@@ -55,19 +57,26 @@ export default function SignInForm() {
         
     }
 
+ 
+
     return (
-        <div>
+        <div className="sign-in-body">
             <form onSubmit={handleFormSubmit}>
-                <label>Email:</label> <br />
-                <input type="text" onChange={handleEmailChange}></input> <br />
-                <label>Password:</label> <br />
-                <input type="password" onChange={handlePasswordChange}></input> <br />
-                <label>Don't have an account?</label> <br />
-                <Link to={`/sign-up`}>SIGN UP</Link> <br />
-                <Link to={`/`} style={{ display:"flex", justifyContent:"end", marginTop:"-20px" }}>CANCEL</Link><br />
-                <button type="submit">SIGN IN</button>
+                
+                <label className="credentials-label">Email</label> <br />
+                <input className="credentials-field" type="text" onChange={handleEmailChange}></input> <br />
+
+                <label className="credentials-label" >Password</label> <br />
+                <input className="credentials-field" type="password" onChange={handlePasswordChange}></input> <br />
+                {response && <p className="incorrect-pw" >{response} <br /> <Link className="forgot-pw" to={''}>I forgot my password</Link></p>}
+                
+                <Link className="cancel-link" to={`/`} >CANCEL</Link><br />
+                <button className="signin-btn" type="submit">SIGN IN</button>
+
+                <p className="dont-have-an-account" ><span className="new-to-text">New to MinimaList?</span><Link className="sign-up-link" to={`/sign-up`}>Join now</Link></p> 
+            
             </form>
-            {response && <p>{response}</p>}
+            
         </div>
     )
 }

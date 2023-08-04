@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-top: 3em;
+    margin-top: 2em;
     height: 100%;
 }
 
@@ -34,5 +34,6 @@
 @media only screen and (min-width: 1200px) {
     .no-groups-body {
         margin-right: 1.7em;
+        margin-top: 5em;
     }
 }

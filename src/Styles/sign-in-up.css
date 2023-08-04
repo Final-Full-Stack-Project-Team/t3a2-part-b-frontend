@@ -1,0 +1,141 @@
+.sign-in-all-contents {
+    display: flex;
+    justify-content: center;
+    flex-direction: column; 
+    align-items: center; 
+    color: #f2f2f2; 
+    margin-top: 3em;
+}
+
+.sign-in-title {
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.sign-in-body {
+    width: 80%;
+}
+
+.credentials-field {
+    width: 100%;
+    display: flex;
+    margin: auto;
+    margin-top: -1em;
+    padding: 1em;
+    background-color: #212121;
+    height: 3em;
+    border: none;
+    border-radius: 0.4em;
+    outline: none;
+    color: var(--font-color);
+    font-size: 1em;
+}
+
+.credentials-label {
+    width: 100%;
+    margin-bottom: -1em;
+    display: flex;
+    margin: auto;
+}
+
+.incorrect-pw {
+    margin-top: -1em;
+    margin-bottom: 1em;
+    color: #E43232;
+    display: flex;
+    justify-content: center;
+    flex-direction: column; 
+    align-items: center; 
+}
+
+
+
+.forgot-pw {
+    font-size: 1em;
+    color: #949494;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+
+.sign-up-link {
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 500;
+    
+}
+
+.dont-have-an-account {
+    margin-top: 2em;
+    font-weight: 500;
+    color: #949494;
+    display: flex;
+    justify-content: center;
+    margin-top: 3em;
+    flex-direction: row; 
+  
+}
+
+.new-to-text {
+    margin-right: 8px;
+}
+
+.sign-in-link {
+    display: flex;
+    justify-content: center;
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 0.5em;  
+    margin-bottom: 3em; 
+    display: inline-block;
+}
+
+
+.signin-btn {
+    display: flex;
+    float: right;
+    align-items: center; 
+    margin-top: -2em;
+    margin-bottom: 1.5em;
+    background-color: #65AFDF;
+    padding: 0.8em 2em 0.8em 2em;
+    border: none;
+    border-radius: 4em;
+    font-weight: 600;
+    font-size: 1em;
+    color: var(--black);
+    cursor: pointer;
+    margin-right: 2em;
+}
+
+.cancel-link {
+    color: var(--font-color);
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 500;
+    color: #949494;
+    margin-top: 1em;
+    margin-left: 2em;
+}
+
+@media only screen and (min-width: 600px) {
+    .sign-in-body {
+        width: 20em;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .sign-in-all-contents {
+        display: flex;
+        justify-content: center;
+        margin-top: 3em;
+        flex-direction: column; 
+        align-items: center; 
+        color: #f2f2f2;
+    }
+    
+    
+}
