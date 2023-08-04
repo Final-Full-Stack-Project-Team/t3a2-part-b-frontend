@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { findAllGroups } from "../services/GroupServices"
 import { useCookies } from "react-cookie"
+import { addUserToList } from "../services/ListServices"
+import { useNavigate, useParams } from "react-router"
 
 
 export default function ShareList() {
@@ -11,6 +13,13 @@ export default function ShareList() {
     const [groups, setGroups] = useState([])
     const [checkedGroups, setCheckedGroups] = useState(new Set())
     const [selectedMembers, setSelectedMembers] = useState([])
+    const [displayError, setDisplayError] = useState('')
+
+    const [formSubmitted, setFormSubmitted] = useState(false)
+
+    const navigate = useNavigate()
+
+    const _id = useParams()
 
     useEffect(() => {
         findAllGroups(cookie)
@@ -32,22 +41,40 @@ export default function ShareList() {
       };
 
     // Handle form submission
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         const selectedMembersArray = new Set();
         checkedGroups.forEach((groupId) => {
         const group = groups.find((group) => group._id === groupId);
         if (group) {
             group.shared_with.forEach((member) => {
-                selectedMembersArray.add(member._id)
+                if (member._id !== group.admin) {
+                    selectedMembersArray.add(member._id)
+                }
             })
         }
         });
         setSelectedMembers(Array.from(selectedMembersArray));
+        setFormSubmitted(true)
     };
 
     useEffect(() => {
-        console.log(selectedMembers);
-      }, [selectedMembers]);
+        if (formSubmitted) {
+            const data = {
+                shared_with: selectedMembers
+            }
+    
+            console.log(data)
+            addUserToList(_id._id, cookie, data)
+            .then((response) => {
+                if(response.error) {
+                    console.log(response.error)
+                } else {
+                    navigate(`/list/${_id._id}`)
+                }
+            })
+        }
+
+    }, [formSubmitted])
 
     return(
         <div style={{color: "white"}}>

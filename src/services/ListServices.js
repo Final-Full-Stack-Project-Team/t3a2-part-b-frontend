@@ -56,3 +56,16 @@ export async function deleteList(_id, cookie){
     })
     return response.json()
 }
+
+export async function addUserToList(_id, cookie, data) {
+    console.log(data)
+    const response = await fetch(`${api}/lists/addUser/${_id}`, {
+        method: "PUT",
+        headers:{
+            'Content-type':"application/json",
+            Authorization: cookie
+        },
+        body: JSON.stringify(data)
+    })
+    return response.json()
+}
