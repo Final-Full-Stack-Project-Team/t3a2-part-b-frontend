@@ -1,9 +1,9 @@
 .group-overlay {
     position: fixed;
-    margin-top: -1.5em;
+    margin-top: 0em;
     margin-right: 1.1em;
     right: 0;
-    width: 10em;
+    width: 9em;
     height: 5em;
     background-color: #333333;
     display: flex;
