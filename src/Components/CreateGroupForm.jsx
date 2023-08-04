@@ -5,6 +5,8 @@ import { createGroup } from "../services/GroupServices"
 import { useCookies } from "react-cookie"
 import { useNavigate } from "react-router"
 import AddGroupMember from "./AddGroupMember"
+import NavMenu from "../Components/NavMenu";
+import { Link } from "react-router-dom";
 
 
 export default function CreateGroupForm() {
@@ -67,32 +69,59 @@ export default function CreateGroupForm() {
         }
     }
 
+    // State to track if the navigation menu is open or closed
+   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
+
+   // Function to toggle the navigation menu state
+   const toggleNavMenu = () => {
+       setIsNavMenuOpen(prevState => !prevState);
+   };
+
+
     return(
         <div>
-            <div className="form">
-                <input type="text" value={groupName} onChange={handleGroupNameChange} placeholder="Group name" />
-                <AddGroupMember submitGroupMemberAdd={submitGroupMemberAdd} />
+            <div>
+                {/* Pass the toggleNavMenu function and isNavMenuOpen state as props to NavMenu */}
+                <NavMenu toggleNavMenu={toggleNavMenu} isNavMenuOpen={isNavMenuOpen} />
             </div>
-            <div style={{ color: "white" }} className="member-list">
-                {groupAdmin && 
-                    <div>
-                        {groupAdmin.email}
+            <div className={isNavMenuOpen ? 'nav-closed' : 'nav-open'}>
+                <header className="fake-header">
+                    <p className="list-page-heading">Create Group</p>  
+                </header>
+                <div className="group-details-body">
+                    <input className="edit-group-name" type="text" value={groupName} onChange={handleGroupNameChange} placeholder="Group name" />
+                    <AddGroupMember submitGroupMemberAdd={submitGroupMemberAdd} />
+                </div>
+                <div style={{ color: "#f2f2f2" }} >
+                    {groupAdmin && 
+                        <div className="ng_shared_with">
+                            {groupAdmin.email}
+                        </div>
+                    }
+                    {groupMemberList && groupMemberList.map((member) => {
+                        return(
+                            <div className="ng_shared_with" key={member._id}>
+                                {member.email}
+                            </div>
+                        )
+                    })}
+                </div>
+                {groupMemberError && 
+                    <div style={{ color: "white" }} className="error">
+                        <p>{groupMemberError}</p>
                     </div>
                 }
-                {groupMemberList && groupMemberList.map((member) => {
-                    return(
-                        <div key={member._id} style={{ color: "white" }}>
-                            {member.email}
-                        </div>
-                    )
-                })}
+                <div>
+                <Link to="/groups" onClick={submitCreateGroup} className='ng-update-button'>CREATE</Link>
+              </div>
+
+              <div>
+                <Link to="/Groups">
+                    <button className="ng-cancel">CANCEL</button>
+                </Link>  
+              </div>
             </div>
-            {groupMemberError && 
-                <div style={{ color: "white" }} className="error">
-                    <p>{groupMemberError}</p>
-                </div>
-            }
-            <button onClick={submitCreateGroup}>CREATE GROUP BUTTON</button>
-        </div>
+    </div>
+            
     )
 }

@@ -1,9 +1,9 @@
 .group-overlay {
     position: fixed;
-    margin-top: -1.5em;
+    margin-top: 0em;
     margin-right: 1.1em;
     right: 0;
-    width: 10em;
+    width: 9em;
     height: 5em;
     background-color: #333333;
     display: flex;
@@ -148,6 +148,29 @@
     border-bottom: 1px solid var(--light-grey)
 }
 
+.ng_shared_with {
+    flex-direction: column;
+    border-top: 1px solid var(--light-grey);
+    padding: 1em 1em 1em 2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 87%;
+    margin: auto;
+}
+
+.ng_shared_with:hover {
+    background-color: #212121; ;
+}
+
+.ng_shared_with:first-child {
+    border-top: 1px solid var(--green)
+}
+
+.ng_shared_with:last-child {
+    border-bottom: 1px solid var(--light-grey)
+}
+
+
 .group-date {
     margin: 0.5em 0em 0em 0.5em;
     color: #7c7c7c;
@@ -190,6 +213,43 @@
     background-color: #a2f199;
 }
 
+.ng-update-button {
+    position:relative;
+    float: right;
+    margin: 1em 7% 2em 2em; 
+    padding: 0.8em 2.2em 0.8em 2.2em;
+    border-radius: 2em;
+    border: none;
+    background-color: var(--green);
+    font-weight: 600;
+    font-size: 1em;
+    cursor: pointer;
+    color: #212121;
+    text-decoration: none;
+}
+
+.ng-cancel {
+    position: absolute;
+    margin: 1em 0em 2em -0.3em; 
+    margin-left: 5%;
+    padding: 0.8em 2.2em 0.8em 2.2em;
+    border-radius: 4em;
+    border: none;
+    background: none;
+    font-weight: 500;
+    font-size: 1em;
+    cursor: pointer;
+    color: #949494;
+}
+
+.ng-cancel:hover {
+    color: #f2f2f2;
+}
+
+.ng-update-button:hover {
+    background-color: #a2f199;
+}
+
 @media only screen and (min-width: 1200px) {
 
     .group-details-body {
@@ -199,5 +259,19 @@
         padding: 10px;
         color: #f2f2f2;
         border: none;   
+    }
+
+    .ng_shared_with {
+        width: 48%;
+        margin: auto;
+    }
+
+    .ng-update-button {
+        margin-right: 26%; 
+    }
+
+    .ng-cancel {
+        position:inherit;
+        margin-left: 25%;
     }
 }

@@ -139,14 +139,20 @@ async function handleupdateGroup() {
       </div>
       <div className={isNavMenuOpen ? 'nav-closed' : 'nav-open'}>
         <header className="fake-header">
-          
-          
-          
           <p className="list-page-heading">Edit Group</p>
           {groupDetails?.admin && <p className="page-sub-heading">Admin: {groupDetails.admin.name}</p>}
-          <div className="group-buttons"><button onClick={handleOptions}>
-              <FontAwesomeIcon icon={faEllipsisVertical} size="2x" />
-              </button></div>
+          <div className="group-buttons">
+        <button onClick={handleOptions}>
+          <FontAwesomeIcon icon={faEllipsisVertical} size="2x" />
+        </button>
+        {showOptions && (
+          <GroupOptions
+            isAdmin={userData._id === groupDetails.admin._id}
+            handleLeaveGroup={handleLeaveGroup}
+            handleDeleteGroup={handleDeleteGroup}
+          />
+        )}
+              </div>
           
         </header>
         {/* <button onClick={handleLeaveGroup}>LEAVE GROUP</button>
@@ -154,12 +160,7 @@ async function handleupdateGroup() {
         
         <div className="group-details-body">
 
-        {showOptions && (
-            <GroupOptions 
-              handleLeaveGroup={handleLeaveGroup}
-              handleDeleteGroup={handleDeleteGroup}
-            />
-          )}
+        
           {groupDetails ? (
             <div>
 
