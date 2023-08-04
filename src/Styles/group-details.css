@@ -242,12 +242,99 @@
     color: #949494;
 }
 
+
+
 .ng-cancel:hover {
     color: #f2f2f2;
 }
 
 .ng-update-button:hover {
     background-color: #a2f199;
+}
+
+.new-list-body {
+    border: 5px solid;
+    margin: auto;
+    width: 90%;
+    padding: 10px;
+    border: none; 
+    outline: none;  
+}
+
+.new-list-label {
+    margin-top: 8em;
+}
+
+.new-list {
+    background-color: #212121;
+    padding: 1em 1em 1em 1.7em;
+    border-radius: 6px;
+    font-size: 1.2em;
+    font-weight: 500;   
+    margin-top: 0.5em;
+    margin-bottom: 2em;
+    color: #f2f2f2;
+    border:none;
+    caret-color: var(--green);
+    width: 100%;
+    outline: none;  
+}
+
+.nl-update-button {
+    position:relative;
+    float: right;
+    margin: 1em 7% 2em 2em; 
+    padding: 0.8em 2.2em 0.8em 2.2em;
+    border-radius: 2em;
+    border: none;
+    background-color: var(--green);
+    font-weight: 600;
+    font-size: 1em;
+    cursor: pointer;
+    color: #212121;
+    text-decoration: none;
+}
+
+
+.nl-update-button:hover {
+    background-color: #a2f199;
+}
+
+.nl-cancel {
+    position: absolute;
+    margin: 1em 0em 2em -0.3em; 
+    margin-left: 2%;
+    padding: 0.8em 2.2em 0.8em 2.2em;
+    border-radius: 4em;
+    border: none;
+    background: none;
+    font-weight: 500;
+    font-size: 1em;
+    cursor: pointer;
+    color: #949494;
+    text-decoration: none;
+}
+
+.nl-cancel:hover {
+    color: #f2f2f2;
+}
+
+.nl-update-button:hover {
+    background-color: #a2f199;
+}
+
+@media only screen and (min-width: 600px) {
+    .new-list-body {
+        width: 35em; 
+    }
+
+    .nl-update-button {
+        margin-right: 1%;
+    }
+
+    .nl-cancel {
+        margin-left: -1%;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -260,6 +347,8 @@
         color: #f2f2f2;
         border: none;   
     }
+
+    
 
     .ng_shared_with {
         width: 48%;

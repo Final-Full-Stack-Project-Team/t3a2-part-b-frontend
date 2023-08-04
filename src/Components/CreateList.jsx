@@ -41,12 +41,17 @@ export default function CreateList() {
     }
     
     return(
-        <div>
+        <div className="new-list-body">
             <form>
-                <input type="text" placeholder="List name" value={listName} onChange={handleListNameChange} />
-                <Link to={'/'}>CANCEL</Link>
+                <div className="new-list-label">
+                    <label className="new-list-label" for="listname">Create new list</label>
+                    <input label="sfasf" className="new-list" type="text" placeholder="List name" value={listName} onChange={handleListNameChange}></input>
+                </div>
+                
+                <div ><Link className='nl-cancel' to={'/'}>CANCEL</Link></div>
+                
             </form>
-            <button onClick={submitCreateList}>CREATE</button>
+            <Link to="/" className='nl-update-button' onClick={submitCreateList}>CREATE</Link>
             {listError && <div>{listError}</div>}
         </div>
     )
