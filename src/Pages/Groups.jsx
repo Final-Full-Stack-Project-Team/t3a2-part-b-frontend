@@ -47,6 +47,7 @@ export default function Groups(props) {
               <p className="page-sub-heading">
                 {groups.length} Group{groups.length !== 1 ? 's' : ''}
               </p>
+              <Link className="add-group-btn" to={'/groups/add'}><img className="add-btn" src={PlusIcon} alt="PlusIcon"/></Link>
             </header>
     
             {/* IMPORTANT! All page content goes in the body class */}
@@ -67,7 +68,7 @@ export default function Groups(props) {
                   <NoGroups />
                 </div>
               )}
-              <Link className="add-group-btn" to={'/groups/add'}><img className="add-btn" src={PlusIcon} alt="PlusIcon"/></Link>
+              
               
             </div>
           </div>

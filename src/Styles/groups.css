@@ -75,13 +75,12 @@
 }
 
 .add-btn {
-    position: relative;
+    position: absolute;
     width: 1.5em;
-    margin-top: 1em;
+    margin-top: -2.425em;
     margin-right: 2em;
-    margin-bottom: 2em;
-    float: right;
-    font-size: 2em;   
+    right: 0;
+    font-size: 1.5em;   
 }
     
 

@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck} from '@fortawesome/free-solid-svg-icons'
+import { faListCheck} from '@fortawesome/free-solid-svg-icons'
 import "../Styles/no-lists.css";
 
 export default function NoCompleted() {
@@ -9,11 +9,14 @@ export default function NoCompleted() {
                 You have no Completed Lists.
             </p> 
             <p className="create-list-label">
-                View your active lists in "My Lists"
+                Completed lists go here.
             </p> 
+            <p className="list-instructions-label">
+                View your active lists in "My Lists".
+            </p>
            
             <p className="completed-icon">
-            <FontAwesomeIcon icon={faCheck} /> 
+            <FontAwesomeIcon icon={faListCheck} /> 
             </p>
         </div>   
     )
