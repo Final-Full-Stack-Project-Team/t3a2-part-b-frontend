@@ -22,6 +22,18 @@ export async function findAllLists(cookie){
     return response.json()
 }
 
+export async function createList(cookie, data){
+    const response = await fetch(`${api}/lists/create`, {
+        method: "POST",
+        headers:{
+            'Content-type':"application/json",
+            Authorization: cookie
+        },
+        body: JSON.stringify(data)
+    })
+    return response.json()
+}
+
 export async function editList(_id, data, cookie){
     const response = await fetch(`${api}/lists/modify/${_id}`, {
         method: "PUT",
@@ -41,6 +53,19 @@ export async function deleteList(_id, cookie){
             'Content-type':"application/json",
             Authorization: cookie
         },
+    })
+    return response.json()
+}
+
+export async function addUserToList(_id, cookie, data) {
+    console.log(data)
+    const response = await fetch(`${api}/lists/addUser/${_id}`, {
+        method: "PUT",
+        headers:{
+            'Content-type':"application/json",
+            Authorization: cookie
+        },
+        body: JSON.stringify(data)
     })
     return response.json()
 }

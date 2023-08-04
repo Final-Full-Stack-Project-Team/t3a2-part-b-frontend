@@ -7,7 +7,10 @@ import Groups from './Pages/Groups'
 import MyLists from './Pages/MyLists'
 import ListPage from './Pages/ListPage';
 import GroupDetails from './Pages/GroupDetails';
+import CreateListPage from './Pages/CreateListPage';
+import ShareListPage from './Pages/ShareListPage';
 import CreateGroupPage from './Pages/CreateGroupPage';
+
 
 
 function App() {
@@ -16,6 +19,8 @@ function App() {
 			<Routes>
 				<Route path ='/' element={<MyLists/>} />
 				<Route path='/list/:_id' element={<ListPage />} />
+				<Route path='/list/create' element={<CreateListPage />} />
+				<Route path='/list/:_id/share' element={<ShareListPage />} />
 				<Route path='/sign-in' element={<SignInPage />} />
 				<Route path='/sign-up' element={<SignUpPage />} />
 				<Route path ='completed' element={<Completed/>} />
