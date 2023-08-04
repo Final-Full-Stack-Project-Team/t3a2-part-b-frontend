@@ -60,24 +60,29 @@ export default function SignUp() {
     }
 
     return (
-        <div>
+        <div className="sign-in-body">
             <form onSubmit={handleFormSubmit}>
-                <label>Email:</label> <br />
-                <input type="text" onChange={handleEmailChange} /> <br />
 
-                <label>Password:</label> <br /> 
-                <input type="password" onChange={handlePasswordChange} /> <br />
+                <label className="credentials-label">Name:</label> <br />
+                <input className="credentials-field" type="text" onChange={handleNameChange} /> <br />
 
-                <label>Name:</label> <br />
-                <input type="text" onChange={handleNameChange} /> <br />
+                <label className="credentials-label">Email:</label> <br />
+                <input className="credentials-field" type="text" onChange={handleEmailChange} /> <br />
 
-                <p>Already have an account?</p>
-                <Link to={'/sign-in'} >SIGN IN</Link> 
+                <label className="credentials-label">Password:</label> <br /> 
+                <input className="credentials-field" type="password" onChange={handlePasswordChange} /> <br />
+                {error && <p className="incorrect-pw">{error}</p>} <br />
 
-                <Link to={`/`} style={{ display:"flex", justifyContent:"end", marginTop:"-20px" }}>CANCEL</Link><br />
-                <button type="submit">SIGN UP</button>
+                <Link to={`/`} className="cancel-link">CANCEL</Link><br />
+                <button className="signin-btn" type="submit">SIGN UP</button>
+                <p className="dont-have-an-account" ><span className="new-to-text">Already have an account?</span><Link className="sign-up-link" to={'/sign-in'} >Sign In</Link> </p>
+
+                
+
+                
+                
             </form>
-            {error && <p>{error}</p>}
+            
         </div>
     )
 }
