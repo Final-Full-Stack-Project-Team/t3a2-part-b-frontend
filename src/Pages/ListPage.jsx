@@ -127,23 +127,30 @@ export default function ListPage() {
         handleShowDelete()
         navigate('/')
     }
-
     async function addItemToList(item) {
-      const data = {
-          items: [item]
-      };
-      try {
-          const response = await editList(_id._id, data, cookie);
-          
-          // Make sure the response from the API includes the updated list
-          const updatedList = response;
-  
-          // Use the updated list's items for setting state
-          setItems(updatedList.items);
-      } catch (error) {
-          console.error("Error adding item:", error);
+      const isItemAlreadyAdded = items.some(existingItem => existingItem.name === item.name);
+    
+      if (isItemAlreadyAdded) {
+        console.log("Item already exists in the list");
+        return;
       }
-  }
+    
+      const data = {
+        items: [item]
+      };
+    
+      try {
+        const response = await editList(_id._id, data, cookie);
+    
+        // Make sure the response from the API includes the updated list
+        const updatedList = response;
+    
+        // Use the updated list's items for setting state
+        setItems(updatedList.items);
+      } catch (error) {
+        console.error("Error adding item:", error);
+      }
+    }
 
      // State to track if the navigation menu is open or closed
    const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
@@ -194,7 +201,7 @@ export default function ListPage() {
         {list && listName ? (
         <div className="list-details-body">
           
-          <FindItem  addItem={addItemToList} />
+          <FindItem addItem={addItemToList} items={items} />
           {showDelete && (
             <DeleteList
               handleCancel={handleShowDelete}
