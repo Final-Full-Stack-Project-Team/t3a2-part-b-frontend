@@ -5,21 +5,21 @@ import { useCookies } from 'react-cookie';
 import NavMenu from "../Components/NavMenu";
 import "../Styles/group-details.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsisVertical, faUserPlus, faX } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
 import AddGroupMember from '../Components/AddGroupMember';
 import { findUser } from '../services/UserServices';
 import { useUserData } from '../contexts/UserContext';
-import { async } from 'q';
+import GroupOptions from "../Components/GroupOptions"
+
 
 export default function GroupDetails() {
   const { groupId } = useParams();
   const [groupDetails, setGroupDetails] = useState(null);
   const [groupMemberError, setGroupMemberError] = useState()
   const [cookies] = useCookies();
-
+  const [showOptions, setShowOptions] = useState(false)
   const userData = useUserData()
-
   const navigate = useNavigate()
 
   const [updatedGroupName, setUpdatedGroupName] = useState('');
@@ -115,6 +115,7 @@ async function handleupdateGroup() {
         }
         console.log(data)
       }
+      // eslint-disable-next-line
       const response = await updateGroup(data, cookies.authorization, groupDetails._id)
       navigate('/groups')
     }
@@ -124,6 +125,12 @@ async function handleupdateGroup() {
       navigate('/groups')
     }
 
+    function handleOptions() {
+      setShowOptions(!showOptions)
+  }
+
+
+
    return (
     <div>
       <div>
@@ -132,14 +139,27 @@ async function handleupdateGroup() {
       </div>
       <div className={isNavMenuOpen ? 'nav-closed' : 'nav-open'}>
         <header className="fake-header">
-          <p className="page-heading">Edit Group</p>
+          
+          
+          
+          <p className="list-page-heading">Edit Group</p>
           {groupDetails?.admin && <p className="page-sub-heading">Admin: {groupDetails.admin.name}</p>}
-          <button onClick={handleLeaveGroup}>LEAVE GROUP</button>
-          <button onClick={handleDeleteGroup}>DELETE GROUP</button>
+          <div className="group-buttons"><button onClick={handleOptions}>
+              <FontAwesomeIcon icon={faEllipsisVertical} size="2x" />
+              </button></div>
+          
         </header>
-  
+        {/* <button onClick={handleLeaveGroup}>LEAVE GROUP</button>
+        <button onClick={handleDeleteGroup}>DELETE GROUP</button> */}
         
         <div className="group-details-body">
+
+        {showOptions && (
+            <GroupOptions 
+              handleLeaveGroup={handleLeaveGroup}
+              handleDeleteGroup={handleDeleteGroup}
+            />
+          )}
           {groupDetails ? (
             <div>
 
@@ -167,7 +187,10 @@ async function handleupdateGroup() {
                     {groupDetails.shared_with.map((user) => (
                       <div className="shared_with" key={user._id}>
                         {user.email}
-                        <button onClick={() => {handleRemoveUser(user._id)}}>REMOVE ICON</button>
+                        <div className='remove-group-icons'>
+                        <button className='remove-group-icon' onClick={() => {handleRemoveUser(user._id)}}><FontAwesomeIcon icon={faX}/></button>
+                        </div>
+                        
                         </div>
                     ))}
                   </div>
