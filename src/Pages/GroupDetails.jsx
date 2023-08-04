@@ -22,6 +22,8 @@ export default function GroupDetails() {
 
   const navigate = useNavigate()
 
+  const [updatedGroupName, setUpdatedGroupName] = useState('');
+
   useEffect(() => {
     // Fetch the group details when the component mounts
     findGroup(groupId, cookies.authorization) // Pass the token to the findGroup function
@@ -77,15 +79,16 @@ export default function GroupDetails() {
     }
 }
 
-    async function handleupdateGroup() {
-      const data = {
-        shared_with: groupDetails.shared_with.map((user) => user._id)
-      }
-      console.log(cookies.authorization)
-      console.log(groupDetails._id)
-      const response = await updateGroup(data, cookies.authorization, groupDetails._id )
-      console.log(response)
-    }
+async function handleupdateGroup() {
+  const data = {
+    shared_with: groupDetails.shared_with.map((user) => user._id),
+    group_name: updatedGroupName || groupDetails.group_name,
+  };
+  console.log(cookies.authorization);
+  console.log(groupDetails._id);
+  const response = await updateGroup(data, cookies.authorization, groupDetails._id);
+  console.log(response);
+}
 
     async function handleRemoveUser(user_id) {
       const newGroupMemberArray = groupDetails.shared_with.filter((user) => user._id !== user_id )
@@ -129,12 +132,10 @@ export default function GroupDetails() {
       </div>
       <div className={isNavMenuOpen ? 'nav-closed' : 'nav-open'}>
         <header className="fake-header">
-          <p className="page-title">Group details</p>
-          {groupDetails?.admin && <p className="admin">Admin: {groupDetails.admin.name}</p>}
-          <button onClick={handleLeaveGroup}>LEAVE GROUP</button>
-          <button onClick={handleDeleteGroup}>DELETE GROUP</button>
           <p className="page-heading">Edit Group</p>
           {groupDetails?.admin && <p className="page-sub-heading">Admin: {groupDetails.admin.name}</p>}
+          <button onClick={handleLeaveGroup}>LEAVE GROUP</button>
+          <button onClick={handleDeleteGroup}>DELETE GROUP</button>
         </header>
   
         
@@ -147,7 +148,7 @@ export default function GroupDetails() {
               )}
 
               <div >
-                <input className="edit-group-name" placeholder={groupDetails.group_name}></input>
+              <input className="edit-group-name" placeholder={groupDetails.group_name} value={updatedGroupName} onChange={(e) => setUpdatedGroupName(e.target.value)}/>
               </div>
 
               <div>
@@ -172,7 +173,7 @@ export default function GroupDetails() {
                   </div>
                 )}
               <div>
-                <button onClick={handleupdateGroup} className='update-button'>UPDATE</button>
+                <Link to="/groups" onClick={handleupdateGroup} className='update-button'>UPDATE</Link>
               </div>
 
               <div>
