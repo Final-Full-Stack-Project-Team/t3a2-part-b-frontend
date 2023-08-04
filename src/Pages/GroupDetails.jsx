@@ -139,9 +139,6 @@ async function handleupdateGroup() {
       </div>
       <div className={isNavMenuOpen ? 'nav-closed' : 'nav-open'}>
         <header className="fake-header">
-          
-          
-          
           <p className="list-page-heading">Edit Group</p>
           {groupDetails?.admin && <p className="page-sub-heading">Admin: {groupDetails.admin.name}</p>}
           <div className="group-buttons"><button onClick={handleOptions}>
