@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 import { findUser } from "../services/UserServices.js"
 import { deleteList, editList, findAllLists } from "../services/ListServices";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserGroup, faTrash, faArrowRotateLeft } from '@fortawesome/free-solid-svg-icons'
+import { faSquareCheck, faTrash, faArrowRotateLeft } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from "react-router-dom";
 import NoCompleted from "../Components/NoCompleted";
 import DeleteList from "../Components/DeleteList";
@@ -96,7 +96,7 @@ export default function ListsPage() {
                         return (
                             <div className="completed-lists-container" key={list._id}>
                                 <p className="lists-icon">
-                                    <FontAwesomeIcon icon={faUserGroup} /> 
+                                    <FontAwesomeIcon icon={faSquareCheck} /> 
                                 </p>
                                 <p className="lists-label">
                                     {list.name}

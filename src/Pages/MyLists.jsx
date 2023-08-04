@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserGroup} from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
 import NoLists from "../Components/NoLists";
+import PlusIcon from "../images/PlusIcon.svg";
 // import { useStartTyping } from "react-use";
 
 export default function ListsPage() {
@@ -67,6 +68,7 @@ export default function ListsPage() {
                 <header className="fake-header">
                     <p className="page-heading">My Lists</p>
                     <p className="page-sub-heading">{lists.length} List{lists.length !== 1 ? 's' : '' }</p>
+                    <Link className="add-group-btn" to={'/'}><img className="add-btn" src={PlusIcon} alt="PlusIcon"/></Link>
                 </header> 
 
                 {/* IMPORTANT! All page content goes in the body class */}
