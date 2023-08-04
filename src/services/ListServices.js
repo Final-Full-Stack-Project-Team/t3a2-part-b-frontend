@@ -35,6 +35,7 @@ export async function createList(cookie, data){
 }
 
 export async function editList(_id, data, cookie){
+    console.log(data)
     const response = await fetch(`${api}/lists/modify/${_id}`, {
         method: "PUT",
         headers:{

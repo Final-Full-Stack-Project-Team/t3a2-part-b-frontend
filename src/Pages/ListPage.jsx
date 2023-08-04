@@ -55,7 +55,6 @@ export default function ListPage() {
             findAllItemsFromList(_id._id, cookie)
             .then((response) => {
                 setItems(response)
-                console.log(response)
             })
             setListName(list.name)
             // testing press enter
@@ -138,8 +137,11 @@ export default function ListPage() {
       }
     
       const data = {
-        items: [item]
+        items: [...items.map(item => item._id), item._id]
       };
+
+      console.log(data)
+
     
       try {
         const response = await editList(_id._id, data, cookie);
@@ -167,6 +169,21 @@ export default function ListPage() {
       handleRenameSubmit();
     }
   };
+
+  const handleRemoveItemFromList = async (itemId) => {
+    const newItemsArray = items.filter((item) => item._id !== itemId)
+    setItems(newItemsArray)
+
+    const data = {
+      items: newItemsArray.map(item => item._id)
+    }
+
+    console.log(data)
+
+    const response = await editList(_id._id, data, cookie)
+
+    console.log(response)
+  }
 
    return (
     <div>
@@ -225,8 +242,7 @@ export default function ListPage() {
                   key={item._id}>
                   <input className="checkbox" type="checkbox" onChange={() => checkItem(item)} checked={checkedItems[item._id]}></input>
                   <div className="list-icons">
-                    <FontAwesomeIcon className="edit-icon" icon={faPenToSquare} />
-                    <FontAwesomeIcon className="remove-icon"icon={faX} />
+                    <FontAwesomeIcon onClick={() => handleRemoveItemFromList(item._id)} className="remove-icon"icon={faX} />
                   </div>
                   {/* Call handleCheckToggle with the item's _id when the icon is clicked */}
                   {checkedItems[item._id] && (
