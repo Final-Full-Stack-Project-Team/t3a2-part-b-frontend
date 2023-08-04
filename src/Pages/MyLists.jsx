@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 import { findUser } from "../services/UserServices.js"
 import { findAllLists } from "../services/ListServices";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserGroup} from '@fortawesome/free-solid-svg-icons'
+import { faList} from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
 import NoLists from "../Components/NoLists";
 import PlusIcon from "../images/PlusIcon.svg";
@@ -77,7 +77,7 @@ export default function ListsPage() {
                         return (
                             <div className="lists-container" key={list._id}>
                                 <p className="lists-icon">
-                                    <FontAwesomeIcon icon={faUserGroup} /> 
+                                    <FontAwesomeIcon icon={faList} /> 
                                 </p>
                                 <Link to={`/list/${list._id}`} className="lists-label">
                                     {list.name}
