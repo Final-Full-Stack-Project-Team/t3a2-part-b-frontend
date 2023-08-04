@@ -170,6 +170,70 @@
     border-bottom: 1px solid var(--light-grey)
 }
 
+.sl-shared-with {
+    flex-direction: column;
+    border-top: 1px solid var(--light-grey);
+    padding: 1em 1em 1em 2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex; 
+    flex-direction: row;
+    
+}
+
+.sl-shared-with:hover {
+    background-color: #212121; ;
+}
+
+.sl-shared-with:first-child {
+    border-top: 1px solid var(--green)
+}
+
+.sl-shared-with:last-of-type {
+    border-bottom: 1px solid var(--light-grey)
+}
+
+.sl-checkbox {
+    margin: 0 1em 0 -2.4em;
+}
+
+.sl-details-body {
+    border: 5px solid;
+    margin: 0em 0.5em 0em 0.5em;
+    margin-top: -0.6em;
+    padding: 10px;
+    color: #f2f2f2;
+    border: none;   
+}
+
+.sl-instructions {
+    padding: 1em 0em 1em 0.5em;
+    font-size: 1.2em;
+    font-weight: 500;   
+    color: #f2f2f2;
+    border:none;
+    caret-color: var(--green);
+    margin: 0em 0.5em 0em 0.5em;
+}
+
+.sl-update-button {
+    position:relative;
+    float: right;
+    margin: 1em 7% 2em 0em; 
+    padding: 0.8em 2.2em 0.8em 2.2em;
+    border-radius: 2em;
+    border: none;
+    background-color: var(--green);
+    font-weight: 600;
+    font-size: 1em;
+    cursor: pointer;
+    color: #212121;
+    text-decoration: none;
+}
+
+.sl-update-button:hover {
+    background-color: #a2f199;
+}
 
 .group-date {
     margin: 0.5em 0em 0em 0.5em;
@@ -194,7 +258,7 @@
 }
 
 .cancel {
-    margin: 1em 0em 2em -0.3em; 
+    margin: 1em -5em 2em -0.3em; 
     padding: 0.8em 2.2em 0.8em 2.2em;
     border-radius: 4em;
     border: none;
@@ -263,6 +327,7 @@
 
 .new-list-label {
     margin-top: 8em;
+    color: var(--font-color);
 }
 
 .new-list {
@@ -323,6 +388,8 @@
     background-color: #a2f199;
 }
 
+
+
 @media only screen and (min-width: 600px) {
     .new-list-body {
         width: 35em; 
@@ -338,6 +405,10 @@
 }
 
 @media only screen and (min-width: 1200px) {
+    .sl-instructions {
+        margin: auto;
+        width: 50%;
+    }
 
     .group-details-body {
         border: 5px solid;
@@ -348,7 +419,10 @@
         border: none;   
     }
 
-    
+    .sl-details-body {
+        width: 50%; 
+        margin: auto;
+    }
 
     .ng_shared_with {
         width: 48%;

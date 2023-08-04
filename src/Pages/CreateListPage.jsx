@@ -4,7 +4,7 @@ import CreateList from "../Components/CreateList";
 
 export default function CreateListPage() {
     return(
-        <div style={{color: "white"}}>
+        <div>
             <CreateList />
         </div>
     )
