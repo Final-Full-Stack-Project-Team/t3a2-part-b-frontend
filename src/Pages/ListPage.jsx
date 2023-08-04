@@ -227,11 +227,13 @@ export default function ListPage() {
                     <FontAwesomeIcon className="remove-icon"icon={faX} />
                   </div>
                   {/* Call handleCheckToggle with the item's _id when the icon is clicked */}
+                  {checkedItems[item._id] && (
                   <FontAwesomeIcon
                     className="tick"
-                    icon={checkedItems[item._id] ? faCheck : null}
+                    icon={faCheck}
                     onClick={() => handleCheckToggle(item._id)} 
                   />
+                  )}
                   <p
                     className="list-items-label"
                     style={{
