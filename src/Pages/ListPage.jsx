@@ -10,7 +10,7 @@ import FindItem from "../Components/FindItem"
 import NavMenu from "../Components/NavMenu";
 import NoItems from "../Components/NoItems";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisVertical, faUserPlus, faCheck, faPenToSquare, faX } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsisVertical, faUserPlus, faPenToSquare, faX } from '@fortawesome/free-solid-svg-icons'
 import "../Styles/list-page.css";
 import { Link } from "react-router-dom"
 
@@ -94,17 +94,7 @@ export default function ListPage() {
         setUpdatedListName(event.target.value)
     }
 
-    function handleCheckToggle(itemId) {
-      setCheckedItems((prevCheckedItems) => {
-        const updatedCheckedItems = { ...prevCheckedItems };
-        if (updatedCheckedItems[itemId]) {
-          delete updatedCheckedItems[itemId]; // If the item is checked, uncheck it
-        } else {
-          updatedCheckedItems[itemId] = true; // If the item is unchecked, check it
-        }
-        return updatedCheckedItems;
-      });
-    }
+   
 
     async function handleRenameSubmit() {
       // testing press enter
@@ -229,13 +219,8 @@ export default function ListPage() {
                     <FontAwesomeIcon className="remove-icon"icon={faX} />
                   </div>
                   {/* Call handleCheckToggle with the item's _id when the icon is clicked */}
-                  {checkedItems[item._id] && (
-                  <FontAwesomeIcon
-                    className="tick"
-                    icon={faCheck}
-                    onClick={() => handleCheckToggle(item._id)} 
-                  />
-                  )}
+                 
+                  
                   <p
                     className="list-items-label"
                     style={{

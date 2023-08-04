@@ -132,11 +132,11 @@
     outline: none;    
 }
 
-.checkbox {
+/* .checkbox {
     margin-top: 0.11em;
-}
+} */
 
-
+/* 
 input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
@@ -146,18 +146,18 @@ input[type="checkbox"] {
     border-radius: 4px;
     cursor: pointer;
     border: 2px solid #f2f2f2;
-}
+} */
 
 
 
-.tick { 
+/* .tick { 
     cursor: pointer;
     color: #72DF65;
     margin-left: -1.05em;
     margin-top: 0.24em;
     font-size: 0.8em;
     padding-right: 0.175em;
-}
+} */
 
 .list-icons {
     display: none;
