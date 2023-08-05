@@ -59,6 +59,7 @@ export default function ShareList() {
     };
 
     useEffect(() => {
+        
         if (formSubmitted) {
             const data = {
                 shared_with: selectedMembers
@@ -73,7 +74,7 @@ export default function ShareList() {
                     navigate(`/list/${_id._id}`)
                 }
             })
-        }
+        } 
 
     }, [formSubmitted])
 
@@ -88,7 +89,7 @@ export default function ShareList() {
                 )
             })}
             <div>
-                <Link to="/" onClick={handleSubmit} className='sl-update-button'>SHARE</Link>
+                <button onClick={handleSubmit} className='sl-update-button'>SHARE</button>
             </div>
             <div>
                 <Link to="/">
