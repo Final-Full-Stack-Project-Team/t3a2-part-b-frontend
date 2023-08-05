@@ -100,9 +100,10 @@ async function handleupdateGroup() {
     }
 
     async function handleLeaveGroup() {
-      let newSharedWith = groupDetails.shared_with.filter((user) => user !== userData._id).map((user) => user._id)
+      let newSharedWith = groupDetails.shared_with.filter((user) => user._id !== userData._id).map((user) => user._id)
+      console.log(groupDetails.shared_with)
       let data = {
-        shared_with: [newSharedWith]
+        shared_with: newSharedWith
       }
       console.log(data)
       if (userData._id === groupDetails.admin._id) {
