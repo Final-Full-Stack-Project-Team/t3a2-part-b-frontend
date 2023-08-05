@@ -230,12 +230,14 @@ export default function ListPage() {
               <p className="list-page-title">{list && listName}</p>
             )}
             {/* Add buttons to the list-buttons div */}
+            {userData._id === list?.admin &&
             <div className="list-buttons">
-              <button className="add-person"><Link to={`${location.pathname}/share`}><FontAwesomeIcon className="add-person-icon" icon={faUserPlus} size="1x"/></Link></button>
+              <Link to={`${location.pathname}/share`} className="add-person"><FontAwesomeIcon className="add-person-icon" icon={faUserPlus} size="1x"/></Link>
               <button className="list-options" onClick={handleOptions}>
               <FontAwesomeIcon icon={faEllipsisVertical} size="2x" />
               </button>
             </div>
+            }
           </div>
           <p className="page-sub-heading">{items.length} item{items.length !== 1 ? 's' : ''} </p>
         </header>
@@ -269,16 +271,16 @@ export default function ListPage() {
                   {/* Call handleCheckToggle with the item's _id when the icon is clicked */}
                  
                   
-                  <p
-                    className="list-items-label"
-                    style={{
-                      textDecoration: checkedItems[item._id]
-                        ? "line-through"
-                        : "none",
-                    }}
-                  >
-                    {item.name}
-                  </p>
+                    <p
+                      className="list-items-label"
+                      style={{
+                        textDecoration: checkedItems[item._id] ? "line-through" : "none",
+                        color: checkedItems[item._id] ? "#8c8c8c" : "inherit", // Change color based on checkbox state
+                      }}
+                    >
+                      {item.name}
+                    </p>
+                                   
                 </div>
               );
             })

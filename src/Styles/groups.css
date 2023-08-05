@@ -82,9 +82,30 @@
     right: 0;
     font-size: 1.5em;   
 }
-    
 
-    
+@media only screen and (max-width: 600px) {
+    .add-btn {
+        position: absolute;
+        width: 1.5em;
+        margin-top: -2.84em;
+        margin-right: 2em;
+        right: 0;
+        font-size: 1.2em;   
+    }
+}
+
+@media only screen and (max-width: 260px) {
+    .add-btn {
+        position: absolute;
+        width: 1.5em;
+        margin-top: -3.4em;
+        margin-right: 0.5em;
+        right: 0;
+        font-size: 1em;   
+    }
+}
+
+
 
 
 @media only screen and (min-width: 1200px) {

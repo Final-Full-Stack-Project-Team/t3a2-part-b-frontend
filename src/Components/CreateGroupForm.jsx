@@ -7,6 +7,9 @@ import { useNavigate } from "react-router"
 import AddGroupMember from "./AddGroupMember"
 import NavMenu from "../Components/NavMenu";
 import { Link } from "react-router-dom";
+import "../Styles/create-group.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserPlus} from '@fortawesome/free-solid-svg-icons'
 
 
 export default function CreateGroupForm() {
@@ -28,7 +31,9 @@ export default function CreateGroupForm() {
 
 
     function handleGroupNameChange(event) {
-        setGroupName(event.target.value)
+        const inputValue = event.target.value;
+        const capitalizedValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
+        setGroupName(capitalizedValue);
     }
 
     async function submitGroupMemberAdd(groupMember) {
@@ -89,9 +94,12 @@ export default function CreateGroupForm() {
                     <p className="list-page-heading">Create Group</p>  
                 </header>
                 <div className="group-details-body">
+                    
                     <input className="edit-group-name" type="text" value={groupName} onChange={handleGroupNameChange} placeholder="Group name" />
+                    <div className="add-member-btn"><FontAwesomeIcon icon={faUserPlus}/></div>
                     <AddGroupMember submitGroupMemberAdd={submitGroupMemberAdd} />
                 </div>
+                
                 <div style={{ color: "#f2f2f2" }} >
                     {groupAdmin && 
                         <div className="ng_shared_with">

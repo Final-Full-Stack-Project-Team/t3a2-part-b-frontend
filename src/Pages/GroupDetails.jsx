@@ -80,14 +80,17 @@ export default function GroupDetails() {
 }
 
 async function handleupdateGroup() {
+  const capitalizedGroupName = updatedGroupName.charAt(0).toUpperCase() + updatedGroupName.slice(1);
+  
   const data = {
     shared_with: groupDetails.shared_with.map((user) => user._id),
-    group_name: updatedGroupName || groupDetails.group_name,
+    group_name: capitalizedGroupName || groupDetails.group_name,
   };
   console.log(cookies.authorization);
   console.log(groupDetails._id);
   const response = await updateGroup(data, cookies.authorization, groupDetails._id);
   console.log(response);
+  navigate('/groups');
 }
 
     async function handleRemoveUser(user_id) {
@@ -143,9 +146,9 @@ async function handleupdateGroup() {
       </div>
       <div className={isNavMenuOpen ? 'nav-closed' : 'nav-open'}>
         <header className="fake-header">
-          <p className="list-page-heading">Edit Group</p>
+          <p className="group-page-heading">Edit Group</p>
           {groupDetails?.admin && <p className="page-sub-heading">Admin: {groupDetails.admin.name}</p>}
-          <div className="group-buttons">
+          <div className="group-options">
         <button onClick={handleOptions}>
           <FontAwesomeIcon icon={faEllipsisVertical} size="2x" />
         </button>
@@ -177,11 +180,11 @@ async function handleupdateGroup() {
               </div>
 
               <div>
-                <div className="add-icon"><FontAwesomeIcon icon={faUserPlus}/></div>
+                <div className="add-member-btn"><FontAwesomeIcon icon={faUserPlus}/></div>
               
                 <AddGroupMember submitGroupMemberAdd={submitGroupMemberAdd} />
                 {groupMemberError && 
-                  <div style={{color: "white"}}>
+                  <div>
                     {groupMemberError}
                   </div>
                 }
@@ -190,10 +193,10 @@ async function handleupdateGroup() {
               {groupDetails?.shared_with && groupDetails.shared_with.length > 0 && (
                   <div >
                     {groupDetails.shared_with.map((user) => (
-                      <div className="shared_with" key={user._id}>
+                      <div className="current-members" key={user._id}>
                         {user.email}
-                        <div className='remove-group-icons'>
-                        <button className='remove-group-icon' onClick={() => {handleRemoveUser(user._id)}}><FontAwesomeIcon icon={faX}/></button>
+                        <div className='remove-guest-btn-body'>
+                        <button className='remove-guest-btn' onClick={() => {handleRemoveUser(user._id)}}><FontAwesomeIcon icon={faX}/></button>
                         </div>
                         
                         </div>
@@ -201,7 +204,7 @@ async function handleupdateGroup() {
                   </div>
                 )}
               <div>
-                <button to="/groups" onClick={handleupdateGroup} className='update-button'>UPDATE</button>
+                <button onClick={handleupdateGroup} className='update-button'>UPDATE</button>
               </div>
 
               <div>

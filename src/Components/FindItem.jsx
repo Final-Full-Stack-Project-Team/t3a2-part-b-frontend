@@ -40,11 +40,13 @@ export default function FindItem(props) {
     } */
 
     const handleAddItemToList = () => {
+        const capitalizedItemName = itemInput.charAt(0).toUpperCase() + itemInput.slice(1);
         const item = {
-            name: itemInput
+            name: capitalizedItemName
         }
         props.addItem(item)
         setShowItems(false) // Hide items after selecting
+        setItemInput('');
     }
 
     function handleKeyPress(event) {

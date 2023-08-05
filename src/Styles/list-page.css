@@ -61,7 +61,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    
   }
 
   .list-page-title {
@@ -101,6 +100,7 @@
     display: flex;
     justify-content: center;
     border-radius: 0.2em; 
+    z-index: 10;
 }
 
 .overlay-content {
@@ -198,7 +198,6 @@ input[type="checkbox"] {
     display: flex;
     border-top: 1px solid var(--light-grey);
     padding: 1em 1em 1em 1em;
-    
 }
 
 .list-items:hover {
@@ -308,12 +307,26 @@ input[type="checkbox"] {
     }
 }
 
+@media only screen and (max-width: 400px) {
+    .list-buttons {
+        margin-right: 0.5rem;
+        font-size: 0.8em;
+      }
+      .list-page-title {
+        font-size: 0.8em;
+      }
+      .list-buttons button { 
+        margin-right: 0rem;
+      }
+
+}
+
 @media only screen and (min-width: 1200px) {
 
     
 
     .list-buttons {
-        margin-right: 0rem
+        margin-right: 1rem
       }
       .list-buttons button { 
         width: 5em;
@@ -321,7 +334,7 @@ input[type="checkbox"] {
       }
 
       .overlay {
-        margin-right: 2.5em;
+        margin-right: 1em;
         margin-top: -5.2em;
       }
     

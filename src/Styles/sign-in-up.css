@@ -12,6 +12,13 @@
     font-weight: 500;
 }
 
+.sign-up-title {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-bottom: 0.8em;
+    color: var(--green);
+}
+
 .sign-in-body {
     width: 80%;
 }
@@ -121,10 +128,20 @@
     margin-left: 2em;
 }
 
+@media only screen and (max-width: 600px) {
+    .cancel-link {
+        margin-left: 0em;
+    }
+        .signin-btn {
+        margin-right: 0em;
+    }
+}
+
 @media only screen and (min-width: 600px) {
     .sign-in-body {
         width: 20em;
     }
+
 }
 
 @media only screen and (min-width: 1200px) {

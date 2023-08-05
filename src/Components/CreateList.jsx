@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useUserData } from "../contexts/UserContext";
 import { createList } from "../services/ListServices";
 import { useCookies } from "react-cookie";
+import "../Styles/create-list.css";
 
 
 export default function CreateList() {
@@ -17,8 +18,13 @@ export default function CreateList() {
 
     const navigate = useNavigate()
 
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
+
     function handleListNameChange(event) {
-        setListName(event.target.value)
+        const capitalizedListName = capitalizeFirstLetter(event.target.value);
+        setListName(capitalizedListName)
     }
 
     async function submitCreateList() {
@@ -48,13 +54,13 @@ export default function CreateList() {
       }
     
     return(
-        <div className="new-list-body">
-                <div className="new-list-label">
-                    <label className="new-list-label" htmlFor="listname">Create new list</label>
-                    <input label="sfasf" className="new-list" type="text" placeholder="List name" value={listName} onChange={handleListNameChange} onKeyDown={handleKeyDown}></input>
+        <div className="create-list-body">
+                <div className="create-new-list-label">
+                    <label className="create-new-list-label" htmlFor="listname">Create new list</label>
+                    <input className="create-list-name" type="text" placeholder="List name" value={listName} onChange={handleListNameChange} onKeyDown={handleKeyDown}></input>
                 </div>
-                <button className='nl-update-button' onClick={submitCreateList}>CREATE</button>
-            <div ><Link className='nl-cancel' to={'/'}>CANCEL</Link></div>
+                <button className='create-list-update-button' onClick={submitCreateList}>CREATE</button>
+            <div ><Link className='create-list-cancel' to={'/'}>CANCEL</Link></div>
             {listError && <div>{listError}</div>}
         </div>
     )

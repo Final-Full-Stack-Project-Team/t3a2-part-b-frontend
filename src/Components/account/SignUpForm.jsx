@@ -74,7 +74,7 @@ export default function SignUp() {
                 {error && <p className="incorrect-pw">{error}</p>} <br />
 
                 <Link to={`/`} className="cancel-link">CANCEL</Link><br />
-                <button className="signin-btn" type="submit">SIGN UP</button>
+                <button className="signin-btn" type="submit">JOIN</button>
                 <p className="dont-have-an-account" ><span className="new-to-text">Already have an account?</span><Link className="sign-up-link" to={'/sign-in'} >Sign In</Link> </p>
 
                 
