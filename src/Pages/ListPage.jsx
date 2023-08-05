@@ -230,12 +230,14 @@ export default function ListPage() {
               <p className="list-page-title">{list && listName}</p>
             )}
             {/* Add buttons to the list-buttons div */}
+            {userData._id === list?.admin &&
             <div className="list-buttons">
-              <button className="add-person"><Link to={`${location.pathname}/share`}><FontAwesomeIcon className="add-person-icon" icon={faUserPlus} size="1x"/></Link></button>
+              <Link to={`${location.pathname}/share`} className="add-person"><FontAwesomeIcon className="add-person-icon" icon={faUserPlus} size="1x"/></Link>
               <button className="list-options" onClick={handleOptions}>
               <FontAwesomeIcon icon={faEllipsisVertical} size="2x" />
               </button>
             </div>
+            }
           </div>
           <p className="page-sub-heading">{items.length} item{items.length !== 1 ? 's' : ''} </p>
         </header>
