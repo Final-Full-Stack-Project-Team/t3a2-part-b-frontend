@@ -4,6 +4,7 @@ import { useCookies } from "react-cookie"
 import { addUserToList } from "../services/ListServices"
 import { useNavigate, useParams } from "react-router"
 import { Link } from "react-router-dom";
+import { useUserData } from "../contexts/UserContext"
 
 
 export default function ShareList() {
@@ -17,6 +18,8 @@ export default function ShareList() {
     const [displayError, setDisplayError] = useState('')
 
     const [formSubmitted, setFormSubmitted] = useState(false)
+
+    const userData = useUserData()
 
     const navigate = useNavigate()
 
@@ -52,6 +55,9 @@ export default function ShareList() {
                     selectedMembersArray.add(member._id)
                 }
             })
+           if (group.admin._id !== userData._id) {
+                selectedMembersArray.add(group.admin._id)
+           }
         }
         });
         setSelectedMembers(Array.from(selectedMembersArray));
@@ -59,6 +65,7 @@ export default function ShareList() {
     };
 
     useEffect(() => {
+
         
         if (formSubmitted) {
             const data = {
