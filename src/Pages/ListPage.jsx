@@ -112,13 +112,10 @@ export default function ListPage() {
 
       editList(_id._id, data, cookie)
       .then((response) => {
-        console.log(response)
+        setItems(response.items)
       })
   }
 
-    async function updateCheckedItem(data) {
-      editList(_id._id, data, cookie)
-    }
 
     function handleRenameList() {
         setRenameList(!renameList)
