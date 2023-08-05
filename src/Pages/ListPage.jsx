@@ -33,11 +33,7 @@ export default function ListPage() {
 
     const [listName, setListName] = useState('')
     
-    const [checkedItems, setCheckedItems] = useState(() => {
-      // Get checked items from localStorage or initialize as an empty object
-      const storedCheckedItems = localStorage.getItem("checkedItems");
-      return storedCheckedItems ? JSON.parse(storedCheckedItems) : {};
-    });
+    const [checkedItems, setCheckedItems] = useState({})
 
     
 
@@ -57,11 +53,8 @@ export default function ListPage() {
 
     useEffect(() => {
         if (list) {
-            findAllItemsFromList(_id._id, cookie)
-            .then((response) => {
-                setItems(response)
-            })
-            setListName(list.name)
+          setItems(list.items)
+          setListName(list.name)
             // testing press enter
             setUpdatedListName(list.name);
         }
@@ -74,6 +67,19 @@ export default function ListPage() {
         }
     }, [renameList])
 
+    useEffect(() => {
+      // Create a new object to store the checked status for each item
+      const updatedCheckedItems = {};
+      
+      // Loop through the items array to set the checked status for each item
+      items.forEach((item) => {
+        updatedCheckedItems[item._id] = item.checked;
+      });
+      
+      // Update the checkedItems state with the new object
+      setCheckedItems(updatedCheckedItems);
+    }, [items]);
+
     function handleOptions() {
         setShowOptions(!showOptions)
     }
@@ -84,17 +90,33 @@ export default function ListPage() {
     }
     
     function checkItem(item) {
+      const newCheckedStatus = !checkedItems[item._id]
+
       const updatedCheckedItems = {
         ...checkedItems,
-        [item._id]: !checkedItems[item._id]
+        [item._id]: newCheckedStatus
       };
-      // Update state and store the checked items in localStorage
+
       setCheckedItems(updatedCheckedItems);
-      localStorage.setItem("checkedItems", JSON.stringify(updatedCheckedItems));
+
+      const updatedItems = items.map((existingItem) =>
+      existingItem._id === item._id
+        ? { ...existingItem, checked: newCheckedStatus }
+        : existingItem
+    );
+  
+
+      const data = {
+        items: updatedItems
+      }
+
+      editList(_id._id, data, cookie)
+      .then((response) => {
+        setItems(response.items)
+      })
   }
-      
-      
-    
+
+
     function handleRenameList() {
         setRenameList(!renameList)
     }
@@ -137,7 +159,7 @@ export default function ListPage() {
       }
     
       const data = {
-        items: [...items.map(item => item._id), item._id]
+        items: [...items, item]
       };
 
       console.log(data)
@@ -153,7 +175,7 @@ export default function ListPage() {
         setItems(updatedList.items);
       } catch (error) {
         console.error("Error adding item:", error);
-      }
+      } 
     }
 
      // State to track if the navigation menu is open or closed
@@ -170,12 +192,12 @@ export default function ListPage() {
     }
   };
 
-  const handleRemoveItemFromList = async (itemId) => {
-    const newItemsArray = items.filter((item) => item._id !== itemId)
+  const handleRemoveItemFromList = async (itemToRemove) => {
+    const newItemsArray = items.filter((item) => item.name !== itemToRemove)
     setItems(newItemsArray)
 
     const data = {
-      items: newItemsArray.map(item => item._id)
+      items: newItemsArray
     }
 
     console.log(data)
@@ -242,7 +264,7 @@ export default function ListPage() {
                   key={item._id}>
                   <input className="checkbox" type="checkbox" onChange={() => checkItem(item)} checked={checkedItems[item._id]}></input>
                   <div className="list-icons">
-                    <FontAwesomeIcon onClick={() => handleRemoveItemFromList(item._id)} className="remove-icon"icon={faX} />
+                    <FontAwesomeIcon onClick={() => handleRemoveItemFromList(item.name)} className="remove-icon"icon={faX} />
                   </div>
                   {/* Call handleCheckToggle with the item's _id when the icon is clicked */}
                  
