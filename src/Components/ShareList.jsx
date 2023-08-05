@@ -3,6 +3,7 @@ import { findAllGroups } from "../services/GroupServices"
 import { useCookies } from "react-cookie"
 import { addUserToList } from "../services/ListServices"
 import { useNavigate, useParams } from "react-router"
+import { Link } from "react-router-dom";
 
 
 export default function ShareList() {
@@ -77,16 +78,23 @@ export default function ShareList() {
     }, [formSubmitted])
 
     return(
-        <div style={{color: "white"}}>
+        <div >
             {groups && groups.map((group) => {
                 return(
-                    <div style={{ display: "flex", flexDirection: "row" }} key={group._id}>
-                        <input type="checkbox" onChange={() => handleCheckboxChange(group._id)} checked={checkedGroups.has(group._id)} />
-                        <p style={{color: checkedGroups[group._id] ? "green": "white"}}>{group.group_name}</p>
+                    <div className="sl-shared-with" key={group._id}>
+                        <input className="sl-checkbox" type="checkbox" onChange={() => handleCheckboxChange(group._id)} checked={checkedGroups.has(group._id)} />
+                        <p>{group.group_name}</p>
                     </div>
                 )
             })}
-            <button onClick={handleSubmit}>SUBMIT</button>
+            <div>
+                <Link to="/" onClick={handleSubmit} className='sl-update-button'>SHARE</Link>
+            </div>
+            <div>
+                <Link to="/">
+                    <button className='cancel'>CANCEL</button>
+                </Link>
+            </div>
         </div>
     )
 }

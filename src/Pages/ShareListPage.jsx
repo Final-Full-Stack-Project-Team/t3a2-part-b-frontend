@@ -2,8 +2,10 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useUserData } from "../contexts/UserContext";
 import { findList } from "../services/ListServices";
 import { useCookies } from "react-cookie";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ShareList from "../Components/ShareList";
+import NavMenu from "../Components/NavMenu";
+
 
 
 export default function ShareListPage() {
@@ -28,17 +30,30 @@ export default function ShareListPage() {
         })
     }
 
-    
+    // State to track if the navigation menu is open or closed
+   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
+
+   // Function to toggle the navigation menu state
+   const toggleNavMenu = () => {
+       setIsNavMenuOpen(prevState => !prevState);
+   };
+   
+
     return(
         <div>
-            <div style={{color: "white"}}>
-                <Link>BACK X</Link>
-                <h1>Share List</h1>
-                <Link>GROUPS ICON</Link>
-            </div>
             <div>
-                <ShareList />
+                {/* Pass the toggleNavMenu function and isNavMenuOpen state as props to NavMenu */}
+                <NavMenu toggleNavMenu={toggleNavMenu} isNavMenuOpen={isNavMenuOpen} /> 
+            </div>  
+            <div className={isNavMenuOpen ? 'nav-closed' : 'nav-open'}>
+                <header className="fake-header">
+                    <p className="list-page-heading">Share List</p>
+                    <p className="page-sub-heading">Select a group </p>
+                </header>
+                <p className="sl-instructions">Share With:</p>
+                <div className="sl-details-body">
+                    <ShareList />
+                </div>
             </div>
-        </div>
-    )
-}   
+    </div>
+)}   

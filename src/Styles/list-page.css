@@ -37,6 +37,7 @@
   .add-person-icon {
     font-size: 2em;
     margin-left: 0.1em;
+    color: var(--font-color);
   }
 
   .list-buttons button:hover {
