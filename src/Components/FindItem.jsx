@@ -45,6 +45,7 @@ export default function FindItem(props) {
         }
         props.addItem(item)
         setShowItems(false) // Hide items after selecting
+        setItemInput('');
     }
 
     function handleKeyPress(event) {
