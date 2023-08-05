@@ -4,6 +4,8 @@
     justify-content: center;
     flex-direction: column;
     margin-top: 2em;
+    
+    
 }
 
 .no-items-body{
@@ -25,6 +27,8 @@
     font-size: 1.2em;
     color: var(--green) ;
     margin-bottom: 1.2em;
+    display: inline-block;
+    
 }
 
 .create-list-label {
@@ -62,6 +66,15 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+@media only screen and (max-width: 350px) {
+    .no-lists-body {
+        font-size: 0.85em;
+    }
+    .no-groups-body {
+        font-size: 0.85em;
+    }
 }
 
 @media only screen and (min-width: 1200px) {

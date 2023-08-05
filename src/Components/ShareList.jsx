@@ -8,6 +8,7 @@ import { useUserData } from "../contexts/UserContext"
 import "../Styles/share-list.css";
 
 
+
 export default function ShareList() {
 
     const [cookies, setCookie, removeCookie] = useCookies()
@@ -88,11 +89,15 @@ export default function ShareList() {
 
     return(
         <div >
-            {groups && groups.map((group) => {
+            {groups && groups.map((group, index) => {
+                const isLastGroup = index === groups.length - 1;
                 return(
-                    <div className="share-list-with" key={group._id}>
+                    <div className={`share-list-with ${isLastGroup ? 'share-list-with-last-child' : ''}`} key={group._id}>
                         <input className="share-list-checkbox" type="checkbox" onChange={() => handleCheckboxChange(group._id)} checked={checkedGroups.has(group._id)} />
-                        <p>{group.group_name}</p>
+                        <div>
+                            <p>{group.group_name}</p>
+                        </div>
+                        
                     </div>
                 )
             })}

@@ -16,14 +16,13 @@
     border-top: 1px solid var(--green)
 }
 
-.share-list-with:last-child {
+.share-list-with-last-child {
     border-bottom: 1px solid var(--light-grey)
 }
 
 .share-list-checkbox {
-    margin: 0 1em 0 -2.4em;
+    margin: 0 1em 0 -1.4em;
 }
-
 .share-list-details-body {
     border: 5px solid;
     margin: 0em 0.5em 0em 0.5em;
@@ -72,6 +71,21 @@
     font-size: 1em;
     cursor: pointer;
     color: #949494;
+}
+
+@media only screen and (max-width: 400px) {
+    .share-list-update-button {
+        position:relative;
+        float: right;
+        margin: 1em 0% 2em 0em; 
+        padding: 0.6em 1.9em 0.6em 1.9em;
+        font-size: 0.9em;
+    }
+    .share-list-cancel {
+        margin: 1em -5em 2em -2em; 
+        padding: 0.6em 1.9em 0.6em 1.9em;
+        font-size: 0.9em;
+    }
 }
 
 @media only screen and (min-width: 1200px) {

@@ -55,8 +55,8 @@ export default function CreateList() {
     
     return(
         <div className="create-list-body">
-                <div className="create-list-label">
-                    <label className="create-list-label" htmlFor="listname">Create new list</label>
+                <div className="create-new-list-label">
+                    <label className="create-new-list-label" htmlFor="listname">Create new list</label>
                     <input className="create-list-name" type="text" placeholder="List name" value={listName} onChange={handleListNameChange} onKeyDown={handleKeyDown}></input>
                 </div>
                 <button className='create-list-update-button' onClick={submitCreateList}>CREATE</button>

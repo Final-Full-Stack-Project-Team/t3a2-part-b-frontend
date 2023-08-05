@@ -7,7 +7,7 @@
     outline: none;  
 }
 
-.create-list-label {
+.create-new-list-label{
     font-size: 1em;
     margin-top: 8em;
     color: var(--font-color);
@@ -64,6 +64,25 @@
 
 .create-list-cancel:hover {
     color: #f2f2f2;
+}
+
+@media only screen and (max-width: 400px) {
+    .create-list-update-button {
+        position:relative;
+        float: right;
+        margin: 1em 0% 2em 0em; 
+        padding: 0.8em 1.9em 0.8em 1.9em;
+        font-size: 0.9em;
+    }
+    .create-list-cancel {
+        margin: 1em -5em 2em -2em; 
+        padding: 0.8em 1.9em 0.8em 1.9em;
+        font-size: 0.9em;
+    }
+    .create-list-name {
+        padding: 1em;
+        font-size: 1.2em;
+    }
 }
 
 

@@ -207,6 +207,37 @@
     background-color: #a2f199;
 }
 
+@media only screen and (max-width: 400px) {
+    .update-button {
+        position:relative;
+        float: right;
+        margin: 1em 0% 2em 0em; 
+        padding: 0.8em 1.9em 0.8em 1.9em;
+        font-size: 0.9em;
+    }
+    .cancel {
+        margin: 1em -5em 2em -2em; 
+        padding: 0.8em 1.9em 0.8em 1.9em;
+        font-size: 0.9em;
+    }
+    .add-members {
+        width: 78%;
+        font-size: 1em;
+    }
+    .add-member-btn {
+        padding-top: 1.5em
+    }
+
+    .group-page-heading {
+        font-size: 1.3em;
+        margin-top: -0.8em;
+        margin-left: 1.4em;
+    }
+    .page-sub-heading{
+        font-size: 1em;
+    } 
+}
+
 
 @media only screen and (min-width: 1200px) {
     .group-details-body {
