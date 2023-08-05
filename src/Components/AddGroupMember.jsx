@@ -10,10 +10,15 @@ export default function AddGroupMember(props) {
         setGroupMember(event.target.value)
     }
 
-    return(
-        <div >
+    function handleAddButtonClick() {
+        props.submitGroupMemberAdd(groupMember); // Call the submit function
+        setGroupMember(''); // Clear the input field
+    }
+
+    return (
+        <div>
             <input className="add-people" type="text" value={groupMember} onChange={handleGroupMemberAddChange} placeholder="Add member" />
-            <button className="add-user-icon" onClick={()=>props.submitGroupMemberAdd(groupMember)}><img src={PlusIcon} alt="Add Memeber"/></button>
+            <button className="add-user-icon" onClick={handleAddButtonClick}><img src={PlusIcon} alt="Add Member" /></button>
         </div>
-    )
+    );
 }

@@ -88,6 +88,7 @@ async function handleupdateGroup() {
   console.log(groupDetails._id);
   const response = await updateGroup(data, cookies.authorization, groupDetails._id);
   console.log(response);
+  window.location.href = "/Groups"
 }
 
     async function handleRemoveUser(user_id) {
@@ -201,7 +202,7 @@ async function handleupdateGroup() {
                   </div>
                 )}
               <div>
-                <button to="/groups" onClick={handleupdateGroup} className='update-button'>UPDATE</button>
+                <button to="/Groups" onClick={handleupdateGroup} className='update-button'>UPDATE</button>
               </div>
 
               <div>
