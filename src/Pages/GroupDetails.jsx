@@ -80,9 +80,11 @@ export default function GroupDetails() {
 }
 
 async function handleupdateGroup() {
+  const capitalizedGroupName = updatedGroupName.charAt(0).toUpperCase() + updatedGroupName.slice(1);
+  
   const data = {
     shared_with: groupDetails.shared_with.map((user) => user._id),
-    group_name: updatedGroupName || groupDetails.group_name,
+    group_name: capitalizedGroupName || groupDetails.group_name,
   };
   console.log(cookies.authorization);
   console.log(groupDetails._id);

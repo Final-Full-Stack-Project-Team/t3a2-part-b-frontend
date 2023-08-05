@@ -29,7 +29,9 @@ export default function CreateGroupForm() {
 
 
     function handleGroupNameChange(event) {
-        setGroupName(event.target.value)
+        const inputValue = event.target.value;
+        const capitalizedValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
+        setGroupName(capitalizedValue);
     }
 
     async function submitGroupMemberAdd(groupMember) {
