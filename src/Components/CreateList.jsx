@@ -18,8 +18,13 @@ export default function CreateList() {
 
     const navigate = useNavigate()
 
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
+
     function handleListNameChange(event) {
-        setListName(event.target.value)
+        const capitalizedListName = capitalizeFirstLetter(event.target.value);
+        setListName(capitalizedListName)
     }
 
     async function submitCreateList() {
