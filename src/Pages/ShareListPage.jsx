@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useUserData } from "../contexts/UserContext";
 import { findList } from "../services/ListServices";
 import { useCookies } from "react-cookie";
@@ -14,11 +14,13 @@ export default function ShareListPage() {
     const _id = useParams()
     const navigate = useNavigate()
 
+    // eslint-disable-next-line
     const [cookies, setCookie, removeCookie] = useCookies()
     const cookie = `Bearer ${cookies.authorization}`
 
     useEffect(() => {
         checkUser()
+    // eslint-disable-next-line
     }, [])
     
     const checkUser = async () => {

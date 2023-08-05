@@ -1,17 +1,16 @@
-import { useEffect, useState } from "react"
-import { useCookies } from "react-cookie"
-import { AddItem, GetAllItems } from "../services/ItemServices"
+import { useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import "../Styles/list-page.css";
 
 export default function FindItem(props) {
 
-    const [items, setItems] = useState([])
+    //const [items, setItems] = useState([])
     const [itemInput, setItemInput] = useState('')
-    const [cookies, setCookie, removeCookie] = useCookies()
-    const [showItems, setShowItems] = useState(false) // Track whether to show items
-    const cookie = `Bearer ${cookies.authorization}`
+    // eslint-disable-next-line
+
+    //const [showItems, setShowItems] = useState(false) // Track whether to show items
+
 
     /*useEffect(() => {
         GetAllItems(cookie)
@@ -22,7 +21,7 @@ export default function FindItem(props) {
 
     function handleInputChange(event) {
         setItemInput(event.target.value)
-        setShowItems(true) // Show items when input changes
+        //setShowItems(true) // Show items when input changes
     }
 
     /*const filteredItems = itemInput ? items.filter((item) => 
@@ -45,7 +44,7 @@ export default function FindItem(props) {
             name: capitalizedItemName
         }
         props.addItem(item)
-        setShowItems(false) // Hide items after selecting
+        //setShowItems(false) // Hide items after selecting
         setItemInput('');
     }
 

@@ -11,13 +11,13 @@ import "../Styles/share-list.css";
 
 export default function ShareList() {
 
+    // eslint-disable-next-line
     const [cookies, setCookie, removeCookie] = useCookies()
     const cookie = `Bearer ${cookies.authorization}`
 
     const [groups, setGroups] = useState([])
     const [checkedGroups, setCheckedGroups] = useState(new Set())
     const [selectedMembers, setSelectedMembers] = useState([])
-    const [displayError, setDisplayError] = useState('')
 
     const [formSubmitted, setFormSubmitted] = useState(false)
 
@@ -32,6 +32,7 @@ export default function ShareList() {
         .then((response) => {
             setGroups(response)
         })
+    // eslint-disable-next-line
     }, [])
 
     const handleCheckboxChange = (groupId) => {
@@ -67,14 +68,11 @@ export default function ShareList() {
     };
 
     useEffect(() => {
-
-        
         if (formSubmitted) {
             const data = {
                 shared_with: selectedMembers
             }
     
-            console.log(data)
             addUserToList(_id._id, cookie, data)
             .then((response) => {
                 if(response.error) {
@@ -84,7 +82,7 @@ export default function ShareList() {
                 }
             })
         } 
-
+    // eslint-disable-next-line
     }, [formSubmitted])
 
     return(

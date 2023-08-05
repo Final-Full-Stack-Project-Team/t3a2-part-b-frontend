@@ -3,14 +3,13 @@ import { useLocation, useNavigate, useParams } from "react-router"
 import { deleteList, editList, findList } from "../services/ListServices"
 import { useUserData } from "../contexts/UserContext"
 import { useCookies } from "react-cookie"
-import { findAllItemsFromList } from "../services/ItemServices"
 import ListOptions from "../Components/ListOptions"
 import DeleteList from "../Components/DeleteList"
 import FindItem from "../Components/FindItem"
 import NavMenu from "../Components/NavMenu";
 import NoItems from "../Components/NoItems";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisVertical, faUserPlus, faPenToSquare, faX } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsisVertical, faUserPlus, faX } from '@fortawesome/free-solid-svg-icons'
 import "../Styles/list-page.css";
 import { Link } from "react-router-dom"
 
@@ -39,6 +38,7 @@ export default function ListPage() {
 
     // testing press enter
     const [updatedListName, setUpdatedListName] = useState(""); 
+
 
     useEffect(() => {
         let user = userData?.email
@@ -79,6 +79,7 @@ export default function ListPage() {
       // Update the checkedItems state with the new object
       setCheckedItems(updatedCheckedItems);
     }, [items]);
+
 
     function handleOptions() {
         setShowOptions(!showOptions)
@@ -162,9 +163,6 @@ export default function ListPage() {
         items: [...items, item]
       };
 
-      console.log(data)
-
-    
       try {
         const response = await editList(_id._id, data, cookie);
     
@@ -200,11 +198,8 @@ export default function ListPage() {
       items: newItemsArray
     }
 
-    console.log(data)
+    await editList(_id._id, data, cookie)
 
-    const response = await editList(_id._id, data, cookie)
-
-    console.log(response)
   }
 
    return (
@@ -239,7 +234,7 @@ export default function ListPage() {
             </div>
             }
           </div>
-          <p className="page-sub-heading">{items.length} item{items.length !== 1 ? 's' : ''} </p>
+          <p className="page-sub-heading">{items?.length} item{items?.length !== 1 ? 's' : ''} </p>
         </header>
         {list && listName ? (
         <div className="list-details-body">

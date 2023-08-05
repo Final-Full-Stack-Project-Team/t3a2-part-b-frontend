@@ -43,7 +43,6 @@ export default function ListsPage() {
 
     // Fetch data from the API when the component mounts
     useEffect(() => {
-        console.log("this")
         let user = userData?._id
         if (user) {
             findAllLists(cookie)

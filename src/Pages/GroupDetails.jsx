@@ -28,7 +28,6 @@ export default function GroupDetails() {
     // Fetch the group details when the component mounts
     findGroup(groupId, cookies.authorization) // Pass the token to the findGroup function
       .then((response) => {
-        console.log('Fetched group details:', response);
         setGroupDetails(response);
       })
       .catch((error) => {
@@ -47,9 +46,7 @@ export default function GroupDetails() {
    };
 
    async function submitGroupMemberAdd(groupMember) {
-    console.log(typeof(groupMember))
     const response = await findUser(groupMember)
-    console.log(response)
     if (groupDetails.shared_with.map((member) => member.email).includes(groupMember)) {
         setGroupMemberError('User has already been added')
         setTimeout(() => {
@@ -86,10 +83,7 @@ async function handleupdateGroup() {
     shared_with: groupDetails.shared_with.map((user) => user._id),
     group_name: capitalizedGroupName || groupDetails.group_name,
   };
-  console.log(cookies.authorization);
-  console.log(groupDetails._id);
-  const response = await updateGroup(data, cookies.authorization, groupDetails._id);
-  console.log(response);
+  await updateGroup(data, cookies.authorization, groupDetails._id);
   navigate('/groups');
 }
 
@@ -104,11 +98,9 @@ async function handleupdateGroup() {
 
     async function handleLeaveGroup() {
       let newSharedWith = groupDetails.shared_with.filter((user) => user._id !== userData._id).map((user) => user._id)
-      console.log(groupDetails.shared_with)
       let data = {
         shared_with: newSharedWith
       }
-      console.log(data)
       if (userData._id === groupDetails.admin._id) {
         const newAdmin = groupDetails.shared_with[0]
         newSharedWith = newSharedWith.filter((user) => user !== newAdmin._id)
@@ -120,7 +112,6 @@ async function handleupdateGroup() {
           shared_with: newSharedWith,
           admin: newAdmin._id
         }
-        console.log(data)
       }
       // eslint-disable-next-line
       const response = await updateGroup(data, cookies.authorization, groupDetails._id)

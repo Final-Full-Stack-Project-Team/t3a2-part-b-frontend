@@ -20,6 +20,7 @@ export default function CreateGroupForm() {
     const [groupMemberList, setGroupMemberList] = useState([])
     const [groupMemberError, setGroupMemberError] = useState('')
 
+    // eslint-disable-next-line
     const [cookies, setCookie, removeCookie] = useCookies()
     const cookie = `Bearer ${cookies.authorization}`
 
@@ -27,6 +28,7 @@ export default function CreateGroupForm() {
 
     useEffect(() => {
         setGroupAdmin(userData)
+    // eslint-disable-next-line
     }, [])
 
 

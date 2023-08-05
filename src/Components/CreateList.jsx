@@ -11,6 +11,7 @@ export default function CreateList() {
     const [listName, setListName] = useState('')
     const [listError, setListError] = useState('')
 
+    // eslint-disable-next-line
     const [cookies, setCookie, removeCookie] = useCookies()
     const cookie = `Bearer ${cookies.authorization}`
 
@@ -30,7 +31,6 @@ export default function CreateList() {
     async function submitCreateList() {
 
         if (listName.trim('') === '') {
-            console.log("this is happening")
             setListError('Please enter a list name')
             setTimeout(() => {
                 setListError('')
