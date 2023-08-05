@@ -101,6 +101,7 @@
     display: flex;
     justify-content: center;
     border-radius: 0.2em; 
+    z-index: 10;
 }
 
 .overlay-content {
