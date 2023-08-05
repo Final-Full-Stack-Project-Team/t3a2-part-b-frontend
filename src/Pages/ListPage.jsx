@@ -32,7 +32,12 @@ export default function ListPage() {
     const inputRef = useRef(null)
 
     const [listName, setListName] = useState('')
-    const [checkedItems, setCheckedItems] = useState({})
+    
+    const [checkedItems, setCheckedItems] = useState(() => {
+      // Get checked items from localStorage or initialize as an empty object
+      const storedCheckedItems = localStorage.getItem("checkedItems");
+      return storedCheckedItems ? JSON.parse(storedCheckedItems) : {};
+    });
 
     
 
@@ -80,11 +85,16 @@ export default function ListPage() {
     }
     
     function checkItem(item) {
-        setCheckedItems(prevCheckedItems => ({
-          ...prevCheckedItems,
-          [item._id]: !prevCheckedItems[item._id]
-        }));
-      }
+      const updatedCheckedItems = {
+        ...checkedItems,
+        [item._id]: !checkedItems[item._id]
+      };
+      // Update state and store the checked items in localStorage
+      setCheckedItems(updatedCheckedItems);
+      localStorage.setItem("checkedItems", JSON.stringify(updatedCheckedItems));
+  }
+      
+      
     
     function handleRenameList() {
         setRenameList(!renameList)
