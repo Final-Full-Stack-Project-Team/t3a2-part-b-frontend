@@ -112,7 +112,7 @@ export default function CreateGroupForm() {
                     </div>
                 }
                 <div>
-                <Link to="/groups" onClick={submitCreateGroup} className='ng-update-button'>CREATE</Link>
+                <button to="/groups" onClick={submitCreateGroup} className='ng-update-button'>CREATE</button>
               </div>
 
               <div>
