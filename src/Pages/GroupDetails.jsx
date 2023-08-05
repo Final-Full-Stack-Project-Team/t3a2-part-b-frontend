@@ -100,15 +100,19 @@ async function handleupdateGroup() {
     }
 
     async function handleLeaveGroup() {
-      let newSharedWith = groupDetails.shared_with.filter((user) => user !== userData._id).map((user) => user._id)
+      let newSharedWith = groupDetails.shared_with.filter((user) => user._id !== userData._id).map((user) => user._id)
+      console.log(groupDetails.shared_with)
       let data = {
-        shared_with: [newSharedWith]
+        shared_with: newSharedWith
       }
       console.log(data)
       if (userData._id === groupDetails.admin._id) {
         const newAdmin = groupDetails.shared_with[0]
         newSharedWith = newSharedWith.filter((user) => user !== newAdmin._id)
-        console.log(newSharedWith)
+        if (!newAdmin) {
+          handleDeleteGroup()
+          return
+        }
         data = {
           shared_with: newSharedWith,
           admin: newAdmin._id
@@ -197,7 +201,7 @@ async function handleupdateGroup() {
                   </div>
                 )}
               <div>
-                <Link to="/groups" onClick={handleupdateGroup} className='update-button'>UPDATE</Link>
+                <button to="/groups" onClick={handleupdateGroup} className='update-button'>UPDATE</button>
               </div>
 
               <div>
