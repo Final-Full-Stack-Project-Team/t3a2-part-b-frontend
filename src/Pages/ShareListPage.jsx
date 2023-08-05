@@ -50,8 +50,8 @@ export default function ShareListPage() {
                     <p className="list-page-heading">Share List</p>
                     <p className="page-sub-heading">Select a group </p>
                 </header>
-                <p className="sl-instructions">Share With:</p>
-                <div className="sl-details-body">
+                <p className="share-list-instructions">Share With:</p>
+                <div className="share-list-details-body">
                     <ShareList />
                 </div>
             </div>

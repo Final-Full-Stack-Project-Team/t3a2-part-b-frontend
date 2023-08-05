@@ -1,0 +1,82 @@
+.create-list-body {
+    border: 5px solid;
+    margin: auto;
+    width: 90%;
+    padding: 10px;
+    border: none; 
+    outline: none;  
+}
+
+.create-list-label {
+    font-size: 1em;
+    margin-top: 8em;
+    color: var(--font-color);
+}
+
+.create-list-name {
+    background-color: #212121;
+    padding: 1em 1em 1em 1.7em;
+    border-radius: 6px;
+    font-size: 1.4em;
+    font-weight: 500;   
+    margin-top: 0.5em;
+    margin-bottom: 2em;
+    color: #f2f2f2;
+    border:none;
+    caret-color: var(--green);
+    width: 100%;
+    outline: none;  
+}
+
+.create-list-update-button {
+    position:relative;
+    float: right;
+    margin: 1em 7% 2em 2em; 
+    padding: 0.8em 2.2em 0.8em 2.2em;
+    border-radius: 2em;
+    border: none;
+    background-color: var(--green);
+    font-weight: 600;
+    font-size: 1em;
+    cursor: pointer;
+    color: #212121;
+    text-decoration: none;
+}
+
+.create-list-update-button:hover {
+    background-color: #a2f199;
+}
+
+.create-list-cancel {
+    position: absolute;
+    margin: 1em 0em 2em -0.3em; 
+    margin-left: 2%;
+    padding: 0.8em 2.2em 0.8em 2.2em;
+    border-radius: 4em;
+    border: none;
+    background: none;
+    font-weight: 500;
+    font-size: 1em;
+    cursor: pointer;
+    color: #949494;
+    text-decoration: none;
+}
+
+.create-list-cancel:hover {
+    color: #f2f2f2;
+}
+
+
+@media only screen and (min-width: 600px) {
+    .create-list-body {
+        width: 35em; 
+    }
+
+    .create-list-update-button {
+        margin-right: 1%;
+    }
+
+    .create-list-cancel {
+        margin-left: -1%;
+    }
+}

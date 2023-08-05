@@ -7,6 +7,7 @@ import { useNavigate } from "react-router"
 import AddGroupMember from "./AddGroupMember"
 import NavMenu from "../Components/NavMenu";
 import { Link } from "react-router-dom";
+import "../Styles/create-group.css";
 
 
 export default function CreateGroupForm() {

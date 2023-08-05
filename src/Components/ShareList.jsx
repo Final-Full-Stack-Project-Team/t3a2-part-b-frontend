@@ -5,6 +5,7 @@ import { addUserToList } from "../services/ListServices"
 import { useNavigate, useParams } from "react-router"
 import { Link } from "react-router-dom";
 import { useUserData } from "../contexts/UserContext"
+import "../Styles/share-list.css";
 
 
 export default function ShareList() {
@@ -89,18 +90,18 @@ export default function ShareList() {
         <div >
             {groups && groups.map((group) => {
                 return(
-                    <div className="sl-shared-with" key={group._id}>
-                        <input className="sl-checkbox" type="checkbox" onChange={() => handleCheckboxChange(group._id)} checked={checkedGroups.has(group._id)} />
+                    <div className="share-list-with" key={group._id}>
+                        <input className="share-list-checkbox" type="checkbox" onChange={() => handleCheckboxChange(group._id)} checked={checkedGroups.has(group._id)} />
                         <p>{group.group_name}</p>
                     </div>
                 )
             })}
             <div>
-                <button onClick={handleSubmit} className='sl-update-button'>SHARE</button>
+                <button onClick={handleSubmit} className='share-list-update-button'>SHARE</button>
             </div>
             <div>
                 <Link to="/">
-                    <button className='cancel'>CANCEL</button>
+                    <button className='share-list-cancel'>CANCEL</button>
                 </Link>
             </div>
         </div>

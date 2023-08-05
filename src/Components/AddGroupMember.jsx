@@ -17,7 +17,7 @@ export default function AddGroupMember(props) {
 
     return (
         <div>
-            <input className="add-people" type="text" value={groupMember} onChange={handleGroupMemberAddChange} placeholder="Add member" />
+            <input className="add-members" type="text" value={groupMember} onChange={handleGroupMemberAddChange} placeholder="Add member" />
             <button className="add-user-icon" onClick={handleAddButtonClick}><img src={PlusIcon} alt="Add Member" /></button>
         </div>
     );
