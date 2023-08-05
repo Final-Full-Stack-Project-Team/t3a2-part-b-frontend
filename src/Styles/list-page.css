@@ -198,7 +198,6 @@ input[type="checkbox"] {
     display: flex;
     border-top: 1px solid var(--light-grey);
     padding: 1em 1em 1em 1em;
-    
 }
 
 .list-items:hover {
@@ -321,7 +320,7 @@ input[type="checkbox"] {
       }
 
       .overlay {
-        margin-right: 2.5em;
+        margin-right: 1em;
         margin-top: -5.2em;
       }
     

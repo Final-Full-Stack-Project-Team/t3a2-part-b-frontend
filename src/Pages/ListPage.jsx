@@ -251,7 +251,7 @@ export default function ListPage() {
                       className="list-items-label"
                       style={{
                         textDecoration: checkedItems[item._id] ? "line-through" : "none",
-                        color: checkedItems[item._id] ? "#555555" : "inherit", // Change color based on checkbox state
+                        color: checkedItems[item._id] ? "#8c8c8c" : "inherit", // Change color based on checkbox state
                       }}
                     >
                       {item.name}
