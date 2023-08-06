@@ -165,11 +165,6 @@ async function handleupdateGroup() {
                 <div className="add-member-btn"><FontAwesomeIcon icon={faUserPlus}/></div>
               
                 <AddGroupMember object={groupDetails} admin={groupDetails.admin} updating={true} submit={submitGroupMemberAdd} />
-                {groupMemberError && 
-                  <div>
-                    {groupMemberError}
-                  </div>
-                }
               </div>
 
               {groupDetails?.shared_with && groupDetails.shared_with.length > 0 && (
