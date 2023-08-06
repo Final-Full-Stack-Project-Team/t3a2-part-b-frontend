@@ -118,7 +118,7 @@ export default function ListsPage() {
                 {/* IMPORTANT! All page content goes in the body class */}
                 <div className="page-contents">
                 {isLoading ? (
-                    <p className="loading-message">Loading your lists...</p>) : lists.length > 0 ? (lists.map((list) => {
+                    <p className="loading-message">Loading Lists...</p>) : lists.length > 0 ? (lists.map((list) => {
                         return (
                             <div className="lists-container" key={list._id}>
                                 <p className="lists-icon">

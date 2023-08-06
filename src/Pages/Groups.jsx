@@ -56,7 +56,7 @@ export default function Groups() {
     
             {/* IMPORTANT! All page content goes in the body class */}
             <div className="page-contents">
-              {isLoading ? (<p className="loading-message" >Loading your groups...</p>) : groups.length > 0 ? (
+              {isLoading ? (<p className="loading-message" >Loading Groups...</p>) : groups.length > 0 ? (
                 groups.map((group) => (
                   <div className="groups-container" key={group._id}>
                     <p className="groups-icon">
