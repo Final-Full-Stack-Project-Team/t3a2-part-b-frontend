@@ -14,15 +14,19 @@ export default function Groups() {
     const [cookies] = useCookies();
     const [groups, setGroups] = useState([]);
     const cookie = `Bearer ${cookies.authorization}`;
+    const [isLoading, setIsLoading] = useState(true);
 
     // Fetch data from the API when the component mounts
     useEffect(() => {
+      setIsLoading(true);
         findAllGroups(cookie)
             .then((response) => {
                 setGroups(response); // Update state with the fetched data
+                setIsLoading(false);
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);
+                setIsLoading(false);
             });
     }, [cookie]);
 
@@ -45,14 +49,14 @@ export default function Groups() {
             <header className="fake-header">
               <p className="page-heading">Groups</p>
               <p className="page-sub-heading">
-                {groups.length} Group{groups.length !== 1 ? 's' : ''}
+                  {isLoading ? "Calculating..." : `${groups.length} Group${groups.length !== 1 ? 's' : ''}`}
               </p>
               <Link className="add-group-btn" to={'/groups/add'}><img className="add-btn" src={PlusIcon} alt="PlusIcon"/></Link>
             </header>
     
             {/* IMPORTANT! All page content goes in the body class */}
             <div className="page-contents">
-              {groups.length > 0 ? (
+              {isLoading ? (<p className="loading-message" >Loading Groups...</p>) : groups.length > 0 ? (
                 groups.map((group) => (
                   <div className="groups-container" key={group._id}>
                     <p className="groups-icon">
@@ -68,8 +72,6 @@ export default function Groups() {
                   <NoGroups />
                 </div>
               )}
-              
-              
             </div>
           </div>
         </div>

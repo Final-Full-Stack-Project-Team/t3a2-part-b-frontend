@@ -21,6 +21,7 @@ export default function CompletedListsPage() {
     const cookie = `Bearer ${cookies.authorization}`
     // eslint-disable-next-line
     const navigate = useNavigate()
+    const [isLoading, setIsLoading] = useState(true);
 
     const [displayDeleteForList, setDisplayDeleteForList] = useState(null);
     
@@ -45,16 +46,19 @@ export default function CompletedListsPage() {
 
     // Fetch data from the API when the component mounts
     useEffect(() => {
-        let user = userData?._id
-        if (user) {
-            findAllLists(cookie)
+        setIsLoading(true); // Set loading to true before fetching data
+
+        findAllLists(cookie)
             .then((response) => {
-                const completedLists = response.filter((list) => list.isCompleted === true)
-                setLists(completedLists)
+                const completedLists = response.filter((list) => list.isCompleted === true);
+                setLists(completedLists);
+                setIsLoading(false); // Set loading to false after fetching data
             })
-        }
-    // eslint-disable-next-line
-    }, [])
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+                setIsLoading(false); // Set loading to false even if there's an error
+            });
+    }, [cookie]);
 
      // State to track if the navigation menu is open or closed
      const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
@@ -89,11 +93,11 @@ export default function CompletedListsPage() {
             <div className={isNavMenuOpen ? "nav-closed" : "nav-open" }>
                 <header className="fake-header">
                     <p className="page-heading">Completed Lists</p>
-                    <p className="page-sub-heading">{lists.length} List{lists.length !== 1 ? 's' : '' }</p>
+                    <p className="page-sub-heading">{isLoading ? "Calculating..." : `${lists.length} List${lists.length !== 1 ? 's' : '' }`}</p>
                 </header> 
 
                 <div className="page-contents">
-                    {lists.length > 0 ? (lists.map((list) => {
+                    {isLoading ? (<p className="loading-message">Loading Completed Lists...</p>) : lists.length > 0 ? (lists.map((list) => {
                         return (
                             <div className="completed-lists-container" key={list._id}>
                                 <p className="lists-icon">

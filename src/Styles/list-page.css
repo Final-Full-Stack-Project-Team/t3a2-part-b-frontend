@@ -221,9 +221,20 @@ input[type="checkbox"] {
     text-overflow: ellipsis;
 }
 
-
-
-
+.loading-message {
+    position: absolute;
+	z-index: 0;
+    margin-left: 4.2em;
+    margin-bottom: 4em;
+    
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--font-color);
+	white-space: nowrap;
+	overflow: hidden;
+    text-overflow: ellipsis;
+	
+}
 .delete-overlay {
     color: #f2f2f2;
     background-color: #333333;

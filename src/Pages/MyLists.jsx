@@ -18,7 +18,8 @@ export default function ListsPage() {
     const [lists, setLists] = useState([])
     const userData = useUserData()
     const cookie = `Bearer ${cookies.authorization}`
-    
+    const [isLoading, setIsLoading] = useState(true);
+
     const handleLogout = () => {
         removeCookie('authorization')
         localStorage.clear()
@@ -26,19 +27,23 @@ export default function ListsPage() {
     
     // check for user in local storage and logout if not found.
     useEffect(() => {
-        let user = userData?.email
+        let user = userData?._id
         if (user) {
-            findUser(user)
+            setIsLoading(true);
+            findUser(userData?.email)
             .then((response) => {
                 if (!response._id) {
                     handleLogout()
+                } else {
+                    return findAllLists(cookie);
                 }
             })
+            
         }
     // eslint-disable-next-line
     }, [])
 
-    // Fetch data from the API when the component mounts
+    // // Fetch data from the API when the component mounts
     useEffect(() => {
         let user = userData?._id
         if (user) {
@@ -47,6 +52,17 @@ export default function ListsPage() {
                 const activeLists = response.filter((list) => list.isCompleted === false)
                 setLists(activeLists)
             })
+            .then((response) => {
+                if (response) {
+                  const activeLists = response.filter((list) => list.isCompleted === false);
+                  setLists(activeLists);
+                }
+                setIsLoading(false); // Set loading to false after fetching data
+              })
+              .catch((error) => {
+                console.error("Error fetching data:", error);
+                setIsLoading(false); // Set loading to false even if there's an error
+              });
         }
     // eslint-disable-next-line
     }, [])
@@ -68,13 +84,17 @@ export default function ListsPage() {
             <div className={isNavMenuOpen ? "nav-closed" : "nav-open" }>
                 <header className="fake-header">
                     <p className="page-heading">My Lists</p>
-                    <p className="page-sub-heading">{lists.length} List{lists.length !== 1 ? 's' : '' }</p>
+                    <p className="page-sub-heading">
+                    {isLoading ? "Calculating..." : `${lists.length} List${lists.length !== 1 ? 's' : ''}`}
+                    </p>
+                    
                     <Link className="add-group-btn" to={'/list/create'}><img className="add-btn" src={PlusIcon} alt="PlusIcon"/></Link>
                 </header> 
 
                 {/* IMPORTANT! All page content goes in the body class */}
                 <div className="page-contents">
-                    {lists.length > 0 ? (lists.map((list) => {
+                {isLoading ? (
+                    <p className="loading-message">Loading Lists...</p>) : lists.length > 0 ? (lists.map((list) => {
                         return (
                             <div className="lists-container" key={list._id}>
                                 <p className="lists-icon">
