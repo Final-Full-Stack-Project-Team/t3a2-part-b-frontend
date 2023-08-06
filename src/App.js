@@ -23,8 +23,8 @@ function App() {
 				<Route path='/list/:_id/share' element={<ShareListPage />} />
 				<Route path='/sign-in' element={<SignInPage />} />
 				<Route path='/sign-up' element={<SignUpPage />} />
-				<Route path ='completed' element={<Completed/>} />
-				<Route path ='groups' element={<Groups/>} />
+				<Route path ='/completed' element={<Completed/>} />
+				<Route path ='/groups' element={<Groups/>} />
 				<Route path="/groups/:groupId" element={<GroupDetails />} />
 				<Route path='/groups/add' element={<CreateGroupPage />} />
 			</Routes>
