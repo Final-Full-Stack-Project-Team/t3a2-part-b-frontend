@@ -1,3 +1,31 @@
+.no-groups-container {
+    flex-direction: column;
+    border-top: 1px solid var(--green);
+    border-bottom: 1px solid var(--light-grey);
+    padding: 1em 1em 1em 2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;   
+}
+.no-groups-container {
+    text-decoration: none !important;  
+}
+
+.no-groups-message-line1 {
+    margin: 0em 0em -1em -1.8em;
+}
+
+.no-groups-message-line2 {
+    margin: 0em 0em 0.5em -1.8em;
+}
+
+.no-groups-link {
+    text-decoration: none !important;
+    color: var(--green);
+}
+
+
+
 .share-list-with {
     flex-direction: column;
     border-top: 1px solid var(--light-grey);

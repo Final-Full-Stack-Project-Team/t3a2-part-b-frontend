@@ -97,7 +97,15 @@ export default function ShareList() {
 
     return(
         <div >
-            {groups && groups.map((group, index) => {
+            {groups.length === 0 ? (
+                <div className="no-groups-container">
+                    <p className="no-groups-message-line1"> You have no groups to share with.</p> <br></br>
+                    <p className="no-groups-message-line2">Create your first group <Link to='../groups' className="no-groups-link"> here.</Link> </p>
+                </div>
+                
+                
+            ) : (
+                groups.map((group, index) => {
                 const isLastGroup = index === groups.length - 1;
                 return(
                     <div className={`share-list-with ${isLastGroup ? 'share-list-with-last-child' : ''}`} key={group._id}>
@@ -105,10 +113,10 @@ export default function ShareList() {
                         <div>
                             <p>{group.group_name}</p>
                         </div>
-                        
                     </div>
                 )
-            })}
+            })
+            )}
             <div>
                 <button onClick={handleSubmit} className='share-list-update-button'>SHARE</button>
             </div>
