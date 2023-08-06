@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import NoGroups from "../Components/NoGroups";
 import PlusIcon from "../images/PlusIcon.svg";
 
-export default function Groups(props) {
+export default function Groups() {
     const [cookies] = useCookies();
     const [groups, setGroups] = useState([]);
     const cookie = `Bearer ${cookies.authorization}`;

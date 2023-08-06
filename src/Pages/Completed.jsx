@@ -12,7 +12,7 @@ import NoCompleted from "../Components/NoCompleted";
 import DeleteList from "../Components/DeleteList";
 // import { useStartTyping } from "react-use";
 
-export default function ListsPage() {
+export default function CompletedListsPage() {
     // Local state variables saved here
     // eslint-disable-next-line
     const [cookies, setCookie, removeCookie] = useCookies()
