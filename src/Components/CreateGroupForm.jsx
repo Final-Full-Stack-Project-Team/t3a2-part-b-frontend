@@ -93,14 +93,19 @@ export default function CreateGroupForm() {
                 <header className="fake-header">
                     <p className="list-page-heading">Create Group</p>  
                 </header>
+                
                 <div className="group-details-body">
-                    
                     <input className="edit-group-name" type="text" value={groupName} onChange={handleGroupNameChange} placeholder="Group name" />
+                    {groupMemberError && 
+                    <div className="error">
+                        <p className="no-name-error">{groupMemberError}</p>
+                    </div>
+                }
                     <div className="add-member-btn"><FontAwesomeIcon icon={faUserPlus}/></div>
                     <AddGroupMember object={groupMemberList} admin={groupAdmin} updating={false} submit={submitGroupMemberAdd} />
                 </div>
                 
-                <div style={{ color: "#f2f2f2" }} >
+                <div  >
                     {groupAdmin && 
                         <div className="ng_shared_with">
                             {groupAdmin.email}
@@ -114,11 +119,7 @@ export default function CreateGroupForm() {
                         )
                     })}
                 </div>
-                {groupMemberError && 
-                    <div style={{ color: "white" }} className="error">
-                        <p>{groupMemberError}</p>
-                    </div>
-                }
+                
                 <div>
                 <button to="/groups" onClick={submitCreateGroup} className='ng-update-button'>CREATE</button>
               </div>

@@ -73,7 +73,7 @@
 .add-member-btn {
     position: absolute;
     color: #949494;
-    padding: 2em 1em 1em 0em;
+    padding: 3.8em 1em 1em 0em;
     z-index: -10;
 }
 
@@ -154,12 +154,12 @@
   }
 
 .add-members {
+    
     background: none;
     padding: 1em 1em 1em 0em;
     border-radius: 6px;
     font-size: 1.2em;
-    margin-top: 0.5em;
-    margin-left: 1.7em;
+    margin: 2em 0em 0em 1.7em;
     color: #f2f2f2;
     border:none;
     caret-color: var(--green);
@@ -225,7 +225,7 @@
         font-size: 1em;
     }
     .add-member-btn {
-        padding-top: 1.5em
+        padding-top: 3em
     }
 
     .group-page-heading {

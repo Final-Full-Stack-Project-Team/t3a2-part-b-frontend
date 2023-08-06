@@ -150,28 +150,21 @@ async function handleupdateGroup() {
         <button onClick={handleDeleteGroup}>DELETE GROUP</button> */}
         
         <div className="group-details-body">
-
-        
           {groupDetails ? (
             <div>
-
               {groupDetails?.dateCreated && (
                 <div className="group-date">Created on {new Date(groupDetails.dateCreated).toLocaleDateString()}</div>
               )}
-
-              <div >
-              <input className="edit-group-name" placeholder={groupDetails.group_name} value={updatedGroupName} onChange={(e) => setUpdatedGroupName(e.target.value)}/>
+              <div>
+                <input className="edit-group-name" placeholder={groupDetails.group_name} value={updatedGroupName} onChange={(e) => setUpdatedGroupName(e.target.value)}/>
               </div>
-
+              {groupMemberError && 
+                  <p className="no-name-error">{groupMemberError}</p>
+                }
               <div>
                 <div className="add-member-btn"><FontAwesomeIcon icon={faUserPlus}/></div>
               
                 <AddGroupMember object={groupDetails} admin={groupDetails.admin} updating={true} submit={submitGroupMemberAdd} />
-                {groupMemberError && 
-                  <div>
-                    {groupMemberError}
-                  </div>
-                }
               </div>
 
               {groupDetails?.shared_with && groupDetails.shared_with.length > 0 && (

@@ -50,9 +50,8 @@ export default function ShareListPage() {
             <div className={isNavMenuOpen ? 'nav-closed' : 'nav-open'}>
                 <header className="fake-header">
                     <p className="list-page-heading">Share List</p>
-                    <p className="page-sub-heading">Select a group </p>
                 </header>
-                <p className="share-list-instructions">Share With:</p>
+                <p className="share-list-instructions">Select groups:</p>
                 <div className="share-list-details-body">
                     <ShareList />
                 </div>
