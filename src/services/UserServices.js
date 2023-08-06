@@ -1,4 +1,5 @@
-const api = 'http://localhost:3001' || process.env.REACT_APP_BACKEND_URL
+const isProduction = process.env.NODE_ENV === 'production';
+const api = isProduction ? process.env.REACT_APP_BACKEND_URL : 'http://localhost:3001';
 
 export async function findUser(data){
     const response = await fetch(`${api}/users/${data}`, {
