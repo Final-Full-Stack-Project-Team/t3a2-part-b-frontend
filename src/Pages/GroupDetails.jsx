@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisVertical, faUserPlus, faX } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
 import AddGroupMember from '../Components/AddGroupMember';
-import { findUser } from '../services/UserServices';
 import { useUserData } from '../contexts/UserContext';
 import GroupOptions from "../Components/GroupOptions"
 
@@ -44,36 +43,16 @@ export default function GroupDetails() {
        setIsNavMenuOpen(prevState => !prevState);
    };
 
-   async function submitGroupMemberAdd(groupMember) {
-    // get the user of the group member passed in
-    const response = await findUser(groupMember)
-    if (groupDetails.shared_with.map((member) => member.email).includes(groupMember)) {
-        setGroupMemberError('User has already been added')
-        setTimeout(() => {
-            setGroupMemberError('')
-        }, 3000)
-    } else if (groupMember === groupDetails.admin.email) {
-        setGroupMemberError('User has already been added')
-        setTimeout(() => {
-            setGroupMemberError('')
-        }, 3000)
-    } else if (groupMember.trim() === '') {
-      setGroupMemberError('User not found')
+   async function submitGroupMemberAdd(data, error) {
+    if (error) {
+      setGroupMemberError(error)
       setTimeout(() => {
-        setGroupMemberError('')
-    }, 3000)
-    } else if (response.error) {
-        setGroupMemberError(response.error)
-        setTimeout(() => {
-            setGroupMemberError('')
-        }, 3000)
+          setGroupMemberError('')
+      }, 3000)
+      return
     } else {
-        const updatedGroupDetails = {
-          ...groupDetails,
-          shared_with: [...groupDetails.shared_with, response]
-        }
-        setGroupDetails(updatedGroupDetails)
-    }
+      setGroupDetails(data)
+  }
 }
 
 async function handleupdateGroup() {
@@ -187,7 +166,7 @@ async function handleupdateGroup() {
               <div>
                 <div className="add-member-btn"><FontAwesomeIcon icon={faUserPlus}/></div>
               
-                <AddGroupMember submitGroupMemberAdd={submitGroupMemberAdd} />
+                <AddGroupMember object={groupDetails} admin={groupDetails.admin} updating={true} submit={submitGroupMemberAdd} />
                 {groupMemberError && 
                   <div>
                     {groupMemberError}
