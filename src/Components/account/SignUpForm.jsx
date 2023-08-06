@@ -31,15 +31,16 @@ export default function SignUp() {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault()
+        // create data for signing up an account
         let apiData = {
             email: email,
             name: name,
             password: password
         }
+        // api fetch request
         const createUserResult = await createUser(apiData)
         const token = createUserResult.token
         const localData = createUserResult.response
-        console.log(localData)
         if (token) {
             userDispatch({
                 type: "login",

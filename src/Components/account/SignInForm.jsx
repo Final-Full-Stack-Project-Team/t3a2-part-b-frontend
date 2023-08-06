@@ -8,6 +8,7 @@ import "../../Styles/sign-in-up.css";
 
 
 export default function SignInForm() {
+    // local state variables here
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const userDispatch = useUserDispatch()
@@ -26,21 +27,24 @@ export default function SignInForm() {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault()
+        // set up the login data to POST to api
         let apiData = {
             email: email,
             password: password
         }
 
+        // fetch request for login
         const loginResult = await loginUser(apiData)
         const token = loginResult.token
         const localData = loginResult.data
         if (token) {
+            // set minimal user data to local state
             userDispatch({
                 type: "login",
                 data: localData
             })
-            console.log(loginResult)
             const expirationDate = new Date();
+            // sets expiration date of cookie for 7 days from current login
             expirationDate.setDate(expirationDate.getDate() + 7)
 
             // set cookie with data
