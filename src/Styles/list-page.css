@@ -224,17 +224,16 @@ input[type="checkbox"] {
 .loading-message {
     position: absolute;
 	z-index: 0;
-    margin-left: 4.2em;
+    margin-left: 3.8em;
     margin-bottom: 4em;
-    
     font-size: 1em;
     font-weight: 500;
     color: var(--font-color);
 	white-space: nowrap;
 	overflow: hidden;
-    text-overflow: ellipsis;
-	
+    text-overflow: ellipsis;	
 }
+
 .delete-overlay {
     color: #f2f2f2;
     background-color: #333333;
@@ -338,8 +337,6 @@ input[type="checkbox"] {
 
 @media only screen and (min-width: 1200px) {
 
-    
-
     .list-buttons {
         margin-right: 1rem
       }
@@ -375,6 +372,10 @@ input[type="checkbox"] {
     
     .remove-icon {
         margin-left: 2em;
+    }
+
+    .loading-message {
+        margin-left: 4.2em;
     }
       
 }
