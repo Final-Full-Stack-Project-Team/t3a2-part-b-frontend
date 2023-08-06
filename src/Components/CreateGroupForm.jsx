@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { findUser } from "../services/UserServices"
 import { useUserData } from "../contexts/UserContext"
 import { createGroup } from "../services/GroupServices"
 import { useCookies } from "react-cookie"
@@ -42,30 +41,15 @@ export default function CreateGroupForm() {
     }
 
     // Function passed as a prop to submit group member
-    async function submitGroupMemberAdd(groupMember) {
-        // Fetch request to find the group member passed in
-        const response = await findUser(groupMember)
-        // Check if member is already in the list of members
-        if (groupMemberList.map((member) => member.email).includes(groupMember)) {
-            setGroupMemberError('User has already been added.')
+    async function submitGroupMemberAdd(data, error) {
+        if (error) {
+            setGroupMemberError(error)
             setTimeout(() => {
                 setGroupMemberError('')
             }, 3000)
-        // Check member against admin too to prevent duplicates
-        } else if (groupMember === groupAdmin.email) {
-            setGroupMemberError('User has already been added.')
-            setTimeout(() => {
-                setGroupMemberError('')
-            }, 3000)
-        // Respond with any other error
-        } else if (response.error) {
-            setGroupMemberError(response.error)
-            setTimeout(() => {
-                setGroupMemberError('')
-            }, 3000)
-        // Else push member to group member list
+            return
         } else {
-            setGroupMemberList([...groupMemberList, response])
+            setGroupMemberList(data)
         }
     }
 
@@ -118,7 +102,7 @@ export default function CreateGroupForm() {
                     </div>
                 }
                     <div className="add-member-btn"><FontAwesomeIcon icon={faUserPlus}/></div>
-                    <AddGroupMember submitGroupMemberAdd={submitGroupMemberAdd} />
+                    <AddGroupMember object={groupMemberList} admin={groupAdmin} updating={false} submit={submitGroupMemberAdd} />
                 </div>
                 
                 <div  >
