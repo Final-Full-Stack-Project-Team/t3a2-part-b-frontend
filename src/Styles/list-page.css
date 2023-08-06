@@ -209,7 +209,8 @@ input[type="checkbox"] {
   }
 
 .list-items:last-child {
-    border-bottom: 1px solid var(--light-grey) !important
+    border-bottom: 1px solid var(--light-grey) !important;
+    margin-bottom: 6em;
 }
 
 .list-items-label {
