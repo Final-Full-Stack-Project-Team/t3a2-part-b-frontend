@@ -1,6 +1,10 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { useLocalStorage } from "react-use"
 
+// THIS REDUCER AND CONTEXT IS NOT IN USE
+
+// FOR FUTURE DEVELOPMENT
+
 const initialGroupsData = [
     {
 		group_name: "Welcome to your Groups!",
@@ -16,12 +20,12 @@ const groupsReducer = (previousState, instructions) => {
 
     switch (instructions.type){
         case "setup":
-            console.log("Apply persistent data to state now.");
+            //console.log("Apply persistent data to state now.");
             let localStorageData = instructions.data;
             stateEditable = localStorageData;
             return stateEditable;
         case "create":
-            console.log("Groups: Create groups and add to state");
+            //console.log("Groups: Create groups and add to state");
 
             let newGroup = instructions.newGroup;
             stateEditable.push(newGroup)
@@ -29,16 +33,16 @@ const groupsReducer = (previousState, instructions) => {
             return stateEditable
 
         case "update name":
-            console.log("Groups: Update the Group's name");
+            //console.log("Groups: Update the Group's name");
             break;
         case "update members":
-            console.log("Groups: Update the Group's members");
+            //log("Groups: Update the Group's members");
             break;
         case "delete":
-            console.log("Groups: Delete a Group");
+            //console.log("Groups: Delete a Group");
             break;
         default:
-            console.log("Invalid instruction");
+            //console.log("Invalid instruction");
             return previousState;
     }
 }
@@ -66,7 +70,7 @@ export default function GroupsProvider(props) {
     }, []);
 
     useEffect(() => {
-        console.log("local storage: " + persistantData);
+        //console.log("local storage: " + persistantData);
     }, [persistantData]);
 
     useEffect(() => {
