@@ -33,75 +33,72 @@ const handleLogout = () => {
 	setIsLoggedIn(false)
 }
 
-	return (
-		<header>
-			<nav ref={navRef} className={isNavMenuOpen ? "nav_container" : ""}>
-				<div className="nav-body">
-					<p className="nav-heading">{isLoggedIn ? `Hello, ${userData.name}` : "Hello"}!</p>
+return (
+    <header>
+      <nav ref={navRef} className={isNavMenuOpen ? "nav_container" : ""}>
+        <div className="nav-body">
+          <p className="nav-heading">
+            {isLoggedIn ? `Hello, ${userData.name}` : "Hello"}!
+          </p>
 
-					{isLoggedIn ? (
-						<Link className="nav-sub-heading" to="/groups">
-							GROUPS <span className="nav-sub-heading-arrow"> &#62;</span>
-							<br />
-							<p className="nav-sub-heading-sub-text">
-							Create Groups to share your lists
-							</p>
-						</Link>
-						) : (
-						<Link className="nav-sub-heading" to="/sign-in">
-							LOGIN <span className="nav-sub-heading-arrow"> &#62;</span>
-							<br />
-							<p className="nav-sub-heading-sub-text">
-							Log in to share your lists
-							</p>
-						</Link>
-						)}
-						<Link className="nav-my-lists" to="/">
-							<p className="nav-icons-my-lists">
-							<FontAwesomeIcon icon={faList}/>
-							</p>
-								My Lists
-						</Link>
-
-						<Link className="nav-Completed" to="/completed">
-							<p className="nav-icons-completed">
-							<FontAwesomeIcon icon={faCheck}/>
-							</p>
-								Completed
-						</Link>
-
-						{/* Conditionally render the "Groups" menu item */}
-						{isLoggedIn && (
-							<Link className="nav-Groups" to="/groups">
-								<p className="nav-icons-groups">
-								<FontAwesomeIcon icon={faUserGroup} />
-							</p>
-							Groups
-						
-						</Link>
-							)}
-						{isLoggedIn && (
-						<Link onClick={handleLogout} className="nav-logout" to="/">
-							<p className="nav-icons-logout" title="Sign out">
-								<FontAwesomeIcon icon={faArrowRightFromBracket} />
-							</p>
-							Logout
-						</Link>
-							)}
-				</div>	
-				<button
-					className="nav-btn"
-					onClick={showNavbar}>
-				</button>
-			</nav>
-			<button
-                className="nav-btn"
-				// Use the toggleNavMenu function from props
-                onClick={toggleNavMenu}> 
-                <FontAwesomeIcon icon={faBars} />
-            </button>
-		</header>
-	);
+          {isLoggedIn ? (
+            <>
+              <Link className="nav-sub-heading" to="/groups">
+                GROUPS <span className="nav-sub-heading-arrow"> &#62;</span>
+                <br />
+                <p className="nav-sub-heading-sub-text">
+                  Create Groups to share your lists
+                </p>
+              </Link>
+              <Link className="nav-my-lists" to="/">
+                <p className="nav-icons-my-lists">
+                  <FontAwesomeIcon icon={faList} />
+                </p>
+                My Lists
+              </Link>
+              <Link className="nav-Completed" to="/completed">
+                <p className="nav-icons-completed">
+                  <FontAwesomeIcon icon={faCheck} />
+                </p>
+                Completed
+              </Link>
+              <Link
+                className="nav-Groups"
+                to="/groups"
+              >
+                <p className="nav-icons-groups">
+                  <FontAwesomeIcon icon={faUserGroup} />
+                </p>
+                Groups
+              </Link>
+              <Link
+                onClick={handleLogout}
+                className="nav-logout"
+                to="/"
+              >
+                <p className="nav-icons-logout" title="Sign out">
+                  <FontAwesomeIcon icon={faArrowRightFromBracket} />
+                </p>
+                Logout
+              </Link>
+            </>
+          ) : (
+            <Link className="nav-sub-heading" to="/sign-in">
+              LOGIN <span className="nav-sub-heading-arrow"> &#62;</span>
+              <br />
+              <p className="nav-sub-heading-sub-text">
+                Log in to share your lists
+              </p>
+            </Link>
+          )}
+        </div>
+        <button className="nav-btn" onClick={showNavbar}></button>
+      </nav>
+      <button className="nav-btn" onClick={toggleNavMenu}>
+        <FontAwesomeIcon icon={faBars} />
+      </button>
+    </header>
+  );
 }
 
 export default NavMenu;

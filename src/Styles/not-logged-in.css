@@ -1,0 +1,62 @@
+
+
+.not-logged-in-body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: -0.05em;
+    text-align: center;
+    margin-top: 2em;
+}
+
+.welcome-label {
+    font-size: 1.2em;
+    color: var(--green) ;
+    margin-bottom: 1.2em;
+    display: inline-block;
+    
+}
+
+.create-list-label {
+    font-size: 1.2em;
+}
+
+.please-login-label {
+    font-size: 1.2em;
+    margin-bottom: 0em;
+    color: var(--font-color);
+}
+
+.list-icon {
+    font-size: 1.2em;
+    color: #424242;
+    font-size: 8em;
+}
+
+.not-logged-in-instructions-label {
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #B5B5B5;
+    margin-bottom: 4em;
+}
+
+@media only screen and (max-width: 350px) {
+    .no-lists-body {
+        font-size: 0.85em;
+    }
+    .no-groups-body {
+        font-size: 0.85em;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .not-logged-in-body {
+        margin-right: 1.7em;
+        margin-top: 5em;
+        font-size: 1.2em;
+    }
+}
