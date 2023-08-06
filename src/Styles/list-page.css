@@ -197,7 +197,7 @@ input[type="checkbox"] {
 .list-items { 
     display: flex;
     border-top: 1px solid var(--light-grey);
-    padding: 1em 1em 1em 1em;
+    padding: 1em 3em 1em 1em;
 }
 
 .list-items:hover {
@@ -215,6 +215,9 @@ input[type="checkbox"] {
 .list-items-label {
     display: inline-block; 
     margin-left: 0.98em; 
+    white-space:break-spaces;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
