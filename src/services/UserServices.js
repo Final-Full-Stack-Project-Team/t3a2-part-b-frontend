@@ -1,4 +1,4 @@
-const api = 'http://localhost:3001'
+const api = 'http://localhost:3001' || process.env.REACT_APP_BACKEND_URL
 
 export async function findUser(data){
     const response = await fetch(`${api}/users/${data}`, {
