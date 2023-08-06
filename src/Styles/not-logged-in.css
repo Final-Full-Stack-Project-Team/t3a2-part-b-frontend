@@ -1,4 +1,7 @@
-
+.login-here-link {
+    text-decoration: none;
+    color: var(--green);
+}
 
 .not-logged-in-body{
     display: flex;
@@ -10,7 +13,7 @@
     margin-top: 2em;
 }
 
-.welcome-label {
+.not-logged-in-welcome-label {
     font-size: 1.2em;
     color: var(--green) ;
     margin-bottom: 1.2em;
@@ -36,7 +39,7 @@
 
 .not-logged-in-instructions-label {
     font-size: 1.2em;
-    display: flex;
+    display: inline-block;
     align-items: center;
     justify-content: center;
     flex-direction: column;
