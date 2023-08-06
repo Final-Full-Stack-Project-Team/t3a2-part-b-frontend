@@ -237,7 +237,7 @@ export default function ListPage() {
             {/* Add buttons to the list-buttons div */}
             {userData._id === list?.admin &&
             <div className="list-buttons">
-              <Link to={`${location.pathname}/share`} className="add-person"><FontAwesomeIcon className="add-person-icon" icon={faUserPlus} size="1x"/></Link>
+              <button><Link to={`${location.pathname}/share`} className="add-person"><FontAwesomeIcon className="add-person-icon" icon={faUserPlus} size="1x"/></Link></button>
               <button className="list-options" onClick={handleOptions}>
               <FontAwesomeIcon icon={faEllipsisVertical} size="2x" />
               </button>
