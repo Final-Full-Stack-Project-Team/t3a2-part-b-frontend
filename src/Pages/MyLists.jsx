@@ -67,30 +67,6 @@ export default function ListsPage() {
     // eslint-disable-next-line
     }, [])
 
-    // !!!!!UNCOMMENT THIS TO REPLICATE LOADING MESSAGE TIMEOUT FOR PRODUCTION !!!!!!!
-
-    // useEffect(() => {
-    //     let user = userData?._id;
-    //     if (user) {
-    //       setIsLoading(true); // Set loading to true before fetching data
-      
-    //       // Simulate a delay before fetching data
-    //       const delay = 1000; // 5 seconds in milliseconds
-    //       setTimeout(() => {
-    //         findAllLists(cookie)
-    //           .then((response) => {
-    //             const activeLists = response.filter((list) => list.isCompleted === false);
-    //             setLists(activeLists);
-    //             setIsLoading(false); // Set loading to false after fetching data
-    //           })
-    //           .catch((error) => {
-    //             console.error("Error fetching data:", error);
-    //             setIsLoading(false); // Set loading to false even if there's an error
-    //           });
-    //       }, delay);
-    //     }
-    //   }, [userData, cookie]);
-
      // State to track if the navigation menu is open or closed
      const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
 
