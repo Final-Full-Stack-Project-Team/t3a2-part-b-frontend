@@ -48,17 +48,17 @@ export default function GroupDetails() {
     // get the user of the group member passed in
     const response = await findUser(groupMember)
     if (groupDetails.shared_with.map((member) => member.email).includes(groupMember)) {
-        setGroupMemberError('User has already been added')
+        setGroupMemberError('User has already been added.')
         setTimeout(() => {
             setGroupMemberError('')
         }, 3000)
     } else if (groupMember === groupDetails.admin.email) {
-        setGroupMemberError('User has already been added')
+        setGroupMemberError('User has already been added.')
         setTimeout(() => {
             setGroupMemberError('')
         }, 3000)
     } else if (groupMember.trim() === '') {
-      setGroupMemberError('User not found')
+      setGroupMemberError('User not found.')
       setTimeout(() => {
         setGroupMemberError('')
     }, 3000)
@@ -171,28 +171,21 @@ async function handleupdateGroup() {
         <button onClick={handleDeleteGroup}>DELETE GROUP</button> */}
         
         <div className="group-details-body">
-
-        
           {groupDetails ? (
             <div>
-
               {groupDetails?.dateCreated && (
                 <div className="group-date">Created on {new Date(groupDetails.dateCreated).toLocaleDateString()}</div>
               )}
-
-              <div >
-              <input className="edit-group-name" placeholder={groupDetails.group_name} value={updatedGroupName} onChange={(e) => setUpdatedGroupName(e.target.value)}/>
+              <div>
+                <input className="edit-group-name" placeholder={groupDetails.group_name} value={updatedGroupName} onChange={(e) => setUpdatedGroupName(e.target.value)}/>
               </div>
-
+              {groupMemberError && 
+                  <p className="no-name-error">{groupMemberError}</p>
+                }
               <div>
                 <div className="add-member-btn"><FontAwesomeIcon icon={faUserPlus}/></div>
-              
                 <AddGroupMember submitGroupMemberAdd={submitGroupMemberAdd} />
-                {groupMemberError && 
-                  <div>
-                    {groupMemberError}
-                  </div>
-                }
+                
               </div>
 
               {groupDetails?.shared_with && groupDetails.shared_with.length > 0 && (

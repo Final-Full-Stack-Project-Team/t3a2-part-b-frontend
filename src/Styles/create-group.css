@@ -1,3 +1,14 @@
+
+.no-name-error {
+    position:relative;
+    display: flex;
+    color: var(--font-color);
+    margin: auto;
+    margin: 0.2em 1em -1.39em 2em;
+    color: #E43232;
+}
+
+
 .ng_shared_with {
     flex-direction: column;
     border-top: 1px solid var(--light-grey);
@@ -6,6 +17,7 @@
     text-overflow: ellipsis;
     width: 87%;
     margin: auto;
+    color: var(--font-color);
 }
 
 .ng_shared_with:hover {
@@ -68,6 +80,10 @@
         padding: 0.8em 1.9em 0.8em 1.9em;
         font-size: 0.9em;
     }
+    .no-name-error {
+        font-size: 0.9em;
+        margin: 0.2em 1em -1.39em 0.1em;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -84,4 +100,6 @@
         position:inherit;
         margin-left: 25%;
     }
+
+    
 }

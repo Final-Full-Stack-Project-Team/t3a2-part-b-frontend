@@ -47,13 +47,13 @@ export default function CreateGroupForm() {
         const response = await findUser(groupMember)
         // Check if member is already in the list of members
         if (groupMemberList.map((member) => member.email).includes(groupMember)) {
-            setGroupMemberError('User has already been added')
+            setGroupMemberError('User has already been added.')
             setTimeout(() => {
                 setGroupMemberError('')
             }, 3000)
         // Check member against admin too to prevent duplicates
         } else if (groupMember === groupAdmin.email) {
-            setGroupMemberError('User has already been added')
+            setGroupMemberError('User has already been added.')
             setTimeout(() => {
                 setGroupMemberError('')
             }, 3000)
@@ -109,14 +109,19 @@ export default function CreateGroupForm() {
                 <header className="fake-header">
                     <p className="list-page-heading">Create Group</p>  
                 </header>
+                
                 <div className="group-details-body">
-                    
                     <input className="edit-group-name" type="text" value={groupName} onChange={handleGroupNameChange} placeholder="Group name" />
+                    {groupMemberError && 
+                    <div className="error">
+                        <p className="no-name-error">{groupMemberError}</p>
+                    </div>
+                }
                     <div className="add-member-btn"><FontAwesomeIcon icon={faUserPlus}/></div>
                     <AddGroupMember submitGroupMemberAdd={submitGroupMemberAdd} />
                 </div>
                 
-                <div style={{ color: "#f2f2f2" }} >
+                <div  >
                     {groupAdmin && 
                         <div className="ng_shared_with">
                             {groupAdmin.email}
@@ -130,11 +135,7 @@ export default function CreateGroupForm() {
                         )
                     })}
                 </div>
-                {groupMemberError && 
-                    <div style={{ color: "white" }} className="error">
-                        <p>{groupMemberError}</p>
-                    </div>
-                }
+                
                 <div>
                 <button to="/groups" onClick={submitCreateGroup} className='ng-update-button'>CREATE</button>
               </div>
