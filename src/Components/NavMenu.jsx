@@ -56,37 +56,37 @@ const handleLogout = () => {
 							</p>
 						</Link>
 						)}
-						<a className="nav-my-lists" href="/#">
+						<Link className="nav-my-lists" to="/">
 							<p className="nav-icons-my-lists">
 							<FontAwesomeIcon icon={faList}/>
 							</p>
 								My Lists
-						</a>
+						</Link>
 
-						<a className="nav-Completed" href="/completed">
+						<Link className="nav-Completed" to="/completed">
 							<p className="nav-icons-completed">
 							<FontAwesomeIcon icon={faCheck}/>
 							</p>
 								Completed
-						</a>
+						</Link>
 
 						{/* Conditionally render the "Groups" menu item */}
 						{isLoggedIn && (
-							<a className="nav-Groups" href="/groups">
+							<Link className="nav-Groups" to="/groups">
 								<p className="nav-icons-groups">
 								<FontAwesomeIcon icon={faUserGroup} />
 							</p>
 							Groups
 						
-						</a>
+						</Link>
 							)}
 						{isLoggedIn && (
-						<a onClick={handleLogout} className="nav-logout" href="/#">
+						<Link onClick={handleLogout} className="nav-logout" to="/">
 							<p className="nav-icons-logout" title="Sign out">
 								<FontAwesomeIcon icon={faArrowRightFromBracket} />
 							</p>
 							Logout
-						</a>
+						</Link>
 							)}
 				</div>	
 				<button
