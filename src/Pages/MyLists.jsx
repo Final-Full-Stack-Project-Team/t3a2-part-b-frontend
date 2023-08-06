@@ -24,6 +24,7 @@ export default function ListsPage() {
         localStorage.clear()
     }
     
+    // check for user in local storage and logout if not found.
     useEffect(() => {
         let user = userData?.email
         if (user) {

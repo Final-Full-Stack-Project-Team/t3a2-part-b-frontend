@@ -7,6 +7,7 @@ import { useUserData } from "../contexts/UserContext";
 import { Link } from "react-router-dom";
 
 function NavMenu({ toggleNavMenu, isNavMenuOpen }) {
+	// Local state variables saved here
 	// eslint-disable-next-line
 	const [cookies, setCookie, removeCookie] = useCookies()
 	const navRef = useRef();

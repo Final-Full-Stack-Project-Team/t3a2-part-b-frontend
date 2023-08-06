@@ -11,6 +11,7 @@ import "../Styles/share-list.css";
 
 export default function ShareList() {
 
+    // local state variables saved here
     // eslint-disable-next-line
     const [cookies, setCookie, removeCookie] = useCookies()
     const cookie = `Bearer ${cookies.authorization}`
@@ -25,8 +26,10 @@ export default function ShareList() {
 
     const navigate = useNavigate()
 
+    // params saved here
     const _id = useParams()
 
+    // Get's all groups in the DB
     useEffect(() => {
         findAllGroups(cookie)
         .then((response) => {
@@ -35,8 +38,10 @@ export default function ShareList() {
     // eslint-disable-next-line
     }, [])
 
+    // Function to handle the groups as their checkbox is checked and unchecked
     const handleCheckboxChange = (groupId) => {
         setCheckedGroups((prevSelected) => {
+            // using a set to prevent duplicates
           const newSelected = new Set(prevSelected);
           if (newSelected.has(groupId)) {
             newSelected.delete(groupId); // Uncheck the checkbox
@@ -47,32 +52,37 @@ export default function ShareList() {
         });
       };
 
-    // Handle form submission
     const handleSubmit = async () => {
+        // using set to prevent duplicates again
         const selectedMembersArray = new Set();
+        // handling group members from checked groups
         checkedGroups.forEach((groupId) => {
         const group = groups.find((group) => group._id === groupId);
         if (group) {
+            // Push each group member that is not the group admin to the set
             group.shared_with.forEach((member) => {
                 if (member._id !== group.admin) {
                     selectedMembersArray.add(member._id)
                 }
             })
+            // allowing group admin to the set if that is not the user
            if (group.admin._id !== userData._id) {
                 selectedMembersArray.add(group.admin._id)
            }
         }
         });
+        // Setting the state, converting the set to an array
         setSelectedMembers(Array.from(selectedMembersArray));
         setFormSubmitted(true)
     };
 
     useEffect(() => {
         if (formSubmitted) {
+            // create data to send in fetch request
             const data = {
                 shared_with: selectedMembers
             }
-    
+            // Fetch request
             addUserToList(_id._id, cookie, data)
             .then((response) => {
                 if(response.error) {

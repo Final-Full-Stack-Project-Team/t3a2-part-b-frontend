@@ -5,6 +5,9 @@ import "../Styles/list-page.css";
 
 export default function FindItem(props) {
 
+    // Alot of code is commented out as many features that were written have been put
+    // on the back burner for future development
+
     //const [items, setItems] = useState([])
     const [itemInput, setItemInput] = useState('')
     // eslint-disable-next-line
@@ -39,15 +42,19 @@ export default function FindItem(props) {
     } */
 
     const handleAddItemToList = () => {
+        // capitalize the list name
         const capitalizedItemName = itemInput.charAt(0).toUpperCase() + itemInput.slice(1);
+        // build item data
         const item = {
             name: capitalizedItemName
         }
+        // invoke prop function with item data
         props.addItem(item)
         //setShowItems(false) // Hide items after selecting
         setItemInput('');
     }
 
+    // handle submit if enter is pressed
     function handleKeyPress(event) {
         if (event.key === "Enter") {
             handleAddItemToList();

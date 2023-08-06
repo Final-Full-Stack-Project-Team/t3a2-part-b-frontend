@@ -8,6 +8,7 @@ import "../Styles/create-list.css";
 
 export default function CreateList() {
 
+    // local state variables
     const [listName, setListName] = useState('')
     const [listError, setListError] = useState('')
 
@@ -15,21 +16,23 @@ export default function CreateList() {
     const [cookies, setCookie, removeCookie] = useCookies()
     const cookie = `Bearer ${cookies.authorization}`
 
+    // user data hook to access user data
     const userData = useUserData()
 
     const navigate = useNavigate()
 
+    // function to capitalize first letter
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
       }
-
+    
     function handleListNameChange(event) {
         const capitalizedListName = capitalizeFirstLetter(event.target.value);
         setListName(capitalizedListName)
     }
 
     async function submitCreateList() {
-
+        // check if list name is left empty
         if (listName.trim('') === '') {
             setListError('Please enter a list name')
             setTimeout(() => {
@@ -38,15 +41,18 @@ export default function CreateList() {
             }, 3000)
             
         } else {
+            // Build data for fetch request
             const data = {
                 admin: userData._id,
                 name: listName
             }
+            // fetch request
             await createList(cookie, data)
             navigate('/')
         }
     }
     
+    // Picks up enter key press to run the submit function
     function handleKeyDown(event) {
         if (event.key === "Enter") {
           submitCreateList();

@@ -14,6 +14,7 @@ import "../Styles/list-page.css";
 import { Link } from "react-router-dom"
 
 export default function ListPage() {
+    // local state variables saved here
     // eslint-disable-next-line
     const [cookies, setCookie, removeCookie] = useCookies()
     const cookie = `Bearer ${cookies.authorization}`
@@ -25,6 +26,7 @@ export default function ListPage() {
     const [items, setItems] = useState([])
     const [list, setList] = useState()
 
+    // displaying boolean state variables here
     const [showOptions, setShowOptions] = useState(false)
     const [showDelete, setShowDelete] = useState(false)
     const [renameList, setRenameList] = useState(false)
@@ -39,7 +41,7 @@ export default function ListPage() {
     // testing press enter
     const [updatedListName, setUpdatedListName] = useState(""); 
 
-
+    // check for user and display the list page from the params
     useEffect(() => {
         let user = userData?.email
         if (user) {
@@ -51,6 +53,7 @@ export default function ListPage() {
     // eslint-disable-next-line
     }, [])
 
+    // if list is found, set the list items to local state
     useEffect(() => {
         if (list) {
           setItems(list.items)
@@ -61,6 +64,7 @@ export default function ListPage() {
     // eslint-disable-next-line
     }, [list])
 
+    // changes focus of rename list when clicked to the input
     useEffect(() => {
         if (renameList) {
             inputRef.current.focus()
@@ -90,6 +94,7 @@ export default function ListPage() {
         setShowOptions(false)
     }
     
+    // handles the mapped items being checked
     function checkItem(item) {
       const newCheckedStatus = !checkedItems[item._id]
 
@@ -100,19 +105,22 @@ export default function ListPage() {
 
       setCheckedItems(updatedCheckedItems);
 
+      // gets the checked and maps their id and checked status
       const updatedItems = items.map((existingItem) =>
       existingItem._id === item._id
         ? { ...existingItem, checked: newCheckedStatus }
         : existingItem
     );
   
-
+      // build data object with results
       const data = {
         items: updatedItems
       }
 
+      // fetch request edit list with new checked status
       editList(_id._id, data, cookie)
       .then((response) => {
+        // set local state with the response from back end
         setItems(response.items)
       })
   }
@@ -138,9 +146,11 @@ export default function ListPage() {
         // testing press enter
         setListName(updatedListName);
     }}
-
+    
     async function handleSetCompleteList() {
+        // set list data isCompleted
         const data = {isCompleted: true}
+        //send new data to back end
         await editList(_id._id, data, cookie)
         setShowOptions(false)
         navigate('/')
