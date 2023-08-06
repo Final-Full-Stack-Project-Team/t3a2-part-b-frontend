@@ -1,17 +1,19 @@
-import { useEffect, useState } from "react"
-import { useCookies } from "react-cookie"
-import { AddItem, GetAllItems } from "../services/ItemServices"
+import { useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import "../Styles/list-page.css";
 
 export default function FindItem(props) {
 
-    const [items, setItems] = useState([])
+    // Alot of code is commented out as many features that were written have been put
+    // on the back burner for future development
+
+    //const [items, setItems] = useState([])
     const [itemInput, setItemInput] = useState('')
-    const [cookies, setCookie, removeCookie] = useCookies()
-    const [showItems, setShowItems] = useState(false) // Track whether to show items
-    const cookie = `Bearer ${cookies.authorization}`
+    // eslint-disable-next-line
+
+    //const [showItems, setShowItems] = useState(false) // Track whether to show items
+
 
     /*useEffect(() => {
         GetAllItems(cookie)
@@ -22,7 +24,7 @@ export default function FindItem(props) {
 
     function handleInputChange(event) {
         setItemInput(event.target.value)
-        setShowItems(true) // Show items when input changes
+        //setShowItems(true) // Show items when input changes
     }
 
     /*const filteredItems = itemInput ? items.filter((item) => 
@@ -40,15 +42,19 @@ export default function FindItem(props) {
     } */
 
     const handleAddItemToList = () => {
+        // capitalize the list name
         const capitalizedItemName = itemInput.charAt(0).toUpperCase() + itemInput.slice(1);
+        // build item data
         const item = {
             name: capitalizedItemName
         }
+        // invoke prop function with item data
         props.addItem(item)
-        setShowItems(false) // Hide items after selecting
+        //setShowItems(false) // Hide items after selecting
         setItemInput('');
     }
 
+    // handle submit if enter is pressed
     function handleKeyPress(event) {
         if (event.key === "Enter") {
             handleAddItemToList();

@@ -4,6 +4,7 @@ import PlusIcon from "../images/PlusIcon.svg";
 
 export default function AddGroupMember(props) {
 
+    // front end input state
     const [groupMember, setGroupMember] = useState('')
 
     function handleGroupMemberAddChange(event) {
@@ -11,8 +12,10 @@ export default function AddGroupMember(props) {
     }
 
     function handleAddButtonClick() {
-        props.submitGroupMemberAdd(groupMember); // Call the submit function
-        setGroupMember(''); // Clear the input field
+        // calling the prop function passed in
+        props.submitGroupMemberAdd(groupMember);
+        // Clearing the input field after submit
+        setGroupMember('');
     }
 
     return (

@@ -14,6 +14,7 @@ import GroupOptions from "../Components/GroupOptions"
 
 
 export default function GroupDetails() {
+  // Local state vairables saved here
   const { groupId } = useParams();
   const [groupDetails, setGroupDetails] = useState(null);
   const [groupMemberError, setGroupMemberError] = useState()
@@ -26,17 +27,14 @@ export default function GroupDetails() {
 
   useEffect(() => {
     // Fetch the group details when the component mounts
-    findGroup(groupId, cookies.authorization) // Pass the token to the findGroup function
+    findGroup(groupId, cookies.authorization)
       .then((response) => {
-        console.log('Fetched group details:', response);
         setGroupDetails(response);
       })
       .catch((error) => {
         console.error('Error fetching group details:', error);
       });
   }, [groupId, cookies.authorization]);
-
-  //console.log('Group details state:', groupDetails);
 
    // State to track if the navigation menu is open or closed
    const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
@@ -47,9 +45,8 @@ export default function GroupDetails() {
    };
 
    async function submitGroupMemberAdd(groupMember) {
-    console.log(typeof(groupMember))
+    // get the user of the group member passed in
     const response = await findUser(groupMember)
-    console.log(response)
     if (groupDetails.shared_with.map((member) => member.email).includes(groupMember)) {
         setGroupMemberError('User has already been added')
         setTimeout(() => {
@@ -82,36 +79,44 @@ export default function GroupDetails() {
 async function handleupdateGroup() {
   const capitalizedGroupName = updatedGroupName.charAt(0).toUpperCase() + updatedGroupName.slice(1);
   
+  // build data to send to fetch request
   const data = {
     shared_with: groupDetails.shared_with.map((user) => user._id),
     group_name: capitalizedGroupName || groupDetails.group_name,
   };
-  console.log(cookies.authorization);
-  console.log(groupDetails._id);
-  const response = await updateGroup(data, cookies.authorization, groupDetails._id);
-  console.log(response);
+  // fetch request to update group with new members or new group name, or both
+  await updateGroup(data, cookies.authorization, groupDetails._id);
   navigate('/groups');
 }
 
+    
     async function handleRemoveUser(user_id) {
+      // filter out the user to be removed
       const newGroupMemberArray = groupDetails.shared_with.filter((user) => user._id !== user_id )
+      // build new data after filter
       const updatedGroupDetails = {
         ...groupDetails,
         shared_with: newGroupMemberArray
       }
+      // set the local state with new data
       setGroupDetails(updatedGroupDetails)
     }
-
+    
+    // Funtion to run when user leaves group
     async function handleLeaveGroup() {
+      // filter users with remaining members
       let newSharedWith = groupDetails.shared_with.filter((user) => user._id !== userData._id).map((user) => user._id)
-      console.log(groupDetails.shared_with)
+      // create new data to send for fetch request
       let data = {
         shared_with: newSharedWith
       }
-      console.log(data)
+      // check if user leaving was admin
       if (userData._id === groupDetails.admin._id) {
+        // set new admin to first member of group
         const newAdmin = groupDetails.shared_with[0]
+        // take new admin out of shared_with field
         newSharedWith = newSharedWith.filter((user) => user !== newAdmin._id)
+        // If user was admin and no member to assign admin. Delete the group
         if (!newAdmin) {
           handleDeleteGroup()
           return
@@ -120,18 +125,18 @@ async function handleupdateGroup() {
           shared_with: newSharedWith,
           admin: newAdmin._id
         }
-        console.log(data)
       }
       // eslint-disable-next-line
-      const response = await updateGroup(data, cookies.authorization, groupDetails._id)
+      await updateGroup(data, cookies.authorization, groupDetails._id)
       navigate('/groups')
     }
 
+    // function to delete group
     async function handleDeleteGroup() {
       deleteGroup(cookies.authorization, groupDetails._id)
       navigate('/groups')
     }
-
+    // change state to display option or not
     function handleOptions() {
       setShowOptions(!showOptions)
   }

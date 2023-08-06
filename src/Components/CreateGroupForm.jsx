@@ -15,11 +15,14 @@ import { faUserPlus} from '@fortawesome/free-solid-svg-icons'
 export default function CreateGroupForm() {
     const userData = useUserData()
 
+    // Local state saved here
     const [groupName, setGroupName] = useState('')
     const [groupAdmin, setGroupAdmin] = useState({})
     const [groupMemberList, setGroupMemberList] = useState([])
     const [groupMemberError, setGroupMemberError] = useState('')
 
+    // Cookie authentication state saved here
+    // eslint-disable-next-line
     const [cookies, setCookie, removeCookie] = useCookies()
     const cookie = `Bearer ${cookies.authorization}`
 
@@ -27,48 +30,61 @@ export default function CreateGroupForm() {
 
     useEffect(() => {
         setGroupAdmin(userData)
+    // eslint-disable-next-line
     }, [])
-
 
     function handleGroupNameChange(event) {
         const inputValue = event.target.value;
+        // Forcing the input value to be capitalized
         const capitalizedValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
+        // Set group name to state
         setGroupName(capitalizedValue);
     }
 
+    // Function passed as a prop to submit group member
     async function submitGroupMemberAdd(groupMember) {
+        // Fetch request to find the group member passed in
         const response = await findUser(groupMember)
+        // Check if member is already in the list of members
         if (groupMemberList.map((member) => member.email).includes(groupMember)) {
             setGroupMemberError('User has already been added')
             setTimeout(() => {
                 setGroupMemberError('')
             }, 3000)
+        // Check member against admin too to prevent duplicates
         } else if (groupMember === groupAdmin.email) {
             setGroupMemberError('User has already been added')
             setTimeout(() => {
                 setGroupMemberError('')
             }, 3000)
+        // Respond with any other error
         } else if (response.error) {
             setGroupMemberError(response.error)
             setTimeout(() => {
                 setGroupMemberError('')
             }, 3000)
+        // Else push member to group member list
         } else {
             setGroupMemberList([...groupMemberList, response])
         }
     }
 
+    // Runs when submit is clicked
     async function submitCreateGroup() {
+        // Build data object to send in fetch request
         const data = {
             group_name: groupName,
             shared_with: groupMemberList.map((member) => member._id)
         }
+        // fetch request
         const response = await createGroup(data, cookie)
+        // error response
         if (response.error) {
             setGroupMemberError(response.error)
             setTimeout(() => {
                 setGroupMemberError('')
             }, 3000)
+        // else navigate back to groups
         } else {
             navigate('/groups')
         }

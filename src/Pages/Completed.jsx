@@ -13,6 +13,7 @@ import DeleteList from "../Components/DeleteList";
 // import { useStartTyping } from "react-use";
 
 export default function ListsPage() {
+    // Local state variables saved here
     // eslint-disable-next-line
     const [cookies, setCookie, removeCookie] = useCookies()
     const [lists, setLists] = useState([])
@@ -28,6 +29,7 @@ export default function ListsPage() {
         localStorage.clear()
     }
     
+    // use effect to validate the user. If not validated, the user gets logged out.
     useEffect(() => {
         let user = userData?.email
         if (user) {
@@ -43,7 +45,6 @@ export default function ListsPage() {
 
     // Fetch data from the API when the component mounts
     useEffect(() => {
-        console.log("this")
         let user = userData?._id
         if (user) {
             findAllLists(cookie)
