@@ -10,6 +10,7 @@ import { faList} from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
 import NoLists from "../Components/NoLists";
 import PlusIcon from "../images/PlusIcon.svg";
+import NotLoggedIn from "../Components/NotLoggedIn"
 // import { useStartTyping } from "react-use";
 
 export default function ListsPage() {
@@ -19,11 +20,19 @@ export default function ListsPage() {
     const userData = useUserData()
     const cookie = `Bearer ${cookies.authorization}`
     const [isLoading, setIsLoading] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
 
     const handleLogout = () => {
         removeCookie('authorization')
         localStorage.clear()
     }
+
+    useEffect(() => {
+        if (cookies.authorization) {
+            setIsLoggedIn(true)
+        }
+        // eslint-disable-next-line
+        },[userData])
     
     // check for user in local storage and logout if not found.
     useEffect(() => {
@@ -75,42 +84,45 @@ export default function ListsPage() {
          setIsNavMenuOpen(prevState => !prevState);
      };
 
-    return ( 
+     return (
         <div>
             <div>
-                {/* Pass the toggleNavMenu function and isNavMenuOpen state as props to NavMenu */}
                 <NavMenu toggleNavMenu={toggleNavMenu} isNavMenuOpen={isNavMenuOpen} />
             </div>
-            <div className={isNavMenuOpen ? "nav-closed" : "nav-open" }>
-                <header className="fake-header">
-                    <p className="page-heading">My Lists</p>
-                    <p className="page-sub-heading">
-                    {isLoading ? "Calculating..." : `${lists.length} List${lists.length !== 1 ? 's' : ''}`}
-                    </p>
-                    
-                    <Link className="add-group-btn" to={'/list/create'}><img className="add-btn" src={PlusIcon} alt="PlusIcon"/></Link>
-                </header> 
-
-                {/* IMPORTANT! All page content goes in the body class */}
-                <div className="page-contents">
-                {isLoading ? (
-                    <p className="loading-message">Loading Lists...</p>) : lists.length > 0 ? (lists.map((list) => {
-                        return (
-                            <div className="lists-container" key={list._id}>
-                                <p className="lists-icon">
-                                    <FontAwesomeIcon icon={faList} /> 
-                                </p>
-                                <Link to={`/list/${list._id}`} className="lists-label">
-                                    {list.name}
-                                </Link>
-                            </div>
-                        );
-                    })    
+            {isLoggedIn ? (
+                <div className={isNavMenuOpen ? "nav-closed" : "nav-open" }>
+                    <header className="fake-header">
+                        <p className="page-heading">My Lists</p>
+                        <p className="page-sub-heading">
+                            {isLoading ? "Calculating..." : `${lists.length} List${lists.length !== 1 ? 's' : ''}`}
+                        </p>
+                        <Link className="add-group-btn" to={'/list/create'}><img className="add-btn" src={PlusIcon} alt="PlusIcon"/></Link>
+                    </header>
+                    <div className="page-contents">
+                        {isLoading ? (
+                            <p className="loading-message">Loading Lists...</p>
                         ) : (
-                            <NoLists/>
+                            lists.length > 0 ? (
+                                lists.map((list) => (
+                                    <div className="lists-container" key={list._id}>
+                                        <p className="lists-icon">
+                                            <FontAwesomeIcon icon={faList} />
+                                        </p>
+                                        <Link to={`/list/${list._id}`} className="lists-label">
+                                            {list.name}
+                                        </Link>
+                                    </div>
+                                ))
+                            ) : (
+                                <NoLists />
+                            )
                         )}
-                    </div>     
+                    </div>
                 </div>
-            </div>
-        )
-    }
+            ) : (
+                <NotLoggedIn/>
+            )}
+        </div>
+    );
+}
+            
