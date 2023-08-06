@@ -34,7 +34,7 @@ export default function CreateList() {
     async function submitCreateList() {
         // check if list name is left empty
         if (listName.trim('') === '') {
-            setListError('Please enter a list name')
+            setListError('A list name is required.')
             setTimeout(() => {
                 setListError('')
                 return
@@ -64,10 +64,12 @@ export default function CreateList() {
                 <div className="create-new-list-label">
                     <label className="create-new-list-label" htmlFor="listname">Create new list</label>
                     <input className="create-list-name" type="text" placeholder="List name" value={listName} onChange={handleListNameChange} onKeyDown={handleKeyDown}></input>
+                    
                 </div>
+                {listError && <div className="new-list-no-name-error">{listError}</div>}
                 <button className='create-list-update-button' onClick={submitCreateList}>CREATE</button>
             <div ><Link className='create-list-cancel' to={'/'}>CANCEL</Link></div>
-            {listError && <div>{listError}</div>}
+            
         </div>
     )
 }

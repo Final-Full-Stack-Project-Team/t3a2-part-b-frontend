@@ -1,3 +1,12 @@
+.new-list-no-name-error {
+    position:relative;
+    display: flex;
+    color: var(--font-color);
+    margin: auto;
+    margin: -2em 1em 0.85em 0.1em;
+    color: #E43232;
+}
+
 .create-list-body {
     border: 5px solid;
     margin: auto;
