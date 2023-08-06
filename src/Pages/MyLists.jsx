@@ -109,7 +109,7 @@ export default function ListsPage() {
                 <header className="fake-header">
                     <p className="page-heading">My Lists</p>
                     <p className="page-sub-heading">
-                    {isLoading ? "Loading list data..." : `${lists.length} List${lists.length !== 1 ? 's' : ''}`}
+                    {isLoading ? "Calculating..." : `${lists.length} List${lists.length !== 1 ? 's' : ''}`}
                     </p>
                     
                     <Link className="add-group-btn" to={'/list/create'}><img className="add-btn" src={PlusIcon} alt="PlusIcon"/></Link>
@@ -118,8 +118,7 @@ export default function ListsPage() {
                 {/* IMPORTANT! All page content goes in the body class */}
                 <div className="page-contents">
                 {isLoading ? (
-                    <p className="loading-lists">Loading lists...</p>
-                        ) : lists.length > 0 ? (lists.map((list) => {
+                    <p className="loading-message">Loading your lists...</p>) : lists.length > 0 ? (lists.map((list) => {
                         return (
                             <div className="lists-container" key={list._id}>
                                 <p className="lists-icon">
