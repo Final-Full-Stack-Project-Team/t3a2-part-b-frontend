@@ -31,6 +31,33 @@ export default function CreateList() {
         setListName(capitalizedListName)
     }
 
+    async function submitCreateListAndShare() {
+        // check if list name is left empty
+        if (listName.trim('') === '') {
+            setListError('A list name is required.')
+            setTimeout(() => {
+                setListError('')
+                return
+            }, 3000)
+            
+        } else {
+            // Build data for fetch request
+            const data = {
+                admin: userData._id,
+                name: listName
+            }
+            // fetch request
+            const response = await createList(cookie, data);
+
+            if (response && response._id) {
+                const newListPath = `/list/${response._id}/share`;
+                navigate(newListPath)
+            } else {
+                console.log ("List creation failed.")
+            }
+        }
+    }
+
     async function submitCreateList() {
         // check if list name is left empty
         if (listName.trim('') === '') {
@@ -55,7 +82,6 @@ export default function CreateList() {
             } else {
                 console.log ("List creation failed.")
             }
-            
         }
     }
     
@@ -75,6 +101,7 @@ export default function CreateList() {
                 </div>
                 {listError && <div className="new-list-no-name-error">{listError}</div>}
                 <button className='create-list-update-button' onClick={submitCreateList}>CREATE</button>
+                <button className='create-list-update-button' onClick={submitCreateListAndShare}>SHARE</button>
             <div ><Link className='create-list-cancel' to={'/'}>CANCEL</Link></div>
             
         </div>
