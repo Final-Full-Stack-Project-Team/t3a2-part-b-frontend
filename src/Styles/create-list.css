@@ -13,13 +13,14 @@
     width: 90%;
     padding: 10px;
     border: none; 
-    outline: none;  
+    outline: none; 
 }
 
 .create-new-list-label{
     font-size: 1em;
-    margin-top: 8em;
+    margin-top: 6.5em;
     color: var(--font-color);
+    
 }
 
 .create-list-name {
@@ -39,10 +40,9 @@
 
 .create-list-update-button {
     position:relative;
-    float: right;
-    margin: 1em 7% 2em 2em; 
+    width: 100%;
     padding: 0.8em 2.2em 0.8em 2.2em;
-    border-radius: 2em;
+    border-radius: 0.4em;
     border: none;
     background-color: var(--green);
     font-weight: 600;
@@ -50,6 +50,7 @@
     cursor: pointer;
     color: #212121;
     text-decoration: none;
+    margin-bottom: 1.5em;
 }
 
 .create-list-update-button:hover {
@@ -57,39 +58,46 @@
 }
 
 .create-list-cancel {
-    position: absolute;
-    margin: 1em 0em 2em -0.3em; 
-    margin-left: 2%;
-    padding: 0.8em 2.2em 0.8em 2.2em;
-    border-radius: 4em;
+    position:relative;
+    width: 100%;
+    border-radius: 0.4em;
     border: none;
-    background: none;
-    font-weight: 500;
-    font-size: 1em;
+    font-weight: 600;
+    font-size: 1.5em;
     cursor: pointer;
-    color: #949494;
+    color: #f2f2f2;
     text-decoration: none;
 }
 
-.create-list-cancel:hover {
+.cancel-icon {
+    margin-top: 0.5em;
+}
+
+.create-and-share {
+    position:relative;
+    width: 100%;
+    margin-top: 0em;
+    padding: 0.8em 2.2em 0.8em 2.2em;
+    border-radius: 0.4em;
+    border: none;
+    background-color: #a2f199;
+    font-weight: 600;
+    font-size: 1em;
+    cursor: pointer;
+    color: #212121;
+    text-decoration: none;
+}
+
+.or {
     color: #f2f2f2;
+    text-align: center;
 }
 
 @media only screen and (max-width: 400px) {
     .create-list-update-button {
-        position:relative;
-        float: right;
-        margin: 1em 0% 2em 0em; 
-        padding: 0.8em 1.9em 0.8em 1.9em;
-        font-size: 0.9em;
-    }
-    .create-list-cancel {
-        margin: 1em -5em 2em -2em; 
-        padding: 0.8em 1.9em 0.8em 1.9em;
         font-size: 0.9em;
     }
     .create-list-name {
-        padding: 1em;
         font-size: 1.2em;
     }
 }
@@ -106,5 +114,9 @@
 
     .create-list-cancel {
         margin-left: -1%;
+    }
+
+    .cancel-icon {
+        margin-top: 1em;
     }
 }
