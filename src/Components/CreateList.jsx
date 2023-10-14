@@ -47,8 +47,15 @@ export default function CreateList() {
                 name: listName
             }
             // fetch request
-            await createList(cookie, data)
-            navigate('/')
+            const response = await createList(cookie, data);
+
+            if (response && response._id) {
+                const newListPath = `/list/${response._id}`;
+                navigate(newListPath)
+            } else {
+                console.log ("List creation failed.")
+            }
+            
         }
     }
     
