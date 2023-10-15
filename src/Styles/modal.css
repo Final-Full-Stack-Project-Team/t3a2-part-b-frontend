@@ -1,0 +1,54 @@
+/* CSS for the modal container */
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Adjust the z-index as needed */
+}
+
+/* CSS for the modal content */
+.modal-content {
+    background-color: #333333;
+    width: 30%;
+    max-width: 600px; /* You can set a max-width to limit the width */
+    min-height: 20%;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    color: #fff; /* Text color */
+}
+
+/* Additional styles for the modal content */
+.modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Close button style */
+.modal-content button {
+    background: none;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1em;
+    float: right;
+    margin-bottom: 1em ;
+}
+
+/* Close button hover effect */
+.modal-content button:hover {
+    background-color: #212121;
+}
+
+/* .add-group-btn {
+    display: none;
+} */

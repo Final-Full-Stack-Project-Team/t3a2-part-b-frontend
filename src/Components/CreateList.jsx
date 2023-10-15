@@ -105,7 +105,7 @@ export default function CreateList() {
                 </div>
                 {listError && <div className="new-list-no-name-error">{listError}</div>}
                 <div className='create-list-buttons'>
-                    <Link className='create-list-cancel-button' to={'/'}>CANCEL</Link>
+                    {/* <Link className='create-list-cancel-button' to={"/"}>CANCEL</Link> */}
                     <button className='create-list-share-button' onClick={submitCreateListAndShare}>SHARE LIST</button>
                     <button className='create-list-create-button' onClick={submitCreateList}>CREATE LIST</button>
                 </div>

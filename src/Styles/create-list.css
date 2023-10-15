@@ -11,14 +11,14 @@
     border: 5px solid;
     margin: auto;
     width: 90%;
-    padding: 10px;
+   
     border: none; 
     outline: none; 
 }
 
 .create-new-list-label{
     font-size: 1em;
-    margin-top: 6.5em;
+    margin-top: 2em;
     color: var(--font-color);
     
 }

@@ -1,5 +1,6 @@
 import NavMenu from "../Components/NavMenu";
 import "../Styles/lists.css"
+import "../Styles/modal.css"
 import { useCookies } from "react-cookie"
 import { useUserData } from "../contexts/UserContext"
 import { useEffect, useState } from "react"
@@ -12,6 +13,7 @@ import NoLists from "../Components/NoLists";
 import PlusIcon from "../images/PlusIcon.svg";
 import NotLoggedIn from "../Components/NotLoggedIn"
 // import { useStartTyping } from "react-use";
+import AddListModal from '../Components/AddListModal';
 
 export default function ListsPage() {
     // eslint-disable-next-line
@@ -21,6 +23,7 @@ export default function ListsPage() {
     const cookie = `Bearer ${cookies.authorization}`
     const [isLoading, setIsLoading] = useState(true);
     const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleLogout = () => {
         removeCookie('authorization')
@@ -84,7 +87,15 @@ export default function ListsPage() {
          setIsNavMenuOpen(prevState => !prevState);
      };
 
-     return (
+     const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
+    return (
         <div>
             <div>
                 <NavMenu toggleNavMenu={toggleNavMenu} isNavMenuOpen={isNavMenuOpen} />
@@ -96,7 +107,11 @@ export default function ListsPage() {
                         <p className="page-sub-heading">
                             {isLoading ? "Calculating..." : `${lists.length} List${lists.length !== 1 ? 's' : ''}`}
                         </p>
-                        <Link className="add-group-btn" to={'/list/create'}><img className="add-btn" src={PlusIcon} alt="PlusIcon"/></Link>
+                        <div className="new-list-btn">
+                            <button onClick={openModal}>
+                                <img src={PlusIcon} alt="PlusIcon" />
+                            </button>
+                        </div>
                     </header>
                     <div className="page-contents">
                         {isLoading ? (
@@ -122,6 +137,7 @@ export default function ListsPage() {
             ) : (
                 <NotLoggedIn/>
             )}
+            {isModalOpen && <AddListModal closeModal={closeModal} />}
         </div>
     );
 }
