@@ -97,17 +97,18 @@ export default function CreateList() {
     return(
         
         <div className="create-list-body">
-                <div ><Link className='create-list-cancel' to={'/'}><FontAwesomeIcon className="cancel-icon" icon={faX} /></Link></div>
+                
                 <div className="create-new-list-label">
                     <label className="create-new-list-label" htmlFor="listname">Create new list</label>
                     <input className="create-list-name" type="text" placeholder="List name" value={listName} onChange={handleListNameChange} onKeyDown={handleKeyDown}></input>
                     
                 </div>
                 {listError && <div className="new-list-no-name-error">{listError}</div>}
-                <button className='create-list-update-button' onClick={submitCreateList}>CREATE LIST</button>
-                {/* <p className='or'>OR</p> */}
-                <button className='create-and-share' onClick={submitCreateListAndShare}>SHARE LIST</button>
-            
+                <div className='create-list-buttons'>
+                    {/* <Link className='create-list-cancel-button' to={"/"}>CANCEL</Link> */}
+                    <button className='create-list-share-button' onClick={submitCreateListAndShare}>SHARE LIST</button>
+                    <button className='create-list-create-button' onClick={submitCreateList}>CREATE LIST</button>
+                </div>
             
         </div>
     )

@@ -5,20 +5,19 @@
     margin: auto;
     margin: -2em 1em 0.85em 0.1em;
     color: #E43232;
+    font-size: 0.8em;
 }
 
 .create-list-body {
-    border: 5px solid;
     margin: auto;
-    width: 90%;
-    padding: 10px;
+    width: 100%;
     border: none; 
     outline: none; 
 }
 
 .create-new-list-label{
-    font-size: 1em;
-    margin-top: 6.5em;
+    font-size: 0.9em;
+    margin-top: 0.5em;
     color: var(--font-color);
     
 }
@@ -27,96 +26,84 @@
     background-color: #212121;
     padding: 1em 1em 1em 1.7em;
     border-radius: 6px;
-    font-size: 1.4em;
+    border-bottom-left-radius:0px;
+    border-bottom-right-radius:0px;
+    font-size: 1.2em;
     font-weight: 500;   
     margin-top: 0.5em;
     margin-bottom: 2em;
     color: #f2f2f2;
     border:none;
+    border-bottom: solid 1px var(--green);
     caret-color: var(--green);
     width: 100%;
     outline: none;  
 }
 
-.create-list-update-button {
-    position:relative;
-    width: 100%;
-    padding: 0.8em 2.2em 0.8em 2.2em;
-    border-radius: 0.4em;
+.create-list-buttons {
+    float: right;
+    display:flex;
+}
+
+.create-list-create-button {
     border: none;
-    background-color: var(--green);
     font-weight: 600;
     font-size: 1em;
     cursor: pointer;
-    color: #212121;
+    color: var(--green);
+    background: none;
     text-decoration: none;
-    margin-bottom: 1.5em;
+    margin-left: 1em;
+    padding: 0.6em;
+    border-radius: 0.3em;
 }
 
-.create-list-update-button:hover {
-    background-color: #a2f199;
+.create-list-create-button:hover {
+    background-color: #212121;
 }
 
-.create-list-cancel {
-    position:relative;
-    width: 100%;
-    border-radius: 0.4em;
+.create-list-cancel-button {
     border: none;
-    font-weight: 600;
-    font-size: 1.5em;
-    cursor: pointer;
-    color: #f2f2f2;
-    text-decoration: none;
-}
-
-.cancel-icon {
-    margin-top: 0.5em;
-}
-
-.create-and-share {
-    position:relative;
-    width: 100%;
-    margin-top: 0em;
-    padding: 0.8em 2.2em 0.8em 2.2em;
-    border-radius: 0.4em;
-    border: none;
-    background-color: #a2f199;
     font-weight: 600;
     font-size: 1em;
     cursor: pointer;
-    color: #212121;
+    color: #777777;
+    background: none;
     text-decoration: none;
+    margin-left: 1em;
+    padding: 0.6em;
+    border-radius: 0.3em;
 }
 
-.or {
+.create-list-share-button {
+    border: none;
+    font-weight: 600;
+    font-size: 1em;
+    cursor: pointer;
     color: #f2f2f2;
-    text-align: center;
+    background: none;
+    text-decoration: none;
+    margin-left: 1em;
+    padding: 0.6em;
+    border-radius: 0.3em;
 }
 
-@media only screen and (max-width: 400px) {
-    .create-list-update-button {
-        font-size: 0.9em;
-    }
-    .create-list-name {
-        font-size: 1.2em;
-    }
+.create-list-share-button:hover {
+    background-color: #212121;
+    border-radius: 0.2em;
+}
+
+.create-list-cancel-button:hover {
+    background-color: #212121;
+    border-radius: 0.2em;
 }
 
 
-@media only screen and (min-width: 600px) {
-    .create-list-body {
-        width: 35em; 
-    }
 
-    .create-list-update-button {
-        margin-right: 1%;
-    }
 
-    .create-list-cancel {
-        margin-left: -1%;
+@media only screen and (max-width: 660px) {
+   
+    .create-new-list-label {
+        margin-top: 0.5em;
     }
-
-    .cancel-icon {
-        margin-top: 1em;
-    }
-}
+} 

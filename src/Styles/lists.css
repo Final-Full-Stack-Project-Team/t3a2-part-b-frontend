@@ -107,6 +107,19 @@
 
 }
 
+.new-list-btn img {
+    position: absolute;
+    width: 2.7em;
+    margin-top: -4.75em;
+    margin-right: 3.6em;
+    right: 0;
+    cursor: pointer;
+}
+.new-list-btn button {
+    background: none;
+    border: none;
+}
+
 @media only screen and (min-width: 1200px) {
     .lists-container {
         padding-top: 1em;
