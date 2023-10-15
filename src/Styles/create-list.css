@@ -5,20 +5,19 @@
     margin: auto;
     margin: -2em 1em 0.85em 0.1em;
     color: #E43232;
+    font-size: 0.8em;
 }
 
 .create-list-body {
-    border: 5px solid;
     margin: auto;
-    width: 90%;
-   
+    width: 100%;
     border: none; 
     outline: none; 
 }
 
 .create-new-list-label{
-    font-size: 1em;
-    margin-top: 2em;
+    font-size: 0.9em;
+    margin-top: 0.5em;
     color: var(--font-color);
     
 }
@@ -29,7 +28,7 @@
     border-radius: 6px;
     border-bottom-left-radius:0px;
     border-bottom-right-radius:0px;
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-weight: 500;   
     margin-top: 0.5em;
     margin-bottom: 2em;
@@ -101,27 +100,10 @@
 
 
 
-@media only screen and (max-width: 400px) {
-    .create-list-name {
-        font-size: 1.2em;
-    }
-}
 
-
-@media only screen and (min-width: 600px) {
-    .create-list-body {
-        width: 35em; 
+@media only screen and (max-width: 660px) {
+   
+    .create-new-list-label {
+        margin-top: 0.5em;
     }
-
-    .create-list-update-button {
-        margin-right: 1%;
-    }
-
-    .create-list-cancel-button{
-        margin-left: -1%;
-    }
-
-    .cancel-icon {
-        margin-top: 1em;
-    }
-}
+} 
