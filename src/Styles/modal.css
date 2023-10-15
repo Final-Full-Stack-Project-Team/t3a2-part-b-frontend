@@ -19,6 +19,8 @@
     padding: 2em;
     margin: 1em;
     border-radius: 0.4em;
+    position: relative; /* Add relative positioning */
+    top: -20%; /* Initially at the top */
 }
 
 /* Close button style */
@@ -43,8 +45,6 @@
 /* .add-group-btn {
     display: none;
 } */
-
-
 
 @media only screen and (max-width: 660px) {
     .modal-content button {
