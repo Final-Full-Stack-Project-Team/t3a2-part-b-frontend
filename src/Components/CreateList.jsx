@@ -1,11 +1,9 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { useUserData } from "../contexts/UserContext";
 import { createList } from "../services/ListServices";
 import { useCookies } from "react-cookie";
 import "../Styles/create-list.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faX } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function CreateList() {
@@ -22,6 +20,8 @@ export default function CreateList() {
     const userData = useUserData()
 
     const navigate = useNavigate()
+
+    const listNameInputRef = useRef(null);
 
     // function to capitalize first letter
     function capitalizeFirstLetter(string) {
@@ -94,13 +94,19 @@ export default function CreateList() {
         }
       }
     
+      useEffect(() => {
+        if (listNameInputRef.current) {
+          listNameInputRef.current.focus();
+        }
+      }, []);  
+
     return(
         
         <div className="create-list-body">
                 
                 <div className="create-new-list-label">
                     <label className="create-new-list-label" htmlFor="listname">Create new list</label>
-                    <input className="create-list-name" type="text" placeholder="List name" value={listName} onChange={handleListNameChange} onKeyDown={handleKeyDown}></input>
+                    <input className="create-list-name" type="text" placeholder="List name" value={listName} onChange={handleListNameChange} onKeyDown={handleKeyDown} ref={listNameInputRef}></input>
                     
                 </div>
                 {listError && <div className="new-list-no-name-error">{listError}</div>}
